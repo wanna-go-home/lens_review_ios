@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		6B43A7BE93C770F60914BAE9 /* Pods_lens_review_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF002C7DD264D22531388B4 /* Pods_lens_review_ios.framework */; };
 		7C3C92EF2503AD1800AA1EBE /* LensAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C92EE2503AD1800AA1EBE /* LensAPI.swift */; };
-		7CCDE4112503B90200F6DC91 /* NetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE4102503B90200F6DC91 /* NetConfig.swift */; };
+		7CCDE4112503B90200F6DC91 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE4102503B90200F6DC91 /* NetConstants.swift */; };
 		7CCDE41425050AD200F6DC91 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE41325050AD200F6DC91 /* Lens.swift */; };
+		7CCDE416250512B800F6DC91 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE415250512B800F6DC91 /* APIBuilder.swift */; };
 		7CD9B55224FD230000638D51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B55124FD230000638D51 /* AppDelegate.swift */; };
 		7CD9B55424FD230000638D51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B55324FD230000638D51 /* SceneDelegate.swift */; };
 		7CD9B55624FD230000638D51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B55524FD230000638D51 /* ContentView.swift */; };
@@ -47,8 +48,9 @@
 		449868238D42026B26CA3AD7 /* Pods-lens_review_iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_iosTests.release.xcconfig"; path = "Target Support Files/Pods-lens_review_iosTests/Pods-lens_review_iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		4C503A87B591463E6CC55E9B /* Pods-lens_review_iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_iosTests.debug.xcconfig"; path = "Target Support Files/Pods-lens_review_iosTests/Pods-lens_review_iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C3C92EE2503AD1800AA1EBE /* LensAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPI.swift; sourceTree = "<group>"; };
-		7CCDE4102503B90200F6DC91 /* NetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConfig.swift; sourceTree = "<group>"; };
+		7CCDE4102503B90200F6DC91 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
 		7CCDE41325050AD200F6DC91 /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
+		7CCDE415250512B800F6DC91 /* APIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuilder.swift; sourceTree = "<group>"; };
 		7CD9B54E24FD230000638D51 /* lens_review_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lens_review_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD9B55124FD230000638D51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD9B55324FD230000638D51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,7 +127,8 @@
 			children = (
 				7CCDE4122503C28F00F6DC91 /* Model */,
 				7C3C92EE2503AD1800AA1EBE /* LensAPI.swift */,
-				7CCDE4102503B90200F6DC91 /* NetConfig.swift */,
+				7CCDE4102503B90200F6DC91 /* NetConstants.swift */,
+				7CCDE415250512B800F6DC91 /* APIBuilder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -444,8 +447,9 @@
 				7CD9B55224FD230000638D51 /* AppDelegate.swift in Sources */,
 				7CD9B55424FD230000638D51 /* SceneDelegate.swift in Sources */,
 				7CD9B55624FD230000638D51 /* ContentView.swift in Sources */,
-				7CCDE4112503B90200F6DC91 /* NetConfig.swift in Sources */,
+				7CCDE4112503B90200F6DC91 /* NetConstants.swift in Sources */,
 				7CCDE41425050AD200F6DC91 /* Lens.swift in Sources */,
+				7CCDE416250512B800F6DC91 /* APIBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

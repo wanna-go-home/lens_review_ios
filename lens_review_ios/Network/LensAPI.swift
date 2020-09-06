@@ -11,13 +11,12 @@ import Alamofire
 
 class LensAPI
 {
-    func getAllLensInfo()
+    static func getLens(completion: @escaping(Result<[Lens], AFError>) -> Void)
     {
-        print("Test")
-        let url = "http://15.165.122.0:8080/api/lensinfo"
-        let request = AF.request(url)
-        request.responseJSON{(data) in
-            print(data)
+        AF.request(APIBuilder.getLens)
+            .responseDecodable {
+                (response: DataResponse<[Lens], AFError>) in completion(response.result)
+                print(response)
         }
     }
 }

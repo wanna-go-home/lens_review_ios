@@ -13,9 +13,9 @@ struct Lens : Decodable
     var lensId : Int
     var name : String
     // let graphicDia : Numeric
-    var perPackage : Int
-    var price : Int
-    var review_cnt : Int
+//    var perPackage : Int
+//    var price : Int
+//    var review_cnt : Int
     // let bc : Numeric
     // let dia : Numeric
     // let per : Json

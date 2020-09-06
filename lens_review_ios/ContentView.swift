@@ -19,7 +19,14 @@ struct ContentView: View {
     
     func getlensdata()
     {
-        LensAPI().getAllLensInfo()
+        LensAPI.getLens {result in
+            switch result{
+            case .success(let lens):
+                print(lens)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
