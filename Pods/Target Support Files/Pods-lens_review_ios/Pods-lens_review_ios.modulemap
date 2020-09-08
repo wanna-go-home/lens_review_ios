@@ -1,0 +1,6 @@
+framework module Pods_lens_review_ios {
+  umbrella header "Pods-lens_review_ios-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,8 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text("Hello, World!")
+            Button(action:getlensdata) {Text("Test")}
+        }
+    }
+    
+    func getlensdata()
+    {
+        LensAPI.getLens {result in
+            switch result{
+            case .success(let lens):
+                print(lens)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
