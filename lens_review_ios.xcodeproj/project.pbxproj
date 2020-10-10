@@ -7,215 +7,135 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B43A7BE93C770F60914BAE9 /* Pods_lens_review_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF002C7DD264D22531388B4 /* Pods_lens_review_ios.framework */; };
-		7C3C92EF2503AD1800AA1EBE /* LensAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C92EE2503AD1800AA1EBE /* LensAPI.swift */; };
-		7CCDE4112503B90200F6DC91 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE4102503B90200F6DC91 /* NetConstants.swift */; };
-		7CCDE41425050AD200F6DC91 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE41325050AD200F6DC91 /* Lens.swift */; };
-		7CCDE416250512B800F6DC91 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCDE415250512B800F6DC91 /* APIBuilder.swift */; };
-		7CD9B55224FD230000638D51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B55124FD230000638D51 /* AppDelegate.swift */; };
-		7CD9B55424FD230000638D51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B55324FD230000638D51 /* SceneDelegate.swift */; };
-		7CD9B55624FD230000638D51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B55524FD230000638D51 /* ContentView.swift */; };
-		7CD9B55824FD230100638D51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD9B55724FD230100638D51 /* Assets.xcassets */; };
-		7CD9B55B24FD230100638D51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD9B55A24FD230100638D51 /* Preview Assets.xcassets */; };
-		7CD9B55E24FD230100638D51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD9B55C24FD230100638D51 /* LaunchScreen.storyboard */; };
-		7CD9B56924FD230200638D51 /* lens_review_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B56824FD230200638D51 /* lens_review_iosTests.swift */; };
-		7CD9B57424FD230200638D51 /* lens_review_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD9B57324FD230200638D51 /* lens_review_iosUITests.swift */; };
-		CAD27086F11C4592C5098B2D /* Pods_lens_review_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 977A28DE9298C675A72E012C /* Pods_lens_review_iosTests.framework */; };
-		E5F12E6111E8C63F00E5EADC /* Pods_lens_review_ios_lens_review_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FE45C4B0E7AEC0B91F8988 /* Pods_lens_review_ios_lens_review_iosUITests.framework */; };
+		186BF9311CB903D965C2FEEC /* Pods_lens_review_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */; };
+		551719D32531E8A2003670D0 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D22531E8A2003670D0 /* Lens.swift */; };
+		551719D62531E921003670D0 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D52531E921003670D0 /* APIBuilder.swift */; };
+		551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D82531E93F003670D0 /* LensAPIClient.swift */; };
+		551719DC2531E950003670D0 /* LensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DB2531E950003670D0 /* LensViewModel.swift */; };
+		551719DF2531E964003670D0 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DE2531E964003670D0 /* NetConstants.swift */; };
+		5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */; };
+		5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550A7D22531E44200FAFD30 /* ContentView.swift */; };
+		5550A7D52531E44300FAFD30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5550A7D42531E44300FAFD30 /* Assets.xcassets */; };
+		5550A7D82531E44300FAFD30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7CD9B56524FD230200638D51 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7CD9B54624FD230000638D51 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CD9B54D24FD230000638D51;
-			remoteInfo = lens_review_ios;
-		};
-		7CD9B57024FD230200638D51 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7CD9B54624FD230000638D51 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CD9B54D24FD230000638D51;
-			remoteInfo = lens_review_ios;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		1FF002C7DD264D22531388B4 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2471227E6EE3F5E3DBDEC9D9 /* Pods-lens_review_ios-lens_review_iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios-lens_review_iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-lens_review_ios-lens_review_iosUITests/Pods-lens_review_ios-lens_review_iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		27FE45C4B0E7AEC0B91F8988 /* Pods_lens_review_ios_lens_review_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios_lens_review_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		449868238D42026B26CA3AD7 /* Pods-lens_review_iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_iosTests.release.xcconfig"; path = "Target Support Files/Pods-lens_review_iosTests/Pods-lens_review_iosTests.release.xcconfig"; sourceTree = "<group>"; };
-		4C503A87B591463E6CC55E9B /* Pods-lens_review_iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_iosTests.debug.xcconfig"; path = "Target Support Files/Pods-lens_review_iosTests/Pods-lens_review_iosTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7C3C92EE2503AD1800AA1EBE /* LensAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPI.swift; sourceTree = "<group>"; };
-		7CCDE4102503B90200F6DC91 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
-		7CCDE41325050AD200F6DC91 /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
-		7CCDE415250512B800F6DC91 /* APIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuilder.swift; sourceTree = "<group>"; };
-		7CD9B54E24FD230000638D51 /* lens_review_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lens_review_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CD9B55124FD230000638D51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CD9B55324FD230000638D51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7CD9B55524FD230000638D51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7CD9B55724FD230100638D51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7CD9B55A24FD230100638D51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7CD9B55D24FD230100638D51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7CD9B55F24FD230100638D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CD9B56424FD230200638D51 /* lens_review_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lens_review_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CD9B56824FD230200638D51 /* lens_review_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lens_review_iosTests.swift; sourceTree = "<group>"; };
-		7CD9B56A24FD230200638D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CD9B56F24FD230200638D51 /* lens_review_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lens_review_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CD9B57324FD230200638D51 /* lens_review_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lens_review_iosUITests.swift; sourceTree = "<group>"; };
-		7CD9B57524FD230200638D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9502B6C06907936C845FD08A /* Pods-lens_review_ios-lens_review_iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios-lens_review_iosUITests.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios-lens_review_iosUITests/Pods-lens_review_ios-lens_review_iosUITests.release.xcconfig"; sourceTree = "<group>"; };
-		977A28DE9298C675A72E012C /* Pods_lens_review_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1A1BD8FD2D9241EC554505F /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
-		C1E7B5E69A6EC7EDE41E4F61 /* Pods-lens_review_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.debug.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		3B7C3B0742C439DBD569CAEA /* Pods-lens_review_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.debug.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		551719D22531E8A2003670D0 /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
+		551719D52531E921003670D0 /* APIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuilder.swift; sourceTree = "<group>"; };
+		551719D82531E93F003670D0 /* LensAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPIClient.swift; sourceTree = "<group>"; };
+		551719DB2531E950003670D0 /* LensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensViewModel.swift; sourceTree = "<group>"; };
+		551719DE2531E964003670D0 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
+		5550A7CD2531E44200FAFD30 /* lens_review_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lens_review_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lens_review_iosApp.swift; sourceTree = "<group>"; };
+		5550A7D22531E44200FAFD30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5550A7D42531E44300FAFD30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5550A7D92531E44300FAFD30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
+		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7CD9B54B24FD230000638D51 /* Frameworks */ = {
+		5550A7CA2531E44200FAFD30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B43A7BE93C770F60914BAE9 /* Pods_lens_review_ios.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD9B56124FD230200638D51 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CAD27086F11C4592C5098B2D /* Pods_lens_review_iosTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD9B56C24FD230200638D51 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E5F12E6111E8C63F00E5EADC /* Pods_lens_review_ios_lens_review_iosUITests.framework in Frameworks */,
+				186BF9311CB903D965C2FEEC /* Pods_lens_review_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		667257AC5404E063C5DD97A4 /* Frameworks */ = {
+		551719D02531E832003670D0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1FF002C7DD264D22531388B4 /* Pods_lens_review_ios.framework */,
-				27FE45C4B0E7AEC0B91F8988 /* Pods_lens_review_ios_lens_review_iosUITests.framework */,
-				977A28DE9298C675A72E012C /* Pods_lens_review_iosTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7B8B5E77A3F02E1E0072AB8E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C1E7B5E69A6EC7EDE41E4F61 /* Pods-lens_review_ios.debug.xcconfig */,
-				C1A1BD8FD2D9241EC554505F /* Pods-lens_review_ios.release.xcconfig */,
-				2471227E6EE3F5E3DBDEC9D9 /* Pods-lens_review_ios-lens_review_iosUITests.debug.xcconfig */,
-				9502B6C06907936C845FD08A /* Pods-lens_review_ios-lens_review_iosUITests.release.xcconfig */,
-				4C503A87B591463E6CC55E9B /* Pods-lens_review_iosTests.debug.xcconfig */,
-				449868238D42026B26CA3AD7 /* Pods-lens_review_iosTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		7CCDE40F2503B8CC00F6DC91 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				7CCDE4122503C28F00F6DC91 /* Model */,
-				7C3C92EE2503AD1800AA1EBE /* LensAPI.swift */,
-				7CCDE4102503B90200F6DC91 /* NetConstants.swift */,
-				7CCDE415250512B800F6DC91 /* APIBuilder.swift */,
+				551719D12531E888003670D0 /* Model */,
+				551719D52531E921003670D0 /* APIBuilder.swift */,
+				551719D82531E93F003670D0 /* LensAPIClient.swift */,
+				551719DB2531E950003670D0 /* LensViewModel.swift */,
+				551719DE2531E964003670D0 /* NetConstants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		7CCDE4122503C28F00F6DC91 /* Model */ = {
+		551719D12531E888003670D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7CCDE41325050AD200F6DC91 /* Lens.swift */,
+				551719D22531E8A2003670D0 /* Lens.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7CD9B54524FD230000638D51 = {
+		5550A7C42531E44200FAFD30 = {
 			isa = PBXGroup;
 			children = (
-				7CD9B55024FD230000638D51 /* lens_review_ios */,
-				7CD9B56724FD230200638D51 /* lens_review_iosTests */,
-				7CD9B57224FD230200638D51 /* lens_review_iosUITests */,
-				7CD9B54F24FD230000638D51 /* Products */,
-				7B8B5E77A3F02E1E0072AB8E /* Pods */,
-				667257AC5404E063C5DD97A4 /* Frameworks */,
+				5550A7CF2531E44200FAFD30 /* lens_review_ios */,
+				5550A7CE2531E44200FAFD30 /* Products */,
+				E326168C3FB332AD9556D1E1 /* Pods */,
+				685406D9EDE03E534247871F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		7CD9B54F24FD230000638D51 /* Products */ = {
+		5550A7CE2531E44200FAFD30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CD9B54E24FD230000638D51 /* lens_review_ios.app */,
-				7CD9B56424FD230200638D51 /* lens_review_iosTests.xctest */,
-				7CD9B56F24FD230200638D51 /* lens_review_iosUITests.xctest */,
+				5550A7CD2531E44200FAFD30 /* lens_review_ios.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7CD9B55024FD230000638D51 /* lens_review_ios */ = {
+		5550A7CF2531E44200FAFD30 /* lens_review_ios */ = {
 			isa = PBXGroup;
 			children = (
-				7CCDE40F2503B8CC00F6DC91 /* Network */,
-				7CD9B55124FD230000638D51 /* AppDelegate.swift */,
-				7CD9B55324FD230000638D51 /* SceneDelegate.swift */,
-				7CD9B55524FD230000638D51 /* ContentView.swift */,
-				7CD9B55724FD230100638D51 /* Assets.xcassets */,
-				7CD9B55C24FD230100638D51 /* LaunchScreen.storyboard */,
-				7CD9B55F24FD230100638D51 /* Info.plist */,
-				7CD9B55924FD230100638D51 /* Preview Content */,
+				5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */,
+				551719D02531E832003670D0 /* Network */,
+				5550A7D22531E44200FAFD30 /* ContentView.swift */,
+				5550A7D42531E44300FAFD30 /* Assets.xcassets */,
+				5550A7D92531E44300FAFD30 /* Info.plist */,
+				5550A7D62531E44300FAFD30 /* Preview Content */,
 			);
 			path = lens_review_ios;
 			sourceTree = "<group>";
 		};
-		7CD9B55924FD230100638D51 /* Preview Content */ = {
+		5550A7D62531E44300FAFD30 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				7CD9B55A24FD230100638D51 /* Preview Assets.xcassets */,
+				5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		7CD9B56724FD230200638D51 /* lens_review_iosTests */ = {
+		685406D9EDE03E534247871F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7CD9B56824FD230200638D51 /* lens_review_iosTests.swift */,
-				7CD9B56A24FD230200638D51 /* Info.plist */,
+				B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */,
 			);
-			path = lens_review_iosTests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7CD9B57224FD230200638D51 /* lens_review_iosUITests */ = {
+		E326168C3FB332AD9556D1E1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7CD9B57324FD230200638D51 /* lens_review_iosUITests.swift */,
-				7CD9B57524FD230200638D51 /* Info.plist */,
+				3B7C3B0742C439DBD569CAEA /* Pods-lens_review_ios.debug.xcconfig */,
+				ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */,
 			);
-			path = lens_review_iosUITests;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7CD9B54D24FD230000638D51 /* lens_review_ios */ = {
+		5550A7CC2531E44200FAFD30 /* lens_review_ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CD9B57824FD230200638D51 /* Build configuration list for PBXNativeTarget "lens_review_ios" */;
+			buildConfigurationList = 5550A7DC2531E44300FAFD30 /* Build configuration list for PBXNativeTarget "lens_review_ios" */;
 			buildPhases = (
-				302D6191C933AB9DE777EA35 /* [CP] Check Pods Manifest.lock */,
-				7CD9B54A24FD230000638D51 /* Sources */,
-				7CD9B54B24FD230000638D51 /* Frameworks */,
-				7CD9B54C24FD230000638D51 /* Resources */,
-				EDAC7A2A46914C9A1E7E5916 /* [CP] Embed Pods Frameworks */,
+				17989624620B717A1F39913C /* [CP] Check Pods Manifest.lock */,
+				5550A7C92531E44200FAFD30 /* Sources */,
+				5550A7CA2531E44200FAFD30 /* Frameworks */,
+				5550A7CB2531E44200FAFD30 /* Resources */,
+				D45FDE0E24CCFFF52F7DE928 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,72 +143,24 @@
 			);
 			name = lens_review_ios;
 			productName = lens_review_ios;
-			productReference = 7CD9B54E24FD230000638D51 /* lens_review_ios.app */;
+			productReference = 5550A7CD2531E44200FAFD30 /* lens_review_ios.app */;
 			productType = "com.apple.product-type.application";
-		};
-		7CD9B56324FD230200638D51 /* lens_review_iosTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CD9B57B24FD230200638D51 /* Build configuration list for PBXNativeTarget "lens_review_iosTests" */;
-			buildPhases = (
-				79A64DA36AD5FEFD3172AEBA /* [CP] Check Pods Manifest.lock */,
-				7CD9B56024FD230200638D51 /* Sources */,
-				7CD9B56124FD230200638D51 /* Frameworks */,
-				7CD9B56224FD230200638D51 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7CD9B56624FD230200638D51 /* PBXTargetDependency */,
-			);
-			name = lens_review_iosTests;
-			productName = lens_review_iosTests;
-			productReference = 7CD9B56424FD230200638D51 /* lens_review_iosTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7CD9B56E24FD230200638D51 /* lens_review_iosUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CD9B57E24FD230200638D51 /* Build configuration list for PBXNativeTarget "lens_review_iosUITests" */;
-			buildPhases = (
-				9AA8EC2A635DEB8D3CD9AF91 /* [CP] Check Pods Manifest.lock */,
-				7CD9B56B24FD230200638D51 /* Sources */,
-				7CD9B56C24FD230200638D51 /* Frameworks */,
-				7CD9B56D24FD230200638D51 /* Resources */,
-				F3A933F95BDDACD7F5C79820 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7CD9B57124FD230200638D51 /* PBXTargetDependency */,
-			);
-			name = lens_review_iosUITests;
-			productName = lens_review_iosUITests;
-			productReference = 7CD9B56F24FD230200638D51 /* lens_review_iosUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7CD9B54624FD230000638D51 /* Project object */ = {
+		5550A7C52531E44200FAFD30 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
-				ORGANIZATIONNAME = wannagohome;
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					7CD9B54D24FD230000638D51 = {
-						CreatedOnToolsVersion = 11.6;
-					};
-					7CD9B56324FD230200638D51 = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = 7CD9B54D24FD230000638D51;
-					};
-					7CD9B56E24FD230200638D51 = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = 7CD9B54D24FD230000638D51;
+					5550A7CC2531E44200FAFD30 = {
+						CreatedOnToolsVersion = 12.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 7CD9B54924FD230000638D51 /* Build configuration list for PBXProject "lens_review_ios" */;
+			buildConfigurationList = 5550A7C82531E44200FAFD30 /* Build configuration list for PBXProject "lens_review_ios" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -296,47 +168,30 @@
 				en,
 				Base,
 			);
-			mainGroup = 7CD9B54524FD230000638D51;
-			productRefGroup = 7CD9B54F24FD230000638D51 /* Products */;
+			mainGroup = 5550A7C42531E44200FAFD30;
+			productRefGroup = 5550A7CE2531E44200FAFD30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7CD9B54D24FD230000638D51 /* lens_review_ios */,
-				7CD9B56324FD230200638D51 /* lens_review_iosTests */,
-				7CD9B56E24FD230200638D51 /* lens_review_iosUITests */,
+				5550A7CC2531E44200FAFD30 /* lens_review_ios */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7CD9B54C24FD230000638D51 /* Resources */ = {
+		5550A7CB2531E44200FAFD30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CD9B55E24FD230100638D51 /* LaunchScreen.storyboard in Resources */,
-				7CD9B55B24FD230100638D51 /* Preview Assets.xcassets in Resources */,
-				7CD9B55824FD230100638D51 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD9B56224FD230200638D51 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD9B56D24FD230200638D51 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				5550A7D82531E44300FAFD30 /* Preview Assets.xcassets in Resources */,
+				5550A7D52531E44300FAFD30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		302D6191C933AB9DE777EA35 /* [CP] Check Pods Manifest.lock */ = {
+		17989624620B717A1F39913C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -358,51 +213,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		79A64DA36AD5FEFD3172AEBA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-lens_review_iosTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AA8EC2A635DEB8D3CD9AF91 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-lens_review_ios-lens_review_iosUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EDAC7A2A46914C9A1E7E5916 /* [CP] Embed Pods Frameworks */ = {
+		D45FDE0E24CCFFF52F7DE928 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,84 +230,27 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3A933F95BDDACD7F5C79820 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-lens_review_ios-lens_review_iosUITests/Pods-lens_review_ios-lens_review_iosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-lens_review_ios-lens_review_iosUITests/Pods-lens_review_ios-lens_review_iosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lens_review_ios-lens_review_iosUITests/Pods-lens_review_ios-lens_review_iosUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7CD9B54A24FD230000638D51 /* Sources */ = {
+		5550A7C92531E44200FAFD30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C3C92EF2503AD1800AA1EBE /* LensAPI.swift in Sources */,
-				7CD9B55224FD230000638D51 /* AppDelegate.swift in Sources */,
-				7CD9B55424FD230000638D51 /* SceneDelegate.swift in Sources */,
-				7CD9B55624FD230000638D51 /* ContentView.swift in Sources */,
-				7CCDE4112503B90200F6DC91 /* NetConstants.swift in Sources */,
-				7CCDE41425050AD200F6DC91 /* Lens.swift in Sources */,
-				7CCDE416250512B800F6DC91 /* APIBuilder.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD9B56024FD230200638D51 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CD9B56924FD230200638D51 /* lens_review_iosTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD9B56B24FD230200638D51 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CD9B57424FD230200638D51 /* lens_review_iosUITests.swift in Sources */,
+				551719D62531E921003670D0 /* APIBuilder.swift in Sources */,
+				551719DC2531E950003670D0 /* LensViewModel.swift in Sources */,
+				5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */,
+				551719DF2531E964003670D0 /* NetConstants.swift in Sources */,
+				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
+				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
+				551719D32531E8A2003670D0 /* Lens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		7CD9B56624FD230200638D51 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7CD9B54D24FD230000638D51 /* lens_review_ios */;
-			targetProxy = 7CD9B56524FD230200638D51 /* PBXContainerItemProxy */;
-		};
-		7CD9B57124FD230200638D51 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7CD9B54D24FD230000638D51 /* lens_review_ios */;
-			targetProxy = 7CD9B57024FD230200638D51 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7CD9B55C24FD230100638D51 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CD9B55D24FD230100638D51 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		7CD9B57624FD230200638D51 /* Debug */ = {
+		5550A7DA2531E44300FAFD30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -522,6 +276,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -546,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -556,7 +311,7 @@
 			};
 			name = Debug;
 		};
-		7CD9B57724FD230200638D51 /* Release */ = {
+		5550A7DB2531E44300FAFD30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -582,6 +337,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -600,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -610,170 +366,72 @@
 			};
 			name = Release;
 		};
-		7CD9B57924FD230200638D51 /* Debug */ = {
+		5550A7DD2531E44300FAFD30 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1E7B5E69A6EC7EDE41E4F61 /* Pods-lens_review_ios.debug.xcconfig */;
+			baseConfigurationReference = 3B7C3B0742C439DBD569CAEA /* Pods-lens_review_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lens_review_ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = lens_review_ios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wannagohome.lens-review-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "wannagohome.lens-review-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		7CD9B57A24FD230200638D51 /* Release */ = {
+		5550A7DE2531E44300FAFD30 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1A1BD8FD2D9241EC554505F /* Pods-lens_review_ios.release.xcconfig */;
+			baseConfigurationReference = ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lens_review_ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = lens_review_ios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wannagohome.lens-review-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "wannagohome.lens-review-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		7CD9B57C24FD230200638D51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C503A87B591463E6CC55E9B /* Pods-lens_review_iosTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = lens_review_iosTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wannagohome.lens-review-iosTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lens_review_ios.app/lens_review_ios";
-			};
-			name = Debug;
-		};
-		7CD9B57D24FD230200638D51 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 449868238D42026B26CA3AD7 /* Pods-lens_review_iosTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = lens_review_iosTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wannagohome.lens-review-iosTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lens_review_ios.app/lens_review_ios";
-			};
-			name = Release;
-		};
-		7CD9B57F24FD230200638D51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2471227E6EE3F5E3DBDEC9D9 /* Pods-lens_review_ios-lens_review_iosUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = lens_review_iosUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wannagohome.lens-review-iosUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = lens_review_ios;
-			};
-			name = Debug;
-		};
-		7CD9B58024FD230200638D51 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9502B6C06907936C845FD08A /* Pods-lens_review_ios-lens_review_iosUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = lens_review_iosUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wannagohome.lens-review-iosUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = lens_review_ios;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7CD9B54924FD230000638D51 /* Build configuration list for PBXProject "lens_review_ios" */ = {
+		5550A7C82531E44200FAFD30 /* Build configuration list for PBXProject "lens_review_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CD9B57624FD230200638D51 /* Debug */,
-				7CD9B57724FD230200638D51 /* Release */,
+				5550A7DA2531E44300FAFD30 /* Debug */,
+				5550A7DB2531E44300FAFD30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CD9B57824FD230200638D51 /* Build configuration list for PBXNativeTarget "lens_review_ios" */ = {
+		5550A7DC2531E44300FAFD30 /* Build configuration list for PBXNativeTarget "lens_review_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CD9B57924FD230200638D51 /* Debug */,
-				7CD9B57A24FD230200638D51 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CD9B57B24FD230200638D51 /* Build configuration list for PBXNativeTarget "lens_review_iosTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CD9B57C24FD230200638D51 /* Debug */,
-				7CD9B57D24FD230200638D51 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CD9B57E24FD230200638D51 /* Build configuration list for PBXNativeTarget "lens_review_iosUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CD9B57F24FD230200638D51 /* Debug */,
-				7CD9B58024FD230200638D51 /* Release */,
+				5550A7DD2531E44300FAFD30 /* Debug */,
+				5550A7DE2531E44300FAFD30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7CD9B54624FD230000638D51 /* Project object */;
+	rootObject = 5550A7C52531E44200FAFD30 /* Project object */;
 }

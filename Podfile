@@ -6,16 +6,6 @@ target 'lens_review_ios' do
   use_frameworks!
 
   # Pods for lens_review_ios
-  
+	
   pod 'Alamofire', '~> 5.2'
-
-  target 'lens_review_iosTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'lens_review_iosUITests' do
-    # Pods for testing
-  end
-
 end

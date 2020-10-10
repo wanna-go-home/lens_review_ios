@@ -5,7 +5,6 @@
 //  Created by suning on 2020/09/06.
 //  Copyright © 2020 wannagohome. All rights reserved.
 //
-
 import Foundation
 import Alamofire
 
@@ -33,7 +32,7 @@ enum APIBuilder: APIConfiguration
     {
         switch self {
         case .getLens:
-            return "/api/lensinfo"
+            return "/api/lensinfo/preview"
         }
     }
     

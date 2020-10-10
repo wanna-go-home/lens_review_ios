@@ -5,12 +5,11 @@
 //  Created by suning on 2020/09/06.
 //  Copyright © 2020 wannagohome. All rights reserved.
 //
-
 import Foundation
 
-struct Lens : Decodable
+struct Lens : Decodable, Identifiable
 {
-    var lensId : Int
+    var id : Int
     var name : String
     // let graphicDia : Numeric
 //    var perPackage : Int
@@ -21,4 +20,9 @@ struct Lens : Decodable
     // let per : Json
     // let url : String
     // let productImage : Json
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "lens_id"
+        case name
+    }
 }

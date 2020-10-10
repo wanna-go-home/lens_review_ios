@@ -2,29 +2,22 @@
 //  ContentView.swift
 //  lens_review_ios
 //
-//  Created by suning on 2020/08/31.
-//  Copyright © 2020 wannagohome. All rights reserved.
+//  Created by seonhee on 2020/10/10.
 //
 
 import SwiftUI
+import Alamofire
 
 struct ContentView: View {
-    
+    @ObservedObject var lensDB: LensViewModel = LensViewModel(lens: [])
+        
     var body: some View {
-        VStack {
-            Text("Hello, World!")
-            Button(action:getlensdata) {Text("Test")}
-        }
-    }
-    
-    func getlensdata()
-    {
-        LensAPI.getLens {result in
-            switch result{
-            case .success(let lens):
-                print(lens)
-            case .failure(let error):
-                print(error.localizedDescription)
+        List
+        {
+            ForEach(lensDB.lens) { len in
+                HStack {
+                    Text(len.name)
+                }
             }
         }
     }
