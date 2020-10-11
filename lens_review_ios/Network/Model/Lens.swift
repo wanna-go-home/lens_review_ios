@@ -9,20 +9,14 @@ import Foundation
 
 struct Lens : Decodable, Identifiable
 {
-    var id : Int
-    var name : String
-    // let graphicDia : Numeric
-//    var perPackage : Int
-//    var price : Int
-//    var review_cnt : Int
-    // let bc : Numeric
-    // let dia : Numeric
-    // let per : Json
-    // let url : String
+    var id : Int = 0
+    var name : String = ""
+    var price : Int = 0
     // let productImage : Json
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "lens_id"
         case name
+        case price
     }
 }

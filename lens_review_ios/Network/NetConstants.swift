@@ -8,6 +8,10 @@
 struct NetConfig
 {
     static let API_BASE_URL = "http://15.165.122.0:8080"
+    
+    struct APIParameterKey {
+        static let id = "id"
+    }
 }
 
 enum HTTPHeaderField: String {
