@@ -11,8 +11,11 @@
 		551719D32531E8A2003670D0 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D22531E8A2003670D0 /* Lens.swift */; };
 		551719D62531E921003670D0 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D52531E921003670D0 /* APIBuilder.swift */; };
 		551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D82531E93F003670D0 /* LensAPIClient.swift */; };
-		551719DC2531E950003670D0 /* LensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DB2531E950003670D0 /* LensViewModel.swift */; };
 		551719DF2531E964003670D0 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DE2531E964003670D0 /* NetConstants.swift */; };
+		55438C692532079500423006 /* LensDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C682532079500423006 /* LensDetailView.swift */; };
+		55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C6C253207A800423006 /* LensDetailViewModel.swift */; };
+		55438C70253207B700423006 /* LensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C6F253207B700423006 /* LensViewModel.swift */; };
+		55438C75253207CB00423006 /* LensDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C74253207CB00423006 /* LensDetail.swift */; };
 		5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */; };
 		5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550A7D22531E44200FAFD30 /* ContentView.swift */; };
 		5550A7D52531E44300FAFD30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5550A7D42531E44300FAFD30 /* Assets.xcassets */; };
@@ -24,8 +27,11 @@
 		551719D22531E8A2003670D0 /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		551719D52531E921003670D0 /* APIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuilder.swift; sourceTree = "<group>"; };
 		551719D82531E93F003670D0 /* LensAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPIClient.swift; sourceTree = "<group>"; };
-		551719DB2531E950003670D0 /* LensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensViewModel.swift; sourceTree = "<group>"; };
 		551719DE2531E964003670D0 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
+		55438C682532079500423006 /* LensDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailView.swift; sourceTree = "<group>"; };
+		55438C6C253207A800423006 /* LensDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailViewModel.swift; sourceTree = "<group>"; };
+		55438C6F253207B700423006 /* LensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensViewModel.swift; sourceTree = "<group>"; };
+		55438C74253207CB00423006 /* LensDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetail.swift; sourceTree = "<group>"; };
 		5550A7CD2531E44200FAFD30 /* lens_review_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lens_review_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lens_review_iosApp.swift; sourceTree = "<group>"; };
 		5550A7D22531E44200FAFD30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,7 +60,6 @@
 				551719D12531E888003670D0 /* Model */,
 				551719D52531E921003670D0 /* APIBuilder.swift */,
 				551719D82531E93F003670D0 /* LensAPIClient.swift */,
-				551719DB2531E950003670D0 /* LensViewModel.swift */,
 				551719DE2531E964003670D0 /* NetConstants.swift */,
 			);
 			path = Network;
@@ -64,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				551719D22531E8A2003670D0 /* Lens.swift */,
+				55438C74253207CB00423006 /* LensDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -91,10 +97,13 @@
 			children = (
 				5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */,
 				551719D02531E832003670D0 /* Network */,
-				5550A7D22531E44200FAFD30 /* ContentView.swift */,
 				5550A7D42531E44300FAFD30 /* Assets.xcassets */,
 				5550A7D92531E44300FAFD30 /* Info.plist */,
 				5550A7D62531E44300FAFD30 /* Preview Content */,
+				5550A7D22531E44200FAFD30 /* ContentView.swift */,
+				55438C6F253207B700423006 /* LensViewModel.swift */,
+				55438C682532079500423006 /* LensDetailView.swift */,
+				55438C6C253207A800423006 /* LensDetailViewModel.swift */,
 			);
 			path = lens_review_ios;
 			sourceTree = "<group>";
@@ -238,12 +247,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				551719D62531E921003670D0 /* APIBuilder.swift in Sources */,
-				551719DC2531E950003670D0 /* LensViewModel.swift in Sources */,
 				5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */,
 				551719DF2531E964003670D0 /* NetConstants.swift in Sources */,
 				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
 				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
+				55438C70253207B700423006 /* LensViewModel.swift in Sources */,
+				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
 				551719D32531E8A2003670D0 /* Lens.swift in Sources */,
+				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
+				55438C692532079500423006 /* LensDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

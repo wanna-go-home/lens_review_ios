@@ -2,23 +2,32 @@
 //  ContentView.swift
 //  lens_review_ios
 //
-//  Created by seonhee on 2020/10/10.
+//  Created by suning on 2020/08/31.
+//  Copyright © 2020 wannagohome. All rights reserved.
 //
 
 import SwiftUI
-import Alamofire
 
-struct ContentView: View {
-    @ObservedObject var lensDB: LensViewModel = LensViewModel(lens: [])
-        
+struct ContentView: View
+{
+    
+    @ObservedObject var lensViewModel: LensViewModel = LensViewModel()
+    
     var body: some View {
-        List
+        NavigationView
         {
-            ForEach(lensDB.lens) { len in
-                HStack {
-                    Text(len.name)
+            List
+            {
+                ForEach(lensViewModel.lensList) { lens_ in
+                    HStack {
+                        NavigationLink(destination: LensDetailView(selectedLensId: lens_.id))
+                        {
+                            Text(lens_.name)
+                        }
+                    }
                 }
             }
+            .navigationBarTitle(Text("Lens List"))
         }
     }
 }

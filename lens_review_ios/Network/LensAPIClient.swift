@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class LensAPI
+class LensAPIClient
 {
     static func getLens(completion: @escaping(Result<[Lens], AFError>) -> Void)
     {
@@ -17,5 +17,15 @@ class LensAPI
                 (response: DataResponse<[Lens], AFError>) in completion(response.result)
                 print(response)
         }
+    }
+
+    static func getLensByID(lensId: Int, completion: @escaping(Result<LensDetail, AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getLensById(id: lensId))
+            .responseDecodable {
+                (response: DataResponse<LensDetail, AFError>) in
+                    completion(response.result)
+                print(response)
+            }
     }
 }
