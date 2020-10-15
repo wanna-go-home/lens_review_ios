@@ -8,7 +8,7 @@
 
 import Combine
 
-class LensViewModel: ObservableObject
+class LensListViewModel: ObservableObject
 {
     @Published var lensList = [Lens]()
 

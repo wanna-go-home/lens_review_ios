@@ -11,7 +11,7 @@ import SwiftUI
 struct lens_review_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(LensListViewModel())
         }
     }
 }

@@ -11,29 +11,27 @@ import SwiftUI
 struct ContentView: View
 {
     
-    @ObservedObject var lensViewModel: LensViewModel = LensViewModel()
-    
+//    @ObservedObject var lensViewModel: LensViewModel = LensViewModel()
+    @EnvironmentObject var lensViewModel: LensListViewModel
+
     var body: some View {
-        NavigationView
-        {
-            List
-            {
-                ForEach(lensViewModel.lensList) { lens_ in
-                    HStack {
-                        NavigationLink(destination: LensDetailView(selectedLensId: lens_.id))
-                        {
-                            Text(lens_.name)
-                        }
-                    }
+        TabView{
+            LensListView()
+                .tabItem {
+                    Image(systemName: "list.dash")
+                    Text("렌즈 리스트")
                 }
-            }
-            .navigationBarTitle(Text("Lens List"))
+            Text("2")
+                .tabItem {
+                    Image(systemName: "list.dash")
+                    Text("자유 게시판")
+                }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(LensListViewModel())
     }
 }
