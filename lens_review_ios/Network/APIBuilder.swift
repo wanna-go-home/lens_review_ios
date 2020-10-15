@@ -20,11 +20,12 @@ enum APIBuilder: APIConfiguration
 {
     case getLens
     case getLensById(id : Int)
+    case getBoardPreview
     
     var method: HTTPMethod
     {
         switch self {
-        case .getLens, .getLensById:
+        case .getLens, .getLensById, .getBoardPreview:
             return .get
         }
     }
@@ -37,13 +38,15 @@ enum APIBuilder: APIConfiguration
         case .getLensById:
 //            return "/api/lensinfo/\(id)"
             return "/api/lensinfo"
+        case .getBoardPreview:
+            return "/api/free-board/preview"
         }
     }
     
     var parameters: Parameters?
     {
         switch self {
-        case .getLens:
+        case .getLens, .getBoardPreview:
             return nil
         case .getLensById(let id):
             return [NetConfig.APIParameterKey.id: id]

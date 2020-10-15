@@ -28,4 +28,13 @@ class LensAPIClient
                 print(response)
             }
     }
+
+    static func getBoardPreview(completion: @escaping(Result<[Board], AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getBoardPreview)
+            .responseDecodable {
+                (response: DataResponse<[Board], AFError>) in completion(response.result)
+                print(response)
+        }
+    }
 }
