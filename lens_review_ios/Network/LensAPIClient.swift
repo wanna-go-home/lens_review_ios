@@ -37,4 +37,13 @@ class LensAPIClient
                 print(response)
         }
     }
+    
+    static func getReviewPreview(completion: @escaping(Result<[Review], AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getReviewPreview)
+            .responseDecodable {
+                (response: DataResponse<[Review], AFError>) in completion(response.result)
+                print(response)
+        }
+    }
 }
