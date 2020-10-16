@@ -11,8 +11,8 @@ import SwiftUI
 struct ContentView: View
 {
     
-//    @ObservedObject var lensViewModel: LensViewModel = LensViewModel()
     @EnvironmentObject var lensViewModel: LensListViewModel
+    @EnvironmentObject var boardListViewModel: BoardListViewModel
 
     var body: some View {
         TabView{
@@ -21,7 +21,7 @@ struct ContentView: View
                     Image(systemName: "list.dash")
                     Text("렌즈 리스트")
                 }
-            Text("2")
+            BoardListView()
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("자유 게시판")
@@ -32,6 +32,6 @@ struct ContentView: View
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(LensListViewModel())
+        ContentView().environmentObject(LensListViewModel()).environmentObject(BoardListViewModel())
     }
 }
