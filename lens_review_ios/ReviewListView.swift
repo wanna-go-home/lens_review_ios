@@ -18,9 +18,9 @@ struct ReviewListView: View {
             {
                 ForEach(reviewListViewModel.reviewList) { review_ in
                     HStack {
-                        NavigationLink(destination: Text(review_.name))
+                        NavigationLink(destination: Text(review_.content))
                         {
-                            Text(review_.name)
+                            Text(review_.title)
                         }
                     }
                 }
