@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct LensListView: View {
     
@@ -20,7 +21,14 @@ struct LensListView: View {
                     HStack {
                         NavigationLink(destination: LensDetailView(selectedLensId: lens_.id))
                         {
-                            Text(lens_.name)
+                            HStack {
+                                URLImage(url: URL(string: lens_.productImage[0])!) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                                Text(lens_.name)
+                            }
                         }
                     }
                 }
