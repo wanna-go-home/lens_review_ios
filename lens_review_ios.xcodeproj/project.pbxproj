@@ -24,6 +24,9 @@
 		558304512538963800C46BE0 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304502538963800C46BE0 /* Board.swift */; };
 		558304542538971500C46BE0 /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304532538971500C46BE0 /* BoardListView.swift */; };
 		558304572538971D00C46BE0 /* BoardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304562538971D00C46BE0 /* BoardListViewModel.swift */; };
+		55AC870F2539EF7900141F21 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC870E2539EF7900141F21 /* Review.swift */; };
+		55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87112539F0F700141F21 /* ReviewListView.swift */; };
+		55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		558304502538963800C46BE0 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		558304532538971500C46BE0 /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
 		558304562538971D00C46BE0 /* BoardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewModel.swift; sourceTree = "<group>"; };
+		55AC870E2539EF7900141F21 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		55AC87112539F0F700141F21 /* ReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListView.swift; sourceTree = "<group>"; };
+		55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +85,7 @@
 				551719D22531E8A2003670D0 /* Lens.swift */,
 				55438C74253207CB00423006 /* LensDetail.swift */,
 				558304502538963800C46BE0 /* Board.swift */,
+				55AC870E2539EF7900141F21 /* Review.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 				55438C6C253207A800423006 /* LensDetailViewModel.swift */,
 				558304532538971500C46BE0 /* BoardListView.swift */,
 				558304562538971D00C46BE0 /* BoardListViewModel.swift */,
+				55AC87112539F0F700141F21 /* ReviewListView.swift */,
+				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
 			);
 			path = lens_review_ios;
 			sourceTree = "<group>";
@@ -263,12 +272,15 @@
 				558304512538963800C46BE0 /* Board.swift in Sources */,
 				558304572538971D00C46BE0 /* BoardListViewModel.swift in Sources */,
 				551719DF2531E964003670D0 /* NetConstants.swift in Sources */,
+				55AC870F2539EF7900141F21 /* Review.swift in Sources */,
 				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
 				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
+				55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */,
 				557E77542537327A00DDA4F7 /* LensListView.swift in Sources */,
 				55438C70253207B700423006 /* LensListViewModel.swift in Sources */,
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
 				551719D32531E8A2003670D0 /* Lens.swift in Sources */,
+				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
 				558304542538971500C46BE0 /* BoardListView.swift in Sources */,
 				55438C692532079500423006 /* LensDetailView.swift in Sources */,
