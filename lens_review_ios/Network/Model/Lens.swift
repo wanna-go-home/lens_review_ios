@@ -12,11 +12,12 @@ struct Lens : Decodable, Identifiable
     var id : Int = 0
     var name : String = ""
     var price : Int = 0
-    // let productImage : Json
+    var productImage = [String]()
 
     enum CodingKeys: String, CodingKey {
         case id = "lens_id"
         case name
         case price
+        case productImage
     }
 }

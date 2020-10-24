@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550A7D22531E44200FAFD30 /* ContentView.swift */; };
 		5550A7D52531E44300FAFD30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5550A7D42531E44300FAFD30 /* Assets.xcassets */; };
 		5550A7D82531E44300FAFD30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */; };
+		556D1CB82543328800EC8084 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 556D1CB72543328800EC8084 /* URLImage */; };
 		557E77542537327A00DDA4F7 /* LensListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557E77532537327A00DDA4F7 /* LensListView.swift */; };
 		558304512538963800C46BE0 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304502538963800C46BE0 /* Board.swift */; };
 		558304542538971500C46BE0 /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304532538971500C46BE0 /* BoardListView.swift */; };
@@ -61,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556D1CB82543328800EC8084 /* URLImage in Frameworks */,
 				186BF9311CB903D965C2FEEC /* Pods_lens_review_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +174,9 @@
 			dependencies = (
 			);
 			name = lens_review_ios;
+			packageProductDependencies = (
+				556D1CB72543328800EC8084 /* URLImage */,
+			);
 			productName = lens_review_ios;
 			productReference = 5550A7CD2531E44200FAFD30 /* lens_review_ios.app */;
 			productType = "com.apple.product-type.application";
@@ -199,6 +204,9 @@
 				Base,
 			);
 			mainGroup = 5550A7C42531E44200FAFD30;
+			packageReferences = (
+				556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = 5550A7CE2531E44200FAFD30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -472,6 +480,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		556D1CB72543328800EC8084 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5550A7C52531E44200FAFD30 /* Project object */;
 }
