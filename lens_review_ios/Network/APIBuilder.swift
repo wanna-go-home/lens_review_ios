@@ -18,15 +18,15 @@ protocol APIConfiguration: URLRequestConvertible
 
 enum APIBuilder: APIConfiguration
 {
-    case getLens
+    case getLensesPreview
     case getLensById(id : Int)
-    case getBoardPreview
-    case getReviewPreview
+    case getFreeBoardPreview
+    case getReviewBoardPreview
     
     var method: HTTPMethod
     {
         switch self {
-        case .getLens, .getLensById, .getBoardPreview, .getReviewPreview:
+        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getReviewBoardPreview:
             return .get
         }
     }
@@ -34,22 +34,22 @@ enum APIBuilder: APIConfiguration
     var path: String
     {
         switch self {
-        case .getLens:
-            return "/api/lensinfo/preview"
+        case .getLensesPreview:
+            return "/api/lens"
         case .getLensById:
 //            return "/api/lensinfo/\(id)"
-            return "/api/lensinfo"
-        case .getBoardPreview:
-            return "/api/free-board/preview"
-        case .getReviewPreview:
-            return "/api/review-board/preview"
+            return "/api/lens"
+        case .getFreeBoardPreview:
+            return "/api/boards/free-board"
+        case .getReviewBoardPreview:
+            return "/api/boards/review-board"
         }
     }
     
     var parameters: Parameters?
     {
         switch self {
-        case .getLens, .getBoardPreview, .getReviewPreview:
+        case .getLensesPreview, .getFreeBoardPreview, .getReviewBoardPreview:
             return nil
         case .getLensById(let id):
             return [NetConfig.APIParameterKey.id: id]

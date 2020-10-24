@@ -9,16 +9,16 @@ import Combine
 
 class BoardListViewModel: ObservableObject
 {
-    @Published var boardList = [Board]()
+    @Published var boardList = [FreeBoardPreview]()
 
-    init(board: [Board] = [])
+    init(board: [FreeBoardPreview] = [])
     {
         getBoardList()
     }
 
     func getBoardList()
     {
-        LensAPIClient.getBoardPreview {result in
+        LensAPIClient.getFreeBoardPreview {result in
             switch result{
             case .success(let board_):
                 self.boardList.append(contentsOf: board_)

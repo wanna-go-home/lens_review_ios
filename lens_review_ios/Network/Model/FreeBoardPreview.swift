@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Board : Decodable, Identifiable
+struct FreeBoardPreview : Decodable, Identifiable
 {
     var id : Int = 0
     var accountId : String = ""

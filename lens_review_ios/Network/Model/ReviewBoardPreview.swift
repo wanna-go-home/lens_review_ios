@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Review : Decodable, Identifiable
+struct ReviewBoardPreview : Decodable, Identifiable
 {
     var id : Int = 0
     var accountId : String = ""
