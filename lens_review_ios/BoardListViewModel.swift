@@ -11,11 +11,6 @@ class BoardListViewModel: ObservableObject
 {
     @Published var boardList = [FreeBoardPreview]()
 
-    init(board: [FreeBoardPreview] = [])
-    {
-        getBoardList()
-    }
-
     func getBoardList()
     {
         LensAPIClient.getFreeBoardPreview {result in

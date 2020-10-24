@@ -10,8 +10,8 @@ import Foundation
 struct ReviewBoardPreview : Decodable, Identifiable
 {
     var id : Int = 0
-    var accountId : String = ""
-    var name : String = ""
+    var account : String = ""
+    var nickname : String = ""
     var title : String = ""
     var content : String = ""
     var likeCnt : Int = 0
@@ -21,8 +21,8 @@ struct ReviewBoardPreview : Decodable, Identifiable
 
     enum CodingKeys: String, CodingKey {
         case id
-        case accountId
-        case name
+        case account
+        case nickname
         case title
         case content
         case likeCnt

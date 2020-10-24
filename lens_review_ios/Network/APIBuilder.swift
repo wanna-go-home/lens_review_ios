@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import KeychainSwift
 
 protocol APIConfiguration: URLRequestConvertible
 {
@@ -18,6 +19,7 @@ protocol APIConfiguration: URLRequestConvertible
 
 enum APIBuilder: APIConfiguration
 {
+    case login(account: String, pw: String)
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -26,6 +28,8 @@ enum APIBuilder: APIConfiguration
     var method: HTTPMethod
     {
         switch self {
+        case .login:
+            return .post
         case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getReviewBoardPreview:
             return .get
         }
@@ -34,6 +38,8 @@ enum APIBuilder: APIConfiguration
     var path: String
     {
         switch self {
+        case .login:
+            return "/api/user/login"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById:
@@ -49,7 +55,7 @@ enum APIBuilder: APIConfiguration
     var parameters: Parameters?
     {
         switch self {
-        case .getLensesPreview, .getFreeBoardPreview, .getReviewBoardPreview:
+        case .login, .getLensesPreview, .getFreeBoardPreview, .getReviewBoardPreview:
             return nil
         case .getLensById(let id):
             return [NetConfig.APIParameterKey.id: id]
@@ -67,6 +73,17 @@ enum APIBuilder: APIConfiguration
         // Common Header
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
+        // Custom Header
+        // TODO "Authorization", "token"을 Model이나 Constants로 빼기
+        switch self{
+        case .login(let account, let pw):
+            urlRequest.addValue(account, forHTTPHeaderField: "account")
+            urlRequest.addValue(pw, forHTTPHeaderField: "pw")
+        default:
+            let token = KeychainSwift().get("token") ?? ""
+            urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         // Parameters
         if let parameters = parameters {

@@ -18,9 +18,9 @@ struct BoardListView: View {
             {
                 ForEach(boardListViewModel.boardList) { board_ in
                     HStack {
-                        NavigationLink(destination: Text(board_.name))
+                        NavigationLink(destination: Text(board_.title))
                         {
-                            Text(board_.name)
+                            Text(board_.title)
                         }
                     }
                 }

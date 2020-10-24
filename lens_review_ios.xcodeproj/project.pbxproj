@@ -12,6 +12,8 @@
 		551719D62531E921003670D0 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D52531E921003670D0 /* APIBuilder.swift */; };
 		551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D82531E93F003670D0 /* LensAPIClient.swift */; };
 		551719DF2531E964003670D0 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DE2531E964003670D0 /* NetConstants.swift */; };
+		55415E2C254463A6006630CA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E2B254463A6006630CA /* LoginView.swift */; };
+		55415E332544661F006630CA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E322544661F006630CA /* LoginViewModel.swift */; };
 		55438C692532079500423006 /* LensDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C682532079500423006 /* LensDetailView.swift */; };
 		55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C6C253207A800423006 /* LensDetailViewModel.swift */; };
 		55438C70253207B700423006 /* LensListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C6F253207B700423006 /* LensListViewModel.swift */; };
@@ -28,6 +30,8 @@
 		55AC870F2539EF7900141F21 /* ReviewBoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC870E2539EF7900141F21 /* ReviewBoardPreview.swift */; };
 		55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87112539F0F700141F21 /* ReviewListView.swift */; };
 		55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */; };
+		55E0749D25447A1F0030C7C0 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0749C25447A1F0030C7C0 /* Login.swift */; };
+		55E074A125448CDB0030C7C0 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55E074A025448CDB0030C7C0 /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,8 @@
 		551719D52531E921003670D0 /* APIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuilder.swift; sourceTree = "<group>"; };
 		551719D82531E93F003670D0 /* LensAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPIClient.swift; sourceTree = "<group>"; };
 		551719DE2531E964003670D0 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
+		55415E2B254463A6006630CA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		55415E322544661F006630CA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55438C682532079500423006 /* LensDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailView.swift; sourceTree = "<group>"; };
 		55438C6C253207A800423006 /* LensDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailViewModel.swift; sourceTree = "<group>"; };
 		55438C6F253207B700423006 /* LensListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensListViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +59,7 @@
 		55AC870E2539EF7900141F21 /* ReviewBoardPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardPreview.swift; sourceTree = "<group>"; };
 		55AC87112539F0F700141F21 /* ReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListView.swift; sourceTree = "<group>"; };
 		55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
+		55E0749C25447A1F0030C7C0 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -62,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E074A125448CDB0030C7C0 /* KeychainSwift in Frameworks */,
 				556D1CB82543328800EC8084 /* URLImage in Frameworks */,
 				186BF9311CB903D965C2FEEC /* Pods_lens_review_ios.framework in Frameworks */,
 			);
@@ -88,6 +96,7 @@
 				55438C74253207CB00423006 /* LensDetail.swift */,
 				558304502538963800C46BE0 /* FreeBoardPreview.swift */,
 				55AC870E2539EF7900141F21 /* ReviewBoardPreview.swift */,
+				55E0749C25447A1F0030C7C0 /* Login.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +128,8 @@
 				5550A7D92531E44300FAFD30 /* Info.plist */,
 				5550A7D62531E44300FAFD30 /* Preview Content */,
 				5550A7D22531E44200FAFD30 /* ContentView.swift */,
+				55415E2B254463A6006630CA /* LoginView.swift */,
+				55415E322544661F006630CA /* LoginViewModel.swift */,
 				557E77532537327A00DDA4F7 /* LensListView.swift */,
 				55438C6F253207B700423006 /* LensListViewModel.swift */,
 				55438C682532079500423006 /* LensDetailView.swift */,
@@ -176,6 +187,7 @@
 			name = lens_review_ios;
 			packageProductDependencies = (
 				556D1CB72543328800EC8084 /* URLImage */,
+				55E074A025448CDB0030C7C0 /* KeychainSwift */,
 			);
 			productName = lens_review_ios;
 			productReference = 5550A7CD2531E44200FAFD30 /* lens_review_ios.app */;
@@ -206,6 +218,7 @@
 			mainGroup = 5550A7C42531E44200FAFD30;
 			packageReferences = (
 				556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */,
+				55E0749F25448CDB0030C7C0 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 5550A7CE2531E44200FAFD30 /* Products */;
 			projectDirPath = "";
@@ -283,10 +296,13 @@
 				55AC870F2539EF7900141F21 /* ReviewBoardPreview.swift in Sources */,
 				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
 				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
+				55415E332544661F006630CA /* LoginViewModel.swift in Sources */,
 				55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */,
 				557E77542537327A00DDA4F7 /* LensListView.swift in Sources */,
+				55E0749D25447A1F0030C7C0 /* Login.swift in Sources */,
 				55438C70253207B700423006 /* LensListViewModel.swift in Sources */,
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
+				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				551719D32531E8A2003670D0 /* LensPreview.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
@@ -490,6 +506,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		55E0749F25448CDB0030C7C0 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -497,6 +521,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		55E074A025448CDB0030C7C0 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55E0749F25448CDB0030C7C0 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -11,11 +11,6 @@ class ReviewListViewModel: ObservableObject
 {
     @Published var reviewList = [ReviewBoardPreview]()
 
-    init(review: [ReviewBoardPreview] = [])
-    {
-        getReviewList()
-    }
-
     func getReviewList()
     {
         LensAPIClient.getReviewBoardPreview {result in

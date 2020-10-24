@@ -12,11 +12,6 @@ class LensListViewModel: ObservableObject
 {
     @Published var lensList = [LensPreview]()
 
-    init(lens: [LensPreview] = [])
-    {
-        getLensList()
-    }
-
     func getLensList()
     {
         LensAPIClient.getLensesPreview {result in

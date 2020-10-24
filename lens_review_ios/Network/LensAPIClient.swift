@@ -10,9 +10,17 @@ import Alamofire
 
 class LensAPIClient
 {
+    static func login(account: String, pw: String, completion:@escaping (String)->Void) {
+        // TODO 토큰 없을때? validate 추가
+        AF.request(APIBuilder.login(account: account, pw: pw))
+            .responseString {
+                (response) in completion((response.response?.headers["Authorization"])!)
+        }
+    }
+    
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {
-        AF.request(APIBuilder.getLensList)
+        AF.request(APIBuilder.getLensesPreview)
             .responseDecodable {
                 (response: DataResponse<[LensPreview], AFError>) in completion(response.result)
                 print(response)
