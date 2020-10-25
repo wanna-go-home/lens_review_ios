@@ -15,14 +15,14 @@ class LoginViewModel: ObservableObject
     init()
     {
         //TODO 자동로그인 유지하면 Key 지우기 X
-        KeychainSwift().clear()
+        tokenAllClear()
     }
     
     func login(id: String, pw: String)
     {
         LensAPIClient.login(account: id, pw: pw){ (result) in
-            // TODO Key Set/Get 관련 파일 분리, success/fail 관리
-            KeychainSwift().set(result, forKey: "token")
+            // TODO success/fail 관리
+            setToken(tokenValue: result, tokenKey: "token")
             self.isLoginSuccess = true
         }
     }

@@ -12,6 +12,7 @@
 		551719D62531E921003670D0 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D52531E921003670D0 /* APIBuilder.swift */; };
 		551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D82531E93F003670D0 /* LensAPIClient.swift */; };
 		551719DF2531E964003670D0 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DE2531E964003670D0 /* NetConstants.swift */; };
+		5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553134292545B35700FFD1EB /* KeychainManager.swift */; };
 		55415E2C254463A6006630CA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E2B254463A6006630CA /* LoginView.swift */; };
 		55415E332544661F006630CA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E322544661F006630CA /* LoginViewModel.swift */; };
 		55438C692532079500423006 /* LensDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C682532079500423006 /* LensDetailView.swift */; };
@@ -40,6 +41,7 @@
 		551719D52531E921003670D0 /* APIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuilder.swift; sourceTree = "<group>"; };
 		551719D82531E93F003670D0 /* LensAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPIClient.swift; sourceTree = "<group>"; };
 		551719DE2531E964003670D0 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
+		553134292545B35700FFD1EB /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		55415E2B254463A6006630CA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		55415E322544661F006630CA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55438C682532079500423006 /* LensDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		553134282545B2D300FFD1EB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				553134292545B35700FFD1EB /* KeychainManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5550A7C42531E44200FAFD30 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */,
+				553134282545B2D300FFD1EB /* Utils */,
 				551719D02531E832003670D0 /* Network */,
 				5550A7D42531E44300FAFD30 /* Assets.xcassets */,
 				5550A7D92531E44300FAFD30 /* Info.plist */,
@@ -304,6 +315,7 @@
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				551719D32531E8A2003670D0 /* LensPreview.swift in Sources */,
+				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
 				558304542538971500C46BE0 /* BoardListView.swift in Sources */,
@@ -438,6 +450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lens_review_ios/Preview Content\"";
+				DEVELOPMENT_TEAM = 97CGN4M95Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = lens_review_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -460,6 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lens_review_ios/Preview Content\"";
+				DEVELOPMENT_TEAM = 97CGN4M95Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = lens_review_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

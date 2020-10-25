@@ -81,8 +81,7 @@ enum APIBuilder: APIConfiguration
             urlRequest.addValue(account, forHTTPHeaderField: "account")
             urlRequest.addValue(pw, forHTTPHeaderField: "pw")
         default:
-            let token = KeychainSwift().get("token") ?? ""
-            urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
+            urlRequest.addValue(getToken(tokenKey: "token"), forHTTPHeaderField: "Authorization")
         }
         
         // Parameters

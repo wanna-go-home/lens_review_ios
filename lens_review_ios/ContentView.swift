@@ -25,26 +25,26 @@ struct ContentView: View
                         Image(systemName: "list.dash")
                         Text("렌즈 리스트")
                     }
-                    .onAppear(perform: {
-                        lensViewModel.getLensList()
-                    })
                 ReviewListView()
                     .tabItem {
                         Image(systemName: "list.dash")
                         Text("리뷰 게시판")
                     }
-                    .onAppear(perform: {
-                        reviewListViewModel.getReviewList()
-                    })
                 BoardListView()
                     .tabItem {
                         Image(systemName: "list.dash")
                         Text("자유 게시판")
                     }
-                    .onAppear(perform: {
-                        boardListViewModel.getBoardList()
-                    })
             }
+            .onAppear(perform: {
+                lensViewModel.getLensList()
+            })
+            .onAppear(perform: {
+                reviewListViewModel.getReviewList()
+            })
+            .onAppear(perform: {
+                boardListViewModel.getBoardList()
+            })
         }
     }
 }
