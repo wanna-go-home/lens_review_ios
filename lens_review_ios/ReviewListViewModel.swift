@@ -9,16 +9,11 @@ import Combine
 
 class ReviewListViewModel: ObservableObject
 {
-    @Published var reviewList = [Review]()
-
-    init(review: [Review] = [])
-    {
-        getReviewList()
-    }
+    @Published var reviewList = [ReviewBoardPreview]()
 
     func getReviewList()
     {
-        LensAPIClient.getReviewPreview {result in
+        LensAPIClient.getReviewBoardPreview {result in
             switch result{
             case .success(let review_):
                 self.reviewList.append(contentsOf: review_)

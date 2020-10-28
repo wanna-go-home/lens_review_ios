@@ -10,11 +10,19 @@ import Alamofire
 
 class LensAPIClient
 {
-    static func getLens(completion: @escaping(Result<[Lens], AFError>) -> Void)
+    static func login(account: String, pw: String, completion:@escaping (String)->Void) {
+        // TODO 토큰 없을때? validate 추가
+        AF.request(APIBuilder.login(account: account, pw: pw))
+            .responseString {
+                (response) in completion((response.response?.headers["Authorization"])!)
+        }
+    }
+    
+    static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {
-        AF.request(APIBuilder.getLens)
+        AF.request(APIBuilder.getLensesPreview)
             .responseDecodable {
-                (response: DataResponse<[Lens], AFError>) in completion(response.result)
+                (response: DataResponse<[LensPreview], AFError>) in completion(response.result)
                 print(response)
         }
     }
@@ -29,20 +37,20 @@ class LensAPIClient
             }
     }
 
-    static func getBoardPreview(completion: @escaping(Result<[Board], AFError>) -> Void)
+    static func getFreeBoardPreview(completion: @escaping(Result<[FreeBoardPreview], AFError>) -> Void)
     {
-        AF.request(APIBuilder.getBoardPreview)
+        AF.request(APIBuilder.getFreeBoardPreview)
             .responseDecodable {
-                (response: DataResponse<[Board], AFError>) in completion(response.result)
+                (response: DataResponse<[FreeBoardPreview], AFError>) in completion(response.result)
                 print(response)
         }
     }
     
-    static func getReviewPreview(completion: @escaping(Result<[Review], AFError>) -> Void)
+    static func getReviewBoardPreview(completion: @escaping(Result<[ReviewBoardPreview], AFError>) -> Void)
     {
-        AF.request(APIBuilder.getReviewPreview)
+        AF.request(APIBuilder.getReviewBoardPreview)
             .responseDecodable {
-                (response: DataResponse<[Review], AFError>) in completion(response.result)
+                (response: DataResponse<[ReviewBoardPreview], AFError>) in completion(response.result)
                 print(response)
         }
     }

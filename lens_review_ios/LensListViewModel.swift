@@ -10,16 +10,11 @@ import Combine
 
 class LensListViewModel: ObservableObject
 {
-    @Published var lensList = [Lens]()
-
-    init(lens: [Lens] = [])
-    {
-        getLensList()
-    }
+    @Published var lensList = [LensPreview]()
 
     func getLensList()
     {
-        LensAPIClient.getLens {result in
+        LensAPIClient.getLensesPreview {result in
             switch result{
             case .success(let lens_):
                 self.lensList.append(contentsOf: lens_)

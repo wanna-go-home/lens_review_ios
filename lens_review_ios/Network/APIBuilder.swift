@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import KeychainSwift
 
 protocol APIConfiguration: URLRequestConvertible
 {
@@ -18,15 +19,18 @@ protocol APIConfiguration: URLRequestConvertible
 
 enum APIBuilder: APIConfiguration
 {
-    case getLens
+    case login(account: String, pw: String)
+    case getLensesPreview
     case getLensById(id : Int)
-    case getBoardPreview
-    case getReviewPreview
+    case getFreeBoardPreview
+    case getReviewBoardPreview
     
     var method: HTTPMethod
     {
         switch self {
-        case .getLens, .getLensById, .getBoardPreview, .getReviewPreview:
+        case .login:
+            return .post
+        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getReviewBoardPreview:
             return .get
         }
     }
@@ -34,22 +38,24 @@ enum APIBuilder: APIConfiguration
     var path: String
     {
         switch self {
-        case .getLens:
-            return "/api/lensinfo/preview"
+        case .login:
+            return "/api/user/login"
+        case .getLensesPreview:
+            return "/api/lens"
         case .getLensById:
 //            return "/api/lensinfo/\(id)"
-            return "/api/lensinfo"
-        case .getBoardPreview:
-            return "/api/free-board/preview"
-        case .getReviewPreview:
-            return "/api/review-board/preview"
+            return "/api/lens"
+        case .getFreeBoardPreview:
+            return "/api/boards/free-board"
+        case .getReviewBoardPreview:
+            return "/api/boards/review-board"
         }
     }
     
     var parameters: Parameters?
     {
         switch self {
-        case .getLens, .getBoardPreview, .getReviewPreview:
+        case .login, .getLensesPreview, .getFreeBoardPreview, .getReviewBoardPreview:
             return nil
         case .getLensById(let id):
             return [NetConfig.APIParameterKey.id: id]
@@ -67,6 +73,16 @@ enum APIBuilder: APIConfiguration
         // Common Header
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
+        // Custom Header
+        // TODO "Authorization", "token"을 Model이나 Constants로 빼기
+        switch self{
+        case .login(let account, let pw):
+            urlRequest.addValue(account, forHTTPHeaderField: "account")
+            urlRequest.addValue(pw, forHTTPHeaderField: "pw")
+        default:
+            urlRequest.addValue(getToken(tokenKey: "token"), forHTTPHeaderField: "Authorization")
+        }
         
         // Parameters
         if let parameters = parameters {

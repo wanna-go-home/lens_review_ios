@@ -7,7 +7,7 @@
 //
 import Foundation
 
-struct Lens : Decodable, Identifiable
+struct LensPreview : Decodable, Identifiable
 {
     var id : Int = 0
     var name : String = ""

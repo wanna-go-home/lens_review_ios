@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Board : Decodable, Identifiable
+struct FreeBoardPreview : Decodable, Identifiable
 {
     var id : Int = 0
-    var accountId : String = ""
-    var name : String = ""
-//    var title : String = ""
+    var account : String = ""
+    var nickname : String = ""
+    var title : String = ""
 //    var content : String = ""
 //    var viewCnt : Int = 0
 //    var likeCnt : Int = 0
@@ -21,9 +21,9 @@ struct Board : Decodable, Identifiable
 
     enum CodingKeys: String, CodingKey {
         case id
-        case accountId
-        case name
-//        case title
+        case account
+        case nickname
+        case title
 //        case content
 //        case viewCnt
 //        case likeCnt
