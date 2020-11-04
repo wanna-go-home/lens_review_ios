@@ -12,12 +12,14 @@ struct LensPreview : Decodable, Identifiable
     var id : Int = 0
     var name : String = ""
     var price : Int = 0
+    var graphicDia: Float = 0
     var productImage = [String]()
 
     enum CodingKeys: String, CodingKey {
         case id = "lens_id"
         case name
         case price
+        case graphicDia
         case productImage
     }
 }
