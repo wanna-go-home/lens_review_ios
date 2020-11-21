@@ -16,7 +16,7 @@ struct LensPreview : Decodable, Identifiable
     var productImage = [String]()
 
     enum CodingKeys: String, CodingKey {
-        case id = "lens_id"
+        case id = "lensId"
         case name
         case price
         case graphicDia

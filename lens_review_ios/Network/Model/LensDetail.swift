@@ -12,7 +12,7 @@ struct LensDetail : Decodable, Identifiable
 {
     var id : Int = 0
     var name : String = ""
-    // let graphicDia : Numeric
+    var graphicDia: Float = 0
     var perPackage : Int = 0
     var price : Int = 0
     var reviewCnt : Int = 0
@@ -20,13 +20,15 @@ struct LensDetail : Decodable, Identifiable
     // let dia : Numeric
     // let per : Json
     // let url : String
-    // let productImage : Json
+    var productImage = [String]()
 
     enum CodingKeys: String, CodingKey {
         case id = "lensId"
         case name
+        case graphicDia
         case perPackage
         case price
         case reviewCnt
+        case productImage
     }
 }
