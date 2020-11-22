@@ -135,20 +135,10 @@
 				5550A7D02531E44200FAFD30 /* lens_review_iosApp.swift */,
 				553134282545B2D300FFD1EB /* Utils */,
 				551719D02531E832003670D0 /* Network */,
+				55D54FBF256AA4ED00D87D4B /* UI */,
 				5550A7D42531E44300FAFD30 /* Assets.xcassets */,
 				5550A7D92531E44300FAFD30 /* Info.plist */,
 				5550A7D62531E44300FAFD30 /* Preview Content */,
-				5550A7D22531E44200FAFD30 /* ContentView.swift */,
-				55415E2B254463A6006630CA /* LoginView.swift */,
-				55415E322544661F006630CA /* LoginViewModel.swift */,
-				557E77532537327A00DDA4F7 /* LensListView.swift */,
-				55438C6F253207B700423006 /* LensListViewModel.swift */,
-				55438C682532079500423006 /* LensDetailView.swift */,
-				55438C6C253207A800423006 /* LensDetailViewModel.swift */,
-				558304532538971500C46BE0 /* BoardListView.swift */,
-				558304562538971D00C46BE0 /* BoardListViewModel.swift */,
-				55AC87112539F0F700141F21 /* ReviewListView.swift */,
-				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
 			);
 			path = lens_review_ios;
 			sourceTree = "<group>";
@@ -159,6 +149,64 @@
 				5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55D54FBF256AA4ED00D87D4B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5550A7D22531E44200FAFD30 /* ContentView.swift */,
+				55D54FC1256AA50C00D87D4B /* Login */,
+				55D54FC0256AA50200D87D4B /* LensList */,
+				55D54FC2256AA53800D87D4B /* LensDetail */,
+				55D54FC3256AA54500D87D4B /* FreeBoard */,
+				55D54FC4256AA56100D87D4B /* ReviewBoard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		55D54FC0256AA50200D87D4B /* LensList */ = {
+			isa = PBXGroup;
+			children = (
+				557E77532537327A00DDA4F7 /* LensListView.swift */,
+				55438C6F253207B700423006 /* LensListViewModel.swift */,
+			);
+			path = LensList;
+			sourceTree = "<group>";
+		};
+		55D54FC1256AA50C00D87D4B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				55415E2B254463A6006630CA /* LoginView.swift */,
+				55415E322544661F006630CA /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		55D54FC2256AA53800D87D4B /* LensDetail */ = {
+			isa = PBXGroup;
+			children = (
+				55438C682532079500423006 /* LensDetailView.swift */,
+				55438C6C253207A800423006 /* LensDetailViewModel.swift */,
+			);
+			path = LensDetail;
+			sourceTree = "<group>";
+		};
+		55D54FC3256AA54500D87D4B /* FreeBoard */ = {
+			isa = PBXGroup;
+			children = (
+				558304532538971500C46BE0 /* BoardListView.swift */,
+				558304562538971D00C46BE0 /* BoardListViewModel.swift */,
+			);
+			path = FreeBoard;
+			sourceTree = "<group>";
+		};
+		55D54FC4256AA56100D87D4B /* ReviewBoard */ = {
+			isa = PBXGroup;
+			children = (
+				55AC87112539F0F700141F21 /* ReviewListView.swift */,
+				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
+			);
+			path = ReviewBoard;
 			sourceTree = "<group>";
 		};
 		685406D9EDE03E534247871F /* Frameworks */ = {
