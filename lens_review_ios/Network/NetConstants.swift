@@ -7,7 +7,7 @@
 //
 struct NetConfig
 {
-    static let API_BASE_URL = "http://15.165.122.0:8080"
+    static let API_BASE_URL = "http://wy0105.iptime.org:8080"
     
     struct APIParameterKey {
         static let id = "id"
