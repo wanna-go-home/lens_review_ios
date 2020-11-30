@@ -30,4 +30,18 @@ struct FreeBoardPreview : Decodable, Identifiable
         case replyCnt
         case createdAt
     }
+    
+    func getDateTime() -> String
+    {
+        var res = ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        if let date = dateFormatter.date(from: createdAt) {
+            dateFormatter.dateFormat = "MM/dd-HH:mm"
+            res = dateFormatter.string(from: date)
+        }
+        
+        return res
+    }
 }

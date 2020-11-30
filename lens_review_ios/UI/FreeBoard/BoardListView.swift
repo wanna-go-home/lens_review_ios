@@ -73,6 +73,8 @@ struct FreeBoardRow: View {
                     .font(.system(size: 11))
                 Text("\(board_.replyCnt)")
                     .font(.system(size: 11))
+                Text("\(board_.getDateTime())")
+                    .font(.system(size: 11))
             }
             .frame(height: 18)
             .padding([.leading, .trailing], 12)
