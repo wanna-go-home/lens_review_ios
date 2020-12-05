@@ -67,12 +67,32 @@ struct FreeBoardRow: View {
             
             // 하단
             HStack(spacing: 5) {
+                
+                Image("view")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
                 Text("\(board_.viewCnt)")
                     .font(.system(size: 11))
+                
+                Image("like")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
+                    .padding(.leading, 10)
                 Text("\(board_.likeCnt)")
                     .font(.system(size: 11))
+                
+                Image("reply")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
+                    .padding(.leading, 10)
                 Text("\(board_.replyCnt)")
                     .font(.system(size: 11))
+                
+                Spacer()
+                
                 Text("\(board_.getDateTime())")
                     .font(.system(size: 11))
             }
