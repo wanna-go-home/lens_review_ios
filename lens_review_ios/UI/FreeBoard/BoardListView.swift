@@ -14,16 +14,14 @@ struct BoardListView: View {
     var body: some View {
         NavigationView
         {
-            ScrollView
+            ScrollView(showsIndicators: false)
             {
                 VStack(alignment: .leading)
                 {
                     ForEach(boardListViewModel.boardList) { board_ in
-                        FreeBoardRow(board_: board_)
                         NavigationLink(destination: Text(board_.title))
                         {
-                            // NavigationLink 적용 시 화살표 안 뜨게 하기 위함
-                            EmptyView()
+                            FreeBoardRow(board_: board_)
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
