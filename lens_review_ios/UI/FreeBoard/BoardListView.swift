@@ -19,7 +19,7 @@ struct BoardListView: View {
                 VStack(alignment: .leading)
                 {
                     ForEach(boardListViewModel.boardList) { board_ in
-                        NavigationLink(destination: Text(board_.title))
+                        NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id))
                         {
                             FreeBoardRow(board_: board_)
                         }
