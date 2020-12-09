@@ -14,18 +14,97 @@ struct BoardListView: View {
     var body: some View {
         NavigationView
         {
-            List
+            ScrollView(showsIndicators: false)
             {
-                ForEach(boardListViewModel.boardList) { board_ in
-                    HStack {
+                VStack(alignment: .leading)
+                {
+                    ForEach(boardListViewModel.boardList) { board_ in
                         NavigationLink(destination: Text(board_.title))
                         {
-                            Text(board_.title)
+                            FreeBoardRow(board_: board_)
                         }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
+                .frame(minHeight: 100)
             }
-            .navigationBarTitle(Text("Board List"))
+            .padding([.leading, .trailing])
+            .navigationBarHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
+struct FreeBoardRow: View {
+    
+    var board_: FreeBoardPreview
+    
+    // color 해야함
+    var body: some View {
+        VStack(alignment: .leading)
+        {
+            // 상단
+            VStack(alignment: .leading) {
+                Text("\(board_.title)")
+                    .font(.system(size: 18))
+                    .foregroundColor(.black)
+                    .padding(.top, 5)
+                Text("\(board_.content)")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color("BoardContentColor"))
+                    .padding(.top, 5)
+                Text("\(board_.nickname)")
+                    .font(.system(size: 11))
+                    .foregroundColor(.black)
+                    .padding(.top, 15)
+            }
+            .padding([.leading, .trailing], 12)
+            .padding(.top, 20)
+            
+            Divider()
+            
+            // 하단
+            HStack(spacing: 5) {
+                
+                Image("view")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
+                Text("\(board_.viewCnt)")
+                    .font(.system(size: 11))
+                
+                Image("like")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
+                    .padding(.leading, 10)
+                Text("\(board_.likeCnt)")
+                    .font(.system(size: 11))
+                
+                Image("reply")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
+                    .padding(.leading, 10)
+                Text("\(board_.replyCnt)")
+                    .font(.system(size: 11))
+                
+                Spacer()
+                
+                Text("\(board_.getDateTime())")
+                    .font(.system(size: 11))
+            }
+            .frame(height: 18)
+            .padding([.leading, .trailing], 12)
+            
+            ScrollDivider()
+        }
+    }
+}
+
+struct BoardListView_Previews: PreviewProvider {
+    static var previews: some View {
+//        BoardListView().environmentObject(BoardListViewModel())
+        FreeBoardRow(board_: FreeBoardPreview())
     }
 }

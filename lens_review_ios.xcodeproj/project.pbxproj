@@ -33,6 +33,7 @@
 		55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */; };
 		55E0749D25447A1F0030C7C0 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0749C25447A1F0030C7C0 /* Login.swift */; };
 		55E074A125448CDB0030C7C0 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55E074A025448CDB0030C7C0 /* KeychainSwift */; };
+		55E446A12573D8970023FBD7 /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E446A02573D8970023FBD7 /* UIUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		55AC87112539F0F700141F21 /* ReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListView.swift; sourceTree = "<group>"; };
 		55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
 		55E0749C25447A1F0030C7C0 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		55E446A02573D8970023FBD7 /* UIUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 				55D54FC2256AA53800D87D4B /* LensDetail */,
 				55D54FC3256AA54500D87D4B /* FreeBoard */,
 				55D54FC4256AA56100D87D4B /* ReviewBoard */,
+				55E446A02573D8970023FBD7 /* UIUtil.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
+				55E446A12573D8970023FBD7 /* UIUtil.swift in Sources */,
 				558304542538971500C46BE0 /* BoardListView.swift in Sources */,
 				55438C692532079500423006 /* LensDetailView.swift in Sources */,
 			);
