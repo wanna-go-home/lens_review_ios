@@ -10,6 +10,10 @@ import SwiftUI
 struct BoardListView: View {
 
     @EnvironmentObject var boardListViewModel: BoardListViewModel
+    
+    init() {
+        UINavigationBar.appearance().backgroundColor = .white
+    }
 
     var body: some View {
         NavigationView
@@ -24,6 +28,7 @@ struct BoardListView: View {
                             FreeBoardRow(board_: board_)
                         }
                         .buttonStyle(PlainButtonStyle())
+//                        .navigationBarTitle("돌아가기", displayMode: .inline)
                     }
                 }
                 .frame(minHeight: 100)
@@ -70,6 +75,7 @@ struct FreeBoardRow: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width:14, height: 14)
+                    .foregroundColor(Color("IconColor"))
                 Text("\(board_.viewCnt)")
                     .font(.system(size: 11))
                 
@@ -78,6 +84,7 @@ struct FreeBoardRow: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width:14, height: 14)
                     .padding(.leading, 10)
+                    .foregroundColor(Color("IconColor"))
                 Text("\(board_.likeCnt)")
                     .font(.system(size: 11))
                 
@@ -86,6 +93,7 @@ struct FreeBoardRow: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width:14, height: 14)
                     .padding(.leading, 10)
+                    .foregroundColor(Color("IconColor"))
                 Text("\(board_.replyCnt)")
                     .font(.system(size: 11))
                 

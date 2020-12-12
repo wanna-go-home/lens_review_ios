@@ -17,3 +17,19 @@ struct ScrollDivider: View {
             .edgesIgnoringSafeArea(.horizontal)
     }
 }
+
+struct BoardDetailDivider: View {
+    let color: Color = Color("ScrollDividerColor")
+    let width: CGFloat = 13
+    var body: some View {
+        Rectangle()
+            .fill(color)
+            .frame(height: width)
+            .edgesIgnoringSafeArea(.horizontal)
+    }
+}
+
+struct DeviceInfo {
+    static let deviceHeight:CGFloat = UIScreen.main.bounds.size.height
+    static let deviceWidth:CGFloat = UIScreen.main.bounds.size.width
+}

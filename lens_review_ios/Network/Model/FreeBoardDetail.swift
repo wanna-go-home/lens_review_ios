@@ -11,6 +11,7 @@ struct FreeBoardDetail: Decodable, Identifiable
 {
     var id : Int = 0
     var account : String = ""
+    var nickname : String = ""
     var title : String = ""
     var content : String = ""
     var viewCnt : Int = 0
@@ -21,6 +22,7 @@ struct FreeBoardDetail: Decodable, Identifiable
     enum CodingKeys: String, CodingKey {
         case id
         case account
+        case nickname
         case title
         case content
         case viewCnt
