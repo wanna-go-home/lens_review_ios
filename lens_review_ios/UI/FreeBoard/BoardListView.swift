@@ -11,10 +11,6 @@ struct BoardListView: View {
 
     @EnvironmentObject var boardListViewModel: BoardListViewModel
     
-    init() {
-        UINavigationBar.appearance().backgroundColor = .white
-    }
-
     var body: some View {
         NavigationView
         {
@@ -28,7 +24,6 @@ struct BoardListView: View {
                             FreeBoardRow(board_: board_)
                         }
                         .buttonStyle(PlainButtonStyle())
-//                        .navigationBarTitle("돌아가기", displayMode: .inline)
                     }
                 }
                 .frame(minHeight: 100)
