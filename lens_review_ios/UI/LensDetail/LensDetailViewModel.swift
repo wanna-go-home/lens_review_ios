@@ -15,7 +15,7 @@ class LensDetailViewModel : ObservableObject
     
     func getLensDetail(id: Int)
     {
-        LensAPIClient.getLensByID(lensId: id) {result in
+        LensAPIClient.getLensDetail(lensId: id) {result in
             switch result{
             case .success(let lens_):
                 self.lens = lens_

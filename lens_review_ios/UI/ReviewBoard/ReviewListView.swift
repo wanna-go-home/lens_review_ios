@@ -19,7 +19,7 @@ struct ReviewListView: View {
                 VStack(alignment: .leading)
                 {
                     ForEach(reviewListViewModel.reviewList) { board_ in
-                        NavigationLink(destination: Text("Detail"))
+                        NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id))
                         {
                             ReviewBoardRow(board_: board_)
                         }
