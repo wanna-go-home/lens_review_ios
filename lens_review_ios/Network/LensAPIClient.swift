@@ -23,7 +23,6 @@ class LensAPIClient
         AF.request(APIBuilder.getLensesPreview)
             .responseDecodable {
                 (response: DataResponse<[LensPreview], AFError>) in completion(response.result)
-                print(response)
         }
     }
 
@@ -33,7 +32,6 @@ class LensAPIClient
             .responseDecodable {
                 (response: DataResponse<LensDetail, AFError>) in
                     completion(response.result)
-                print(response)
             }
     }
 
@@ -42,7 +40,14 @@ class LensAPIClient
         AF.request(APIBuilder.getFreeBoardPreview)
             .responseDecodable {
                 (response: DataResponse<[FreeBoardPreview], AFError>) in completion(response.result)
-                print(response)
+        }
+    }
+    
+    static func getFreeBoardDetail(articleId: Int, completion: @escaping(Result<FreeBoardDetail, AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getFreeBoardDetail(id: articleId))
+            .responseDecodable {
+                (response: DataResponse<FreeBoardDetail, AFError>) in completion(response.result)
         }
     }
     
@@ -51,7 +56,6 @@ class LensAPIClient
         AF.request(APIBuilder.getReviewBoardPreview)
             .responseDecodable {
                 (response: DataResponse<[ReviewBoardPreview], AFError>) in completion(response.result)
-                print(response)
         }
     }
 }

@@ -15,7 +15,7 @@ struct ContentView: View
     @EnvironmentObject var reviewListViewModel: ReviewListViewModel
     @EnvironmentObject var boardListViewModel: BoardListViewModel
 
-    var body: some View {
+    var body: some View {        
         if !loginViewModel.isLoginSuccess {
             LoginView()
         } else {

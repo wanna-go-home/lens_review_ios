@@ -10,7 +10,7 @@ import SwiftUI
 struct BoardListView: View {
 
     @EnvironmentObject var boardListViewModel: BoardListViewModel
-
+    
     var body: some View {
         NavigationView
         {
@@ -19,7 +19,7 @@ struct BoardListView: View {
                 VStack(alignment: .leading)
                 {
                     ForEach(boardListViewModel.boardList) { board_ in
-                        NavigationLink(destination: Text(board_.title))
+                        NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id))
                         {
                             FreeBoardRow(board_: board_)
                         }
@@ -70,6 +70,7 @@ struct FreeBoardRow: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width:14, height: 14)
+                    .foregroundColor(Color("IconColor"))
                 Text("\(board_.viewCnt)")
                     .font(.system(size: 11))
                 
@@ -78,6 +79,7 @@ struct FreeBoardRow: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width:14, height: 14)
                     .padding(.leading, 10)
+                    .foregroundColor(Color("IconColor"))
                 Text("\(board_.likeCnt)")
                     .font(.system(size: 11))
                 
@@ -86,6 +88,7 @@ struct FreeBoardRow: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width:14, height: 14)
                     .padding(.leading, 10)
+                    .foregroundColor(Color("IconColor"))
                 Text("\(board_.replyCnt)")
                     .font(.system(size: 11))
                 

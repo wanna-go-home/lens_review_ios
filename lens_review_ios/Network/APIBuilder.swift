@@ -23,6 +23,7 @@ enum APIBuilder: APIConfiguration
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
+    case getFreeBoardDetail(id: Int)
     case getReviewBoardPreview
     
     var method: HTTPMethod
@@ -30,7 +31,7 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login:
             return .post
-        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getReviewBoardPreview:
+        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getFreeBoardDetail, .getReviewBoardPreview:
             return .get
         }
     }
@@ -46,6 +47,8 @@ enum APIBuilder: APIConfiguration
             return "/api/lens/\(id)"
         case .getFreeBoardPreview:
             return "/api/boards/free-board"
+        case .getFreeBoardDetail(let id):
+            return "/api/boards/free-board/\(id)"
         case .getReviewBoardPreview:
             return "/api/boards/review-board"
         }
@@ -56,7 +59,7 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login(let account_, let pw_):
             return ["account": account_, "pw": pw_]
-        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getReviewBoardPreview:
+        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getFreeBoardDetail ,.getReviewBoardPreview:
             return nil
         }
     }
