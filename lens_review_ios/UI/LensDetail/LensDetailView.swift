@@ -14,10 +14,33 @@ struct LensDetailView: View
     var selectedLensId: Int
     @ObservedObject var lensDetailViewModel: LensDetailViewModel = LensDetailViewModel()
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         VStack{
+            customTitleBar
             LensDetailRow(lens_: lensDetailViewModel.lens)
         }.onAppear(perform: callLensDetail)
+        .frame(maxHeight:.infinity,  alignment: .top)
+        .navigationBarHidden(true)
+    }
+    
+    var customTitleBar : some View {
+        HStack
+        {
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack(spacing: 1) {
+                        Image("arrow-left")
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:35, height: 35)
+                            .foregroundColor(Color("IconColor"))
+                        Text("돌아가기")
+                            .foregroundColor(.gray)
+                    }
+            }
+        }
     }
     
     func callLensDetail()
