@@ -40,6 +40,8 @@ struct LensDetailView: View
                             .foregroundColor(.gray)
                     }
             }
+            
+            Spacer()
         }
     }
     
