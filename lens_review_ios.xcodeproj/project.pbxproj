@@ -13,6 +13,9 @@
 		551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719D82531E93F003670D0 /* LensAPIClient.swift */; };
 		551719DF2531E964003670D0 /* NetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551719DE2531E964003670D0 /* NetConstants.swift */; };
 		5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553134292545B35700FFD1EB /* KeychainManager.swift */; };
+		55380DEA2585F4580093642C /* ReviewBoardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55380DE92585F4580093642C /* ReviewBoardDetail.swift */; };
+		55380DEF2585F8C10093642C /* ReviewBoardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55380DEE2585F8C10093642C /* ReviewBoardDetailView.swift */; };
+		55380DF22585F8E40093642C /* ReviewBoardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55380DF12585F8E40093642C /* ReviewBoardDetailViewModel.swift */; };
 		55415E2C254463A6006630CA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E2B254463A6006630CA /* LoginView.swift */; };
 		55415E332544661F006630CA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E322544661F006630CA /* LoginViewModel.swift */; };
 		55438C692532079500423006 /* LensDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C682532079500423006 /* LensDetailView.swift */; };
@@ -47,6 +50,9 @@
 		551719D82531E93F003670D0 /* LensAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensAPIClient.swift; sourceTree = "<group>"; };
 		551719DE2531E964003670D0 /* NetConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetConstants.swift; sourceTree = "<group>"; };
 		553134292545B35700FFD1EB /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		55380DE92585F4580093642C /* ReviewBoardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardDetail.swift; sourceTree = "<group>"; };
+		55380DEE2585F8C10093642C /* ReviewBoardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardDetailView.swift; sourceTree = "<group>"; };
+		55380DF12585F8E40093642C /* ReviewBoardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardDetailViewModel.swift; sourceTree = "<group>"; };
 		55415E2B254463A6006630CA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		55415E322544661F006630CA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55438C682532079500423006 /* LensDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailView.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 				558304502538963800C46BE0 /* FreeBoardPreview.swift */,
 				55AEFEF1257CC3D2000A7A47 /* FreeBoardDetail.swift */,
 				55AC870E2539EF7900141F21 /* ReviewBoardPreview.swift */,
+				55380DE92585F4580093642C /* ReviewBoardDetail.swift */,
 				55E0749C25447A1F0030C7C0 /* Login.swift */,
 			);
 			path = Model;
@@ -121,6 +128,15 @@
 				555DAA41258519C7008E70E8 /* DateManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		55380DED2585F8AC0093642C /* ReviewBoardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				55380DEE2585F8C10093642C /* ReviewBoardDetailView.swift */,
+				55380DF12585F8E40093642C /* ReviewBoardDetailViewModel.swift */,
+			);
+			path = ReviewBoardDetail;
 			sourceTree = "<group>";
 		};
 		5550A7C42531E44200FAFD30 = {
@@ -182,6 +198,7 @@
 				55D54FC3256AA54500D87D4B /* FreeBoard */,
 				55AEFEF5257CD909000A7A47 /* FreeBoardDetail */,
 				55D54FC4256AA56100D87D4B /* ReviewBoard */,
+				55380DED2585F8AC0093642C /* ReviewBoardDetail */,
 				55E446A02573D8970023FBD7 /* UIUtil.swift */,
 			);
 			path = UI;
@@ -380,7 +397,9 @@
 				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
 				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
 				55415E332544661F006630CA /* LoginViewModel.swift in Sources */,
+				55380DEF2585F8C10093642C /* ReviewBoardDetailView.swift in Sources */,
 				55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */,
+				55380DF22585F8E40093642C /* ReviewBoardDetailViewModel.swift in Sources */,
 				557E77542537327A00DDA4F7 /* LensListView.swift in Sources */,
 				55E0749D25447A1F0030C7C0 /* Login.swift in Sources */,
 				55438C70253207B700423006 /* LensListViewModel.swift in Sources */,
@@ -389,6 +408,7 @@
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				551719D32531E8A2003670D0 /* LensPreview.swift in Sources */,
 				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
+				55380DEA2585F4580093642C /* ReviewBoardDetail.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
 				55AEFEF7257CD945000A7A47 /* FreeBoardDetailView.swift in Sources */,

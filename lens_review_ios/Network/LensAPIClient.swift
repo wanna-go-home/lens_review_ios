@@ -26,7 +26,7 @@ class LensAPIClient
         }
     }
 
-    static func getLensByID(lensId: Int, completion: @escaping(Result<LensDetail, AFError>) -> Void)
+    static func getLensDetail(lensId: Int, completion: @escaping(Result<LensDetail, AFError>) -> Void)
     {
         AF.request(APIBuilder.getLensById(id: lensId))
             .responseDecodable {
@@ -45,7 +45,7 @@ class LensAPIClient
     
     static func getFreeBoardDetail(articleId: Int, completion: @escaping(Result<FreeBoardDetail, AFError>) -> Void)
     {
-        AF.request(APIBuilder.getFreeBoardDetail(id: articleId))
+        AF.request(APIBuilder.getFreeBoardById(id: articleId))
             .responseDecodable {
                 (response: DataResponse<FreeBoardDetail, AFError>) in completion(response.result)
         }
@@ -56,6 +56,14 @@ class LensAPIClient
         AF.request(APIBuilder.getReviewBoardPreview)
             .responseDecodable {
                 (response: DataResponse<[ReviewBoardPreview], AFError>) in completion(response.result)
+        }
+    }
+    
+    static func getReviewBoardDetail(reviewId: Int, completion: @escaping(Result<ReviewBoardDetail, AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getReviewBoardById(id: reviewId))
+            .responseDecodable {
+                (response: DataResponse<ReviewBoardDetail, AFError>) in completion(response.result)
         }
     }
 }
