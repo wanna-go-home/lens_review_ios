@@ -17,7 +17,7 @@ struct FreeBoardDetailView: View
     var body: some View {
         VStack{
             customTitleBar
-            FreeBoardDetailRow(article_:freeBoardDetailViewModel.article)
+            FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
         }
         .onAppear(perform: callFreeBoardDetail)
         .frame(maxHeight:.infinity,  alignment: .top)
@@ -65,127 +65,131 @@ struct FreeBoardDetailView: View
     func callFreeBoardDetail()
     {
         freeBoardDetailViewModel.getFreeBoardDetail(id: selectedArticleId)
+        freeBoardDetailViewModel.getCommentList(id: selectedArticleId)
     }
 }
 
 struct FreeBoardDetailRow: View
 {
     var article_: FreeBoardDetail
+    var commentsList_ = [FreeBoardComment]()
     
     var body: some View
     {
         VStack {
-            // 상단
-            VStack(alignment: .leading, spacing: 5){
-                Text(article_.title)
-                    .font(.title)
-                
-                Text(article_.nickname)
-                    .font(.system(size: 14))
-                    .foregroundColor(.gray)
-                    .padding(.top, 5)
-                
-                Text(article_.getDateTime())
-                    .font(.system(size: 14))
-                    .foregroundColor(.gray)
-                    .padding(.top, 5)
-                    .padding(.bottom, 8)
-                
-                Divider()
-                
-                Text(article_.content)
-                    .font(.body)
-                    .padding(.top, 12)
-            }
-            .padding([.leading, .trailing], 12)
-            .padding(.top, 8)
-            .frame(minHeight: DeviceInfo.deviceHeight / 3.5, alignment: .top)
-            
-            // 하단
-            HStack{
-                HStack(spacing: 10){
-                    Image("like")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:20, height: 20)
-                        .foregroundColor(Color("IconColor"))
-                    Text("\(article_.likeCnt)")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                }
-                .frame(maxWidth:.infinity)
-
-                Divider()
-                
-                HStack(spacing: 10){
-                    Image("reply")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:20, height: 20)
-                        .foregroundColor(Color("IconColor"))
-                    Text("\(article_.replyCnt)")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                }
-                .frame(maxWidth:.infinity)
-                
-                Divider()
-                
-                HStack(spacing: 10) {
-                    Image("share")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:20, height: 20)
-                        .foregroundColor(Color("IconColor"))
-                    Text("공유")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                }
-                .frame(maxWidth:.infinity)
-            }
-            .frame(height: 20)
-            .padding([.leading, .trailing], 12)
-            .padding([.top, .bottom], 13)
-            
-            BoardDetailDivider()
-            
-            // 댓글 상단
-            HStack{
-                HStack(spacing: 1){
-                    Text("시간순")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                    Image("arrow-drop-down")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(Color("IconColor"))
-                }
-                .padding(.leading, 12)
-                
-                Spacer()
-                
-                HStack(spacing: 3){
-                    Text("마지막 댓글로 이동")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                    Image("align-bottom")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(Color("IconColor"))
-                }
-                .padding(.trailing, 8)
-            }
-            .frame(height: 25)
-            
-            Divider()
-            
-            // 댓글
-            ScrollView
+            ScrollView(showsIndicators: false)
             {
+                // 상단
+                VStack(alignment: .leading, spacing: 5){
+                    Text(article_.title)
+                        .font(.title)
+                    
+                    Text(article_.nickname)
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .padding(.top, 5)
+                    
+                    Text(article_.getDateTime())
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .padding(.top, 5)
+                        .padding(.bottom, 8)
+                    
+                    Divider()
+                    
+                    Text(article_.content)
+                        .font(.body)
+                        .padding(.top, 12)
+                }
+                .padding([.leading, .trailing], 12)
+                .padding(.top, 8)
+                .frame(minHeight: DeviceInfo.deviceHeight / 3.5, alignment: .top)
+                
+                // 하단
+                HStack{
+                    HStack(spacing: 10){
+                        Image("like")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:20, height: 20)
+                            .foregroundColor(Color("IconColor"))
+                        Text("\(article_.likeCnt)")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth:.infinity)
+
+                    Divider()
+                    
+                    HStack(spacing: 10){
+                        Image("reply")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:20, height: 20)
+                            .foregroundColor(Color("IconColor"))
+                        Text("\(article_.replyCnt)")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth:.infinity)
+                    
+                    Divider()
+                    
+                    HStack(spacing: 10) {
+                        Image("share")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:20, height: 20)
+                            .foregroundColor(Color("IconColor"))
+                        Text("공유")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth:.infinity)
+                }
+                .frame(height: 20)
+                .padding([.leading, .trailing], 12)
+                .padding([.top, .bottom], 13)
+                
+                BoardDetailDivider()
+                
+                // 댓글 상단
+                HStack{
+                    HStack(spacing: 1){
+                        Text("시간순")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                        Image("arrow-drop-down")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color("IconColor"))
+                    }
+                    .padding(.leading, 12)
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 3){
+                        Text("마지막 댓글로 이동")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                        Image("align-bottom")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color("IconColor"))
+                    }
+                    .padding(.trailing, 8)
+                }
+                .frame(height: 25)
+                
+                Divider()
+                
+                // 댓글
                 VStack{
-                    Text("댓글을 넣어야 함")
+                    ForEach(commentsList_){ comment in
+                        Text(comment.content)
+                    }
                 }
             }
             

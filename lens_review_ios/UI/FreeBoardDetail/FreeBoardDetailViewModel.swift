@@ -10,6 +10,7 @@ import Combine
 class FreeBoardDetailViewModel : ObservableObject
 {
     @Published var article = FreeBoardDetail()
+    @Published var commentList = [FreeBoardComment]()
     
     func getFreeBoardDetail(id: Int)
     {
@@ -17,6 +18,18 @@ class FreeBoardDetailViewModel : ObservableObject
             switch result {
             case .success(let article_):
                 self.article = article_
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getCommentList(id: Int)
+    {
+        LensAPIClient.getFreeBoardComment(articleId: id){ result in
+            switch result {
+            case .success(let comments_):
+                self.commentList.append(contentsOf: comments_)
             case .failure(let error):
                 print(error.localizedDescription)
             }

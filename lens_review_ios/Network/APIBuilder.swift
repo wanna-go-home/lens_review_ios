@@ -24,6 +24,8 @@ enum APIBuilder: APIConfiguration
     case getLensById(id : Int)
     case getFreeBoardPreview
     case getFreeBoardById(id: Int)
+    case getFreeBoardComment(id: Int)
+    case getCommentsByCommentId(id: Int, commentId: Int)
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
     
@@ -32,7 +34,9 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login:
             return .post
-        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getFreeBoardById, .getReviewBoardPreview, .getReviewBoardById:
+        case .getLensesPreview, .getLensById,
+             .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
+             .getReviewBoardPreview, .getReviewBoardById:
             return .get
         }
     }
@@ -50,6 +54,10 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/free-board"
         case .getFreeBoardById(let id):
             return "/api/boards/free-board/\(id)"
+        case .getFreeBoardComment(let id):
+            return "/api/boards/free-board/\(id)/comments"
+        case .getCommentsByCommentId(let id, let commentId):
+            return "/api/boards/free-board/\(id)/comment/\(commentId)"
         case .getReviewBoardPreview:
             return "/api/boards/review-board"
         case .getReviewBoardById(let id):
@@ -62,7 +70,9 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login(let account_, let pw_):
             return ["account": account_, "pw": pw_]
-        case .getLensesPreview, .getLensById, .getFreeBoardPreview, .getFreeBoardById ,.getReviewBoardPreview, .getReviewBoardById:
+        case .getLensesPreview, .getLensById,
+             .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
+             .getReviewBoardPreview, .getReviewBoardById:
             return nil
         }
     }
