@@ -16,7 +16,7 @@ struct ReviewListView: View {
         {
             ScrollView(showsIndicators: false)
             {
-                VStack(alignment: .leading)
+                LazyVStack(alignment: .leading)
                 {
                     ForEach(reviewListViewModel.reviewList) { board_ in
                         NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id))

@@ -16,7 +16,7 @@ struct BoardListView: View {
         {
             ScrollView(showsIndicators: false)
             {
-                VStack(alignment: .leading)
+                LazyVStack(alignment: .leading)
                 {
                     ForEach(boardListViewModel.boardList) { board_ in
                         NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id))
