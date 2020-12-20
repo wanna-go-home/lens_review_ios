@@ -17,6 +17,7 @@
 		55380DEF2585F8C10093642C /* ReviewBoardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55380DEE2585F8C10093642C /* ReviewBoardDetailView.swift */; };
 		55380DF22585F8E40093642C /* ReviewBoardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55380DF12585F8E40093642C /* ReviewBoardDetailViewModel.swift */; };
 		5538B485258E2806009F3772 /* FreeBoardComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538B484258E2806009F3772 /* FreeBoardComment.swift */; };
+		5538B489258E3EFE009F3772 /* CommentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538B488258E3EFE009F3772 /* CommentRowView.swift */; };
 		55415E2C254463A6006630CA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E2B254463A6006630CA /* LoginView.swift */; };
 		55415E332544661F006630CA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415E322544661F006630CA /* LoginViewModel.swift */; };
 		55438C692532079500423006 /* LensDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55438C682532079500423006 /* LensDetailView.swift */; };
@@ -55,6 +56,7 @@
 		55380DEE2585F8C10093642C /* ReviewBoardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardDetailView.swift; sourceTree = "<group>"; };
 		55380DF12585F8E40093642C /* ReviewBoardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardDetailViewModel.swift; sourceTree = "<group>"; };
 		5538B484258E2806009F3772 /* FreeBoardComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardComment.swift; sourceTree = "<group>"; };
+		5538B488258E3EFE009F3772 /* CommentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRowView.swift; sourceTree = "<group>"; };
 		55415E2B254463A6006630CA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		55415E322544661F006630CA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55438C682532079500423006 /* LensDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensDetailView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				55AEFEF6257CD945000A7A47 /* FreeBoardDetailView.swift */,
 				55AEFEF9257CD954000A7A47 /* FreeBoardDetailViewModel.swift */,
+				5538B488258E3EFE009F3772 /* CommentRowView.swift */,
 			);
 			path = FreeBoardDetail;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				558304572538971D00C46BE0 /* BoardListViewModel.swift in Sources */,
 				551719DF2531E964003670D0 /* NetConstants.swift in Sources */,
 				55AC870F2539EF7900141F21 /* ReviewBoardPreview.swift in Sources */,
+				5538B489258E3EFE009F3772 /* CommentRowView.swift in Sources */,
 				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
 				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
 				55415E332544661F006630CA /* LoginViewModel.swift in Sources */,

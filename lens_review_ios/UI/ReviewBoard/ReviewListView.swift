@@ -107,7 +107,7 @@ struct ReviewBoardRow: View {
                 
                 Spacer()
                 
-                Text(convertDateForamt(inputData: board_.createdAt, outputFormat: "MM/dd-HH:mm"))
+                Text(convertDateFormat(inputData: board_.createdAt, outputFormat: "MM/dd-HH:mm"))
                     .font(.system(size: 11))
             }
             .frame(height: 18)

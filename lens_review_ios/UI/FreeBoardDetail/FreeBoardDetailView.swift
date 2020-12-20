@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+let parentComment = 0
+let childComment = 1
+
 struct FreeBoardDetailView: View
 {
     var selectedArticleId: Int
@@ -186,9 +189,13 @@ struct FreeBoardDetailRow: View
                 Divider()
                 
                 // 댓글
-                VStack{
+                LazyVStack(spacing: 0){
                     ForEach(commentsList_){ comment in
-                        Text(comment.content)
+                        if comment.depth == parentComment {
+                            CommentRowView(comment: comment)
+                        } else if comment.depth == childComment {
+                            ChildCommentRowView(comment: comment)
+                        }
                     }
                 }
             }

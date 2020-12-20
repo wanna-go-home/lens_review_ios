@@ -8,7 +8,7 @@
 import Foundation
 
 // X분, 시간, 일 전으로 수정할때 FreeBoard, FreeBoardDetail의 getDateTime도 Util 함수 쓰도록 수정할 예정임
-func convertDateForamt(inputData: String, outputFormat: String) -> String
+func convertDateFormat(inputData: String, outputFormat: String) -> String
 {
     var res = ""
     let dateFormatter = DateFormatter()
