@@ -18,7 +18,6 @@ class LensListViewModel: ObservableObject
             switch result{
             case .success(let lens_):
                 self.lensList.append(contentsOf: lens_)
-                print(lens_)
             case .failure(let error):
                 print(error.localizedDescription)
             }

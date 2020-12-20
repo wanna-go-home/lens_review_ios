@@ -10,6 +10,7 @@ import Alamofire
 
 class LensAPIClient
 {
+    // user
     static func login(account: String, pw: String, completion:@escaping (String)->Void) {
         // TODO 토큰 없을때? validate 추가
         AF.request(APIBuilder.login(account: account, pw: pw))
@@ -18,6 +19,7 @@ class LensAPIClient
         }
     }
     
+    // lens
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {
         AF.request(APIBuilder.getLensesPreview)
@@ -35,6 +37,7 @@ class LensAPIClient
             }
     }
 
+    // FreeBoard
     static func getFreeBoardPreview(completion: @escaping(Result<[FreeBoardPreview], AFError>) -> Void)
     {
         AF.request(APIBuilder.getFreeBoardPreview)
@@ -51,6 +54,23 @@ class LensAPIClient
         }
     }
     
+    static func getFreeBoardComment(articleId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getFreeBoardComment(id: articleId))
+            .responseDecodable {
+                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
+        }
+    }
+    
+    static func getFreeBoardAllComments(articleId: Int, commentId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getCommentsByCommentId(id: articleId, commentId: commentId))
+            .responseDecodable {
+                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
+        }
+    }
+    
+    // ReviewBoard
     static func getReviewBoardPreview(completion: @escaping(Result<[ReviewBoardPreview], AFError>) -> Void)
     {
         AF.request(APIBuilder.getReviewBoardPreview)
