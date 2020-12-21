@@ -30,6 +30,9 @@
 		5550A7D82531E44300FAFD30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */; };
 		555DAA42258519C7008E70E8 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555DAA41258519C7008E70E8 /* DateManager.swift */; };
 		556D1CB82543328800EC8084 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 556D1CB72543328800EC8084 /* URLImage */; };
+		557BE3E62590D0300022F5D0 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BE3E52590D0300022F5D0 /* CommentView.swift */; };
+		557BE3E92590D5940022F5D0 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BE3E82590D5940022F5D0 /* CommentViewModel.swift */; };
+		557BE3EC2590D7860022F5D0 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BE3EB2590D7860022F5D0 /* UIConstants.swift */; };
 		557E77542537327A00DDA4F7 /* LensListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557E77532537327A00DDA4F7 /* LensListView.swift */; };
 		558304512538963800C46BE0 /* FreeBoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304502538963800C46BE0 /* FreeBoardPreview.swift */; };
 		558304542538971500C46BE0 /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304532538971500C46BE0 /* BoardListView.swift */; };
@@ -70,6 +73,9 @@
 		5550A7D72531E44300FAFD30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5550A7D92531E44300FAFD30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555DAA41258519C7008E70E8 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		557BE3E52590D0300022F5D0 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		557BE3E82590D5940022F5D0 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		557BE3EB2590D7860022F5D0 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		557E77532537327A00DDA4F7 /* LensListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensListView.swift; sourceTree = "<group>"; };
 		558304502538963800C46BE0 /* FreeBoardPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardPreview.swift; sourceTree = "<group>"; };
 		558304532538971500C46BE0 /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
@@ -190,6 +196,8 @@
 				55AEFEF6257CD945000A7A47 /* FreeBoardDetailView.swift */,
 				55AEFEF9257CD954000A7A47 /* FreeBoardDetailViewModel.swift */,
 				5538B488258E3EFE009F3772 /* CommentRowView.swift */,
+				557BE3E52590D0300022F5D0 /* CommentView.swift */,
+				557BE3E82590D5940022F5D0 /* CommentViewModel.swift */,
 			);
 			path = FreeBoardDetail;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 				55D54FC4256AA56100D87D4B /* ReviewBoard */,
 				55380DED2585F8AC0093642C /* ReviewBoardDetail */,
 				55E446A02573D8970023FBD7 /* UIUtil.swift */,
+				557BE3EB2590D7860022F5D0 /* UIConstants.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -418,7 +427,10 @@
 				55380DEA2585F4580093642C /* ReviewBoardDetail.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
+				557BE3EC2590D7860022F5D0 /* UIConstants.swift in Sources */,
 				55AEFEF7257CD945000A7A47 /* FreeBoardDetailView.swift in Sources */,
+				557BE3E62590D0300022F5D0 /* CommentView.swift in Sources */,
+				557BE3E92590D5940022F5D0 /* CommentViewModel.swift in Sources */,
 				55E446A12573D8970023FBD7 /* UIUtil.swift in Sources */,
 				5538B485258E2806009F3772 /* FreeBoardComment.swift in Sources */,
 				555DAA42258519C7008E70E8 /* DateManager.swift in Sources */,

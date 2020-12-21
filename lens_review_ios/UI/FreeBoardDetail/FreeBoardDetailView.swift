@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-let parentComment = 0
-let childComment = 1
-
 struct FreeBoardDetailView: View
 {
     var selectedArticleId: Int
@@ -18,7 +15,8 @@ struct FreeBoardDetailView: View
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0)
+        {
             customTitleBar
             FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
         }
@@ -191,9 +189,9 @@ struct FreeBoardDetailRow: View
                 // 댓글
                 LazyVStack(spacing: 0){
                     ForEach(commentsList_){ comment in
-                        if comment.depth == parentComment {
-                            CommentRowView(comment: comment)
-                        } else if comment.depth == childComment {
+                        if comment.depth == CommentConst.parentComment {
+                            CommentRowView(comment: comment, moreFlag: true)
+                        } else if comment.depth == CommentConst.childComment {
                             ChildCommentRowView(comment: comment)
                         }
                     }

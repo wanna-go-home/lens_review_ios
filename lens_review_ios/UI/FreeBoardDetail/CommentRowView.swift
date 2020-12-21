@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-let moreCommentSize = 3
-
 struct CommentRowView: View
 {
     var comment: FreeBoardComment
+    var moreFlag : Bool
     
     var body: some View
     {
@@ -66,18 +65,23 @@ struct CommentRowView: View
                     }
                     .font(.system(size: 14))
                     .foregroundColor(Color("BoardContentColor"))
-                    .frame(height: 30)
+                    .frame(height: 25)
 
                 }
                 
-                if comment.bundleSize > moreCommentSize {
-                    NavigationLink(destination: Text("moreCommentView"))
+                if moreFlag && comment.bundleSize > CommentConst.moreCommentSize {
+                    Divider()
+                    
+                    NavigationLink(destination: CommentView(selectedCommentId: comment.bundleId, selectedArticleId: comment.postId))
                     {
-                        Text("+ 대댓글 \(comment.bundleSize - moreCommentSize)개 더 보기...")
+                        Text("+ 대댓글 \(comment.bundleSize - CommentConst.moreCommentSize)개 더 보기...")
                             .font(.system(size: 12))
                             .foregroundColor(Color("BoardContentColor"))
                             .padding(.leading, 10)
+                            .multilineTextAlignment(.center)
+                            
                     }
+                    .frame(height: 10)
                 }
             }
             .padding(.leading, 12)
@@ -131,10 +135,10 @@ struct ChildCommentRowView: View
                 }
                 .font(.system(size: 14))
                 .foregroundColor(Color("BoardContentColor"))
-                .frame(height: 30)
+                .frame(height: 25)
             }
             .padding(.leading, 37)
-            .padding([.top, .bottom], 10)
+            .padding([.top, .bottom], 7)
             
             Divider()
         }
