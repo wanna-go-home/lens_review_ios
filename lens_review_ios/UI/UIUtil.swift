@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ScrollDivider: View {
     let color: Color = Color("ScrollDividerColor")
@@ -32,31 +33,4 @@ struct BoardDetailDivider: View {
 struct DeviceInfo {
     static let deviceHeight:CGFloat = UIScreen.main.bounds.size.height
     static let deviceWidth:CGFloat = UIScreen.main.bounds.size.width
-}
-
-struct FloatingWriteBtn: View{
-    var body: some View {
-        HStack
-        {
-            Spacer()
-            VStack
-            {
-                Spacer()
-                
-                Button(action: {},
-                       label:{
-                        Image("write")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:35, height: 35)
-                            .foregroundColor(.white)
-                            .padding(10)
-                       })
-                    .background(Color("FloatingColor"))
-                    .cornerRadius(38.5)
-                    .padding()
-                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-            }
-        }
-    }
 }

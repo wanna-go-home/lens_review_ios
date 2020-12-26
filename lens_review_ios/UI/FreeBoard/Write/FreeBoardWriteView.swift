@@ -10,14 +10,66 @@ import SwiftUI
 struct FreeBoardWriteView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State private var title = ""
+    @State private var content = ""
 
     var body: some View
     {
-        VStack
+        VStack(spacing: 10)
         {
             customTitleBar
-            Text("sh")
+            
+            Divider()
+            
+            // Title & Content
+            VStack
+            {
+                TextField("제목을 입력해주세요.", text: $title)
+                
+                Divider()
+                
+                ScrollView(showsIndicators: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                {
+                    TextField("내용을 입력해주세요.", text: $content)
+                }
+                .padding(.top , 3)
+            }
+            .padding(.top, 3)
+            
+            Divider()
+            
+            // Footer
+            // TODO : Buton Action
+            HStack(spacing: 15)
+            {
+                Button(action: {}){
+                    Image("camera")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color("IconColor"))
+                }
+                
+                Button(action: {}){
+                    Image("vote")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color("IconColor"))
+                }
+                
+                Button(action: {}){
+                    Text("#")
+                        .font(.system(size : 25))
+                        .foregroundColor(Color("IconColor"))
+                }
+                
+                Spacer()
+            }
+            .frame(height: 25)
         }
+        .padding([.leading, .trailing], 15)
     }
     
     var customTitleBar : some View {
@@ -26,36 +78,15 @@ struct FreeBoardWriteView: View {
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    HStack(spacing: 1) {
-                        Image("arrow-left") // set image here
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:35, height: 35)
-                            .foregroundColor(Color("IconColor"))
-                        Text("돌아가기")
-                            .foregroundColor(.gray)
-                    }
+                    Text("취소")
             }
             
             Spacer()
             
-//            HStack(spacing: 20){
-//                Image("noti-off") // set image here
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width:20, height: 20)
-//                    .foregroundColor(Color("IconColor"))
-//
-//                Image("bookmark-empty") // set image here
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width:20, height: 20)
-//                    .foregroundColor(Color("IconColor"))
-//
-//                Image("more-hori") // set image here
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width:20, height: 20)
-//                    .foregroundColor(Color("IconColor"))
-//            }
-//            .padding(.trailing, 10)
+            Text("등록")
         }
+        .foregroundColor(Color("BoardContentColor"))
+        
     }
 }
 
