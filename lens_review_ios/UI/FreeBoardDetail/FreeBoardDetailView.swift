@@ -15,7 +15,8 @@ struct FreeBoardDetailView: View
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0)
+        {
             customTitleBar
             FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
         }
@@ -186,9 +187,13 @@ struct FreeBoardDetailRow: View
                 Divider()
                 
                 // 댓글
-                VStack{
+                LazyVStack(spacing: 0){
                     ForEach(commentsList_){ comment in
-                        Text(comment.content)
+                        if comment.depth == CommentConst.parentComment {
+                            CommentRowView(comment: comment, moreFlag: true)
+                        } else if comment.depth == CommentConst.childComment {
+                            ChildCommentRowView(comment: comment)
+                        }
                     }
                 }
             }

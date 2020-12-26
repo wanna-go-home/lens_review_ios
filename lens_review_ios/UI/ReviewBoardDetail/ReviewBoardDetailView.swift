@@ -85,7 +85,7 @@ struct ReviewBoardDetailRow: View
                     .foregroundColor(.gray)
                     .padding(.top, 5)
                 
-                Text(convertDateForamt(inputData: review_.createdAt, outputFormat: "MM/dd-HH:mm"))
+                Text(convertDateFormat(inputData: review_.createdAt, outputFormat: "MM/dd-HH:mm"))
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
                     .padding(.top, 5)
