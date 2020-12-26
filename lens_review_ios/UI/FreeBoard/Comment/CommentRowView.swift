@@ -20,7 +20,7 @@ struct CommentRowView: View
             {
                 VStack(alignment: .leading, spacing: 12)
                 {
-                    Text(comment.accountId)
+                    Text(comment.email)
                         .font(.system(size: 14))
                         .foregroundColor(Color("BoardContentColor"))
                         
@@ -102,7 +102,7 @@ struct ChildCommentRowView: View
         {
             VStack(alignment: .leading, spacing: 12)
             {
-                Text(comment.accountId)
+                Text(comment.email)
                     .font(.system(size: 14))
                     .foregroundColor(Color("BoardContentColor"))
                     
