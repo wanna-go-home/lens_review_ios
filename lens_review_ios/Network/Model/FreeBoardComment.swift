@@ -10,7 +10,7 @@ import Foundation
 struct FreeBoardComment: Decodable, Identifiable
 {
     var id : Int = 0
-    var accountId : String = ""
+    var email : String = ""
     var postId : Int = 0
     var content : String = ""
     var likeCnt : Int = 0
@@ -21,7 +21,7 @@ struct FreeBoardComment: Decodable, Identifiable
     
     enum CodingKeys: String, CodingKey {
         case id
-        case accountId
+        case email
         case postId
         case content
         case likeCnt
