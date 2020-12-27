@@ -16,8 +16,7 @@ class ReviewListViewModel: ObservableObject
         LensAPIClient.getReviewBoardPreview {result in
             switch result{
             case .success(let review_):
-                self.reviewList.append(contentsOf: review_)
-                print(review_)
+                self.reviewList = review_
             case .failure(let error):
                 print(error.localizedDescription)
             }

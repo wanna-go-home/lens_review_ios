@@ -16,8 +16,7 @@ class BoardListViewModel: ObservableObject
         LensAPIClient.getFreeBoardPreview {result in
             switch result{
             case .success(let board_):
-                self.boardList.append(contentsOf: board_)
-                print(board_)
+                self.boardList = board_
             case .failure(let error):
                 print(error.localizedDescription)
             }

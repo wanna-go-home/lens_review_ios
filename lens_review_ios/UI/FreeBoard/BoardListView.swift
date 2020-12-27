@@ -14,22 +14,30 @@ struct BoardListView: View {
     var body: some View {
         NavigationView
         {
-            ScrollView(showsIndicators: false)
+            ZStack
             {
-                LazyVStack(alignment: .leading)
+                ScrollView(showsIndicators: false)
                 {
-                    ForEach(boardListViewModel.boardList) { board_ in
-                        NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id))
-                        {
-                            FreeBoardRow(board_: board_)
+                    LazyVStack(alignment: .leading)
+                    {
+                        ForEach(boardListViewModel.boardList) { board_ in
+                            NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id))
+                            {
+                                FreeBoardRow(board_: board_)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
                     }
+                    .frame(minHeight: 100)
                 }
-                .frame(minHeight: 100)
+                .padding([.leading, .trailing])
+                .navigationBarHidden(true)
+                .onAppear(perform: {
+                    boardListViewModel.getBoardList()
+                })
+                
+                FloatingWriteBtn()
             }
-            .padding([.leading, .trailing])
-            .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -101,6 +109,37 @@ struct FreeBoardRow: View {
             .padding([.leading, .trailing], 12)
             
             ScrollDivider()
+        }
+    }
+}
+
+struct FloatingWriteBtn: View
+{
+    var body: some View {
+        HStack
+        {
+            Spacer()
+            VStack
+            {
+                Spacer()
+
+                NavigationLink(destination: FreeBoardWriteView())
+                {
+                    ZStack
+                    {
+                        Circle()
+                            .fill(Color("FloatingColor"))
+                            .shadow(color:Color.black.opacity(0.3), radius: 3)
+                            .frame(width: 50, height: 50)
+                    
+                        Image("write")
+                            .resizable()
+                            .foregroundColor(.white)
+                            .frame(width: 30, height: 30)
+                    }
+                    .padding()
+                }
+            }
         }
     }
 }

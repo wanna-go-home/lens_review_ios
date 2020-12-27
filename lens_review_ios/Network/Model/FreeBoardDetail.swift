@@ -10,7 +10,7 @@ import Foundation
 struct FreeBoardDetail: Decodable, Identifiable
 {
     var id : Int = 0
-    var account : String = ""
+    var email : String = ""
     var nickname : String = ""
     var title : String = ""
     var content : String = ""
@@ -21,7 +21,7 @@ struct FreeBoardDetail: Decodable, Identifiable
     
     enum CodingKeys: String, CodingKey {
         case id
-        case account
+        case email
         case nickname
         case title
         case content

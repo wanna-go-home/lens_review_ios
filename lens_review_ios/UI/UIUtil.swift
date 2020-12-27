@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ScrollDivider: View {
     let color: Color = Color("ScrollDividerColor")

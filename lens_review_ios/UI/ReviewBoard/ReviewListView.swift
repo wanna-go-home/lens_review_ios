@@ -30,6 +30,9 @@ struct ReviewListView: View {
             }
             .padding([.leading, .trailing])
             .navigationBarHidden(true)
+            .onAppear(perform: {
+                reviewListViewModel.getReviewList()
+            })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

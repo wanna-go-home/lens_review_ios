@@ -37,6 +37,8 @@
 		558304512538963800C46BE0 /* FreeBoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304502538963800C46BE0 /* FreeBoardPreview.swift */; };
 		558304542538971500C46BE0 /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304532538971500C46BE0 /* BoardListView.swift */; };
 		558304572538971D00C46BE0 /* BoardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304562538971D00C46BE0 /* BoardListViewModel.swift */; };
+		55A99A932593847E00BC65C0 /* FreeBoardWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A99A922593847E00BC65C0 /* FreeBoardWriteView.swift */; };
+		55A99A982597829B00BC65C0 /* FreeBoardWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A99A972597829B00BC65C0 /* FreeBoardWriteViewModel.swift */; };
 		55AC870F2539EF7900141F21 /* ReviewBoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC870E2539EF7900141F21 /* ReviewBoardPreview.swift */; };
 		55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87112539F0F700141F21 /* ReviewListView.swift */; };
 		55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */; };
@@ -80,6 +82,8 @@
 		558304502538963800C46BE0 /* FreeBoardPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardPreview.swift; sourceTree = "<group>"; };
 		558304532538971500C46BE0 /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
 		558304562538971D00C46BE0 /* BoardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListViewModel.swift; sourceTree = "<group>"; };
+		55A99A922593847E00BC65C0 /* FreeBoardWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardWriteView.swift; sourceTree = "<group>"; };
+		55A99A972597829B00BC65C0 /* FreeBoardWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardWriteViewModel.swift; sourceTree = "<group>"; };
 		55AC870E2539EF7900141F21 /* ReviewBoardPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBoardPreview.swift; sourceTree = "<group>"; };
 		55AC87112539F0F700141F21 /* ReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListView.swift; sourceTree = "<group>"; };
 		55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
@@ -190,16 +194,32 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		55AEFEF5257CD909000A7A47 /* FreeBoardDetail */ = {
+		55A99A902593842A00BC65C0 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
-				55AEFEF6257CD945000A7A47 /* FreeBoardDetailView.swift */,
-				55AEFEF9257CD954000A7A47 /* FreeBoardDetailViewModel.swift */,
 				5538B488258E3EFE009F3772 /* CommentRowView.swift */,
 				557BE3E52590D0300022F5D0 /* CommentView.swift */,
 				557BE3E82590D5940022F5D0 /* CommentViewModel.swift */,
 			);
-			path = FreeBoardDetail;
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		55A99A912593843A00BC65C0 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				55A99A922593847E00BC65C0 /* FreeBoardWriteView.swift */,
+				55A99A972597829B00BC65C0 /* FreeBoardWriteViewModel.swift */,
+			);
+			path = Write;
+			sourceTree = "<group>";
+		};
+		55AEFEF5257CD909000A7A47 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				55AEFEF6257CD945000A7A47 /* FreeBoardDetailView.swift */,
+				55AEFEF9257CD954000A7A47 /* FreeBoardDetailViewModel.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		55D54FBF256AA4ED00D87D4B /* UI */ = {
@@ -210,7 +230,6 @@
 				55D54FC0256AA50200D87D4B /* LensList */,
 				55D54FC2256AA53800D87D4B /* LensDetail */,
 				55D54FC3256AA54500D87D4B /* FreeBoard */,
-				55AEFEF5257CD909000A7A47 /* FreeBoardDetail */,
 				55D54FC4256AA56100D87D4B /* ReviewBoard */,
 				55380DED2585F8AC0093642C /* ReviewBoardDetail */,
 				55E446A02573D8970023FBD7 /* UIUtil.swift */,
@@ -251,6 +270,9 @@
 			children = (
 				558304532538971500C46BE0 /* BoardListView.swift */,
 				558304562538971D00C46BE0 /* BoardListViewModel.swift */,
+				55AEFEF5257CD909000A7A47 /* Detail */,
+				55A99A902593842A00BC65C0 /* Comment */,
+				55A99A912593843A00BC65C0 /* Write */,
 			);
 			path = FreeBoard;
 			sourceTree = "<group>";
@@ -402,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A99A932593847E00BC65C0 /* FreeBoardWriteView.swift in Sources */,
 				55AEFEFA257CD954000A7A47 /* FreeBoardDetailViewModel.swift in Sources */,
 				551719D62531E921003670D0 /* APIBuilder.swift in Sources */,
 				5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */,
@@ -422,6 +445,7 @@
 				55AEFEF2257CC3D2000A7A47 /* FreeBoardDetail.swift in Sources */,
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
+				55A99A982597829B00BC65C0 /* FreeBoardWriteViewModel.swift in Sources */,
 				551719D32531E8A2003670D0 /* LensPreview.swift in Sources */,
 				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
 				55380DEA2585F4580093642C /* ReviewBoardDetail.swift in Sources */,
