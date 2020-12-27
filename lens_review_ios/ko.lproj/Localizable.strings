@@ -9,3 +9,6 @@
 
 "write_title_hint" = "제목을 입력해주세요.";
 "write_content_hint" = "내용을 입력해주세요.";
+
+"delete_article_question" = "게시글을 삭제하시겠습니까?";
+"delete_button_title" = "삭제";

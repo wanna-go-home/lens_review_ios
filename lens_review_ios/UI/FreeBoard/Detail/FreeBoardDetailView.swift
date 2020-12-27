@@ -15,6 +15,7 @@ struct FreeBoardDetailView: View
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var showMofifyView = false
+    @State private var showDeleteAlert = false
     
     var body: some View {
         VStack(spacing: 0)
@@ -24,6 +25,15 @@ struct FreeBoardDetailView: View
             
             NavigationLink(destination: ArticleModifyView(articleId: freeBoardDetailViewModel.article.id, articleTitle: freeBoardDetailViewModel.article.title, articleContent: freeBoardDetailViewModel.article.content), isActive: $showMofifyView){
                 EmptyView()
+            }
+            
+            .alert(isPresented: $showDeleteAlert)
+            {
+                Alert(title: Text(""), message: Text("delete_article_question".localized),
+                      primaryButton: .destructive(Text("delete_button_title".localized), action: {
+                                // Call delete api
+                            }),
+                      secondaryButton: .cancel())
             }
         }
         .onAppear(perform: callFreeBoardDetail)
@@ -62,7 +72,7 @@ struct FreeBoardDetailView: View
                 
                 Menu(content: {
                     Button("수정하기", action: { self.showMofifyView = true })
-                    Button("삭제하기", action: {})
+                    Button("삭제하기", action: { self.showDeleteAlert = true })
                 },
                 label: {
                     Image("more-hori")
