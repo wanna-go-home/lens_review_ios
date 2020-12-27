@@ -44,12 +44,6 @@ struct ContentView: View
                 .onAppear(perform: {
                     lensViewModel.getLensList()
                 })
-                .onAppear(perform: {
-                    reviewListViewModel.getReviewList()
-                })
-                .onAppear(perform: {
-                    boardListViewModel.getBoardList()
-                })
                 .tabViewStyle(PageTabViewStyle())
             }
         }

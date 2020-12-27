@@ -70,6 +70,13 @@ class LensAPIClient
         }
     }
     
+    static func postArticle(title: String, content: String, completion: @escaping(Result<String, AFError>)->Void) {
+        AF.request(APIBuilder.postArticle(title: title, content: content))
+            .responseString {
+                (response) in completion(response.result)
+        }
+    }
+    
     // ReviewBoard
     static func getReviewBoardPreview(completion: @escaping(Result<[ReviewBoardPreview], AFError>) -> Void)
     {

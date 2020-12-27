@@ -19,7 +19,6 @@ class LensDetailViewModel : ObservableObject
             switch result{
             case .success(let lens_):
                 self.lens = lens_
-                print(lens_)
             case .failure(let error):
                 print(error.localizedDescription)
             }

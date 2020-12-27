@@ -32,6 +32,9 @@ struct BoardListView: View {
                 }
                 .padding([.leading, .trailing])
                 .navigationBarHidden(true)
+                .onAppear(perform: {
+                    boardListViewModel.getBoardList()
+                })
                 
                 FloatingWriteBtn()
             }

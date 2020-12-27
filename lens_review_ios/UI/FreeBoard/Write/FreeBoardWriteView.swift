@@ -10,6 +10,7 @@ import SwiftUI
 struct FreeBoardWriteView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var freeBoardWriteViewModel:FreeBoardWriteViewModel = FreeBoardWriteViewModel()
     
     @State private var title = ""
     @State private var content = ""
@@ -26,12 +27,14 @@ struct FreeBoardWriteView: View {
             VStack
             {
                 TextField("제목을 입력해주세요.", text: $title)
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 
                 Divider()
                 
                 ScrollView(showsIndicators: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 {
                     TextField("내용을 입력해주세요.", text: $content)
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 }
                 .padding(.top , 3)
             }
@@ -70,6 +73,12 @@ struct FreeBoardWriteView: View {
             .frame(height: 25)
         }
         .padding([.leading, .trailing], 15)
+        .onChange(of: freeBoardWriteViewModel.writeSuccess) { (newValue) in
+            if(newValue == true)
+            {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
     
     var customTitleBar : some View {
@@ -83,10 +92,17 @@ struct FreeBoardWriteView: View {
             
             Spacer()
             
-            Text("등록")
+            Button(action: {writeArticle(title: title, content: content)})
+            {
+                Text("등록")
+            }
         }
         .foregroundColor(Color("BoardContentColor"))
-        
+    }
+    
+    func writeArticle(title: String, content: String)
+    {
+        freeBoardWriteViewModel.postArticle(title: title, content: content)
     }
 }
 

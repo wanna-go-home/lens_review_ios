@@ -16,7 +16,7 @@ class CommentViewModel : ObservableObject
         LensAPIClient.getFreeBoardAllComments(articleId: articleId, commentId: commentId){ result in
             switch result {
             case .success(let comments_):
-                self.commentList.append(contentsOf: comments_)
+                self.commentList = comments_
             case .failure(let error):
                 print(error.localizedDescription)
             }

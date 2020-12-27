@@ -25,6 +25,7 @@ enum APIBuilder: APIConfiguration
     case getFreeBoardPreview
     case getFreeBoardById(id: Int)
     case getFreeBoardComment(id: Int)
+    case postArticle(title: String, content: String)
     case getCommentsByCommentId(id: Int, commentId: Int)
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
@@ -32,7 +33,7 @@ enum APIBuilder: APIConfiguration
     var method: HTTPMethod
     {
         switch self {
-        case .login:
+        case .login, .postArticle:
             return .post
         case .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
@@ -50,14 +51,14 @@ enum APIBuilder: APIConfiguration
             return "/api/lens"
         case .getLensById(let id):
             return "/api/lens/\(id)"
-        case .getFreeBoardPreview:
-            return "/api/boards/free-board"
+        case .getFreeBoardPreview, .postArticle:
+            return "/api/boards/article"
         case .getFreeBoardById(let id):
-            return "/api/boards/free-board/\(id)"
+            return "/api/boards/article/\(id)"
         case .getFreeBoardComment(let id):
-            return "/api/boards/free-board/\(id)/comments"
+            return "/api/boards/article/\(id)/comments"
         case .getCommentsByCommentId(let id, let commentId):
-            return "/api/boards/free-board/\(id)/comment/\(commentId)"
+            return "/api/boards/article/\(id)/comment/\(commentId)"
         case .getReviewBoardPreview:
             return "/api/boards/review-board"
         case .getReviewBoardById(let id):
@@ -70,6 +71,8 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login(let account_, let pw_):
             return ["account": account_, "pw": pw_]
+        case .postArticle(let title_, let content_):
+            return ["title": title_, "content": content_]
         case .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
@@ -90,13 +93,10 @@ enum APIBuilder: APIConfiguration
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         
         // Custom Header
-        // TODO "Authorization", "token"을 Model이나 Constants로 빼기
-        switch self{
-        case .login(let account, let pw):
-            urlRequest.addValue(account, forHTTPHeaderField: "account")
-            urlRequest.addValue(pw, forHTTPHeaderField: "pw")
-        default:
-            urlRequest.addValue(getToken(tokenKey: "token"), forHTTPHeaderField: "Authorization")
+        let token_ = getToken(tokenKey: "token")
+        if(token_ != "")
+        {
+            urlRequest.addValue(token_, forHTTPHeaderField: "Authorization")
         }
         
         // Parameters

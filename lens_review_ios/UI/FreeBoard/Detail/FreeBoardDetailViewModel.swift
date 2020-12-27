@@ -29,7 +29,7 @@ class FreeBoardDetailViewModel : ObservableObject
         LensAPIClient.getFreeBoardComment(articleId: id){ result in
             switch result {
             case .success(let comments_):
-                self.commentList.append(contentsOf: comments_)
+                self.commentList = comments_
             case .failure(let error):
                 print(error.localizedDescription)
             }
