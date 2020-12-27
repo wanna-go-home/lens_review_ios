@@ -84,6 +84,13 @@ class LensAPIClient
         }
     }
     
+    static func deleteArticle(id: Int, completion: @escaping(Result<String, AFError>)->Void) {
+        AF.request(APIBuilder.deleteArticle(id: id))
+            .responseString {
+                (response) in completion(response.result)
+        }
+    }
+    
     // ReviewBoard
     static func getReviewBoardPreview(completion: @escaping(Result<[ReviewBoardPreview], AFError>) -> Void)
     {

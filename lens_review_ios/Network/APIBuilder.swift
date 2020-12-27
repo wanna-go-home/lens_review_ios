@@ -27,6 +27,7 @@ enum APIBuilder: APIConfiguration
     case getFreeBoardComment(id: Int)
     case postArticle(title: String, content: String)
     case putArticle(id: Int, title: String, content: String)
+    case deleteArticle(id: Int)
     case getCommentsByCommentId(id: Int, commentId: Int)
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
@@ -42,6 +43,8 @@ enum APIBuilder: APIConfiguration
             return .get
         case .putArticle:
             return .put
+        case .deleteArticle:
+            return .delete
         }
     }
     
@@ -56,7 +59,7 @@ enum APIBuilder: APIConfiguration
             return "/api/lens/\(id)"
         case .getFreeBoardPreview, .postArticle:
             return "/api/boards/article"
-        case .getFreeBoardById(let id), .putArticle(let id, _, _):
+        case .getFreeBoardById(let id), .putArticle(let id, _, _), .deleteArticle(let id):
             return "/api/boards/article/\(id)"
         case .getFreeBoardComment(let id):
             return "/api/boards/article/\(id)/comments"
@@ -77,7 +80,8 @@ enum APIBuilder: APIConfiguration
         case .postArticle(let title_, let content_), .putArticle(_, let title_, let content_):
             return ["title": title_, "content": content_]
         case .getLensesPreview, .getLensById,
-             .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
+             .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
+             .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
             return nil
         }

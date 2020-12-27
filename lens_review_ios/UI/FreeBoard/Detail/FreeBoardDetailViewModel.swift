@@ -11,6 +11,7 @@ class FreeBoardDetailViewModel : ObservableObject
 {
     @Published var article = FreeBoardDetail()
     @Published var commentList = [FreeBoardComment]()
+    @Published var deleteSuccess = false
     
     func getFreeBoardDetail(id: Int)
     {
@@ -31,6 +32,19 @@ class FreeBoardDetailViewModel : ObservableObject
             case .success(let comments_):
                 self.commentList = comments_
             case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func delArticle(articleId: Int)
+    {
+        LensAPIClient.deleteArticle(id: articleId){ result in
+            switch result {
+            case .success:
+                self.deleteSuccess = true
+            case .failure(let error):
+                self.deleteSuccess = false
                 print(error.localizedDescription)
             }
         }

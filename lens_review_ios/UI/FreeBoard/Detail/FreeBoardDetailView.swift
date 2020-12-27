@@ -23,22 +23,26 @@ struct FreeBoardDetailView: View
             customTitleBar
             FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
             
-            NavigationLink(destination: ArticleModifyView(articleId: freeBoardDetailViewModel.article.id, articleTitle: freeBoardDetailViewModel.article.title, articleContent: freeBoardDetailViewModel.article.content), isActive: $showMofifyView){
+            NavigationLink(destination: ArticleModifyView(articleId: selectedArticleId, articleTitle: freeBoardDetailViewModel.article.title, articleContent: freeBoardDetailViewModel.article.content), isActive: $showMofifyView){
                 EmptyView()
             }
             
             .alert(isPresented: $showDeleteAlert)
             {
                 Alert(title: Text(""), message: Text("delete_article_question".localized),
-                      primaryButton: .destructive(Text("delete_button_title".localized), action: {
-                                // Call delete api
-                            }),
+                      primaryButton: .destructive(Text("delete_button_title".localized), action: { callDeleteArticle() }),
                       secondaryButton: .cancel())
             }
         }
         .onAppear(perform: callFreeBoardDetail)
         .frame(maxHeight:.infinity,  alignment: .top)
         .navigationBarHidden(true)
+        .onChange(of: freeBoardDetailViewModel.deleteSuccess) { (newValue) in
+            if(newValue == true)
+            {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
     
     var customTitleBar : some View {
@@ -89,6 +93,11 @@ struct FreeBoardDetailView: View
     {
         freeBoardDetailViewModel.getFreeBoardDetail(id: selectedArticleId)
         freeBoardDetailViewModel.getCommentList(id: selectedArticleId)
+    }
+    
+    func callDeleteArticle()
+    {
+        freeBoardDetailViewModel.delArticle(articleId: selectedArticleId)
     }
 }
 
