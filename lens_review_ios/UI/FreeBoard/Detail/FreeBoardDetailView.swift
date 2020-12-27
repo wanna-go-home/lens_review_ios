@@ -22,7 +22,7 @@ struct FreeBoardDetailView: View
             customTitleBar
             FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
             
-            NavigationLink(destination: ArticleModifyView(), isActive: $showMofifyView){
+            NavigationLink(destination: ArticleModifyView(articleId: freeBoardDetailViewModel.article.id, articleTitle: freeBoardDetailViewModel.article.title, articleContent: freeBoardDetailViewModel.article.content), isActive: $showMofifyView){
                 EmptyView()
             }
         }

@@ -10,7 +10,11 @@ import SwiftUI
 struct ArticleModifyView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var articleModifyViewModel:ArticleModifyViewModel = ArticleModifyViewModel()
     
+    var articleId = 0
+    var articleTitle = ""
+    var articleContent = ""
     @State private var title = ""
     @State private var content = ""
 
@@ -72,6 +76,16 @@ struct ArticleModifyView: View {
             .frame(height: 25)
         }
         .padding([.leading, .trailing], 15)
+        .onChange(of: articleModifyViewModel.modifySuccess) { (newValue) in
+            if(newValue == true)
+            {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .onAppear(perform: {
+            self.title = articleTitle
+            self.content = articleContent
+        })
     }
     
     var customTitleBar : some View {
@@ -85,12 +99,19 @@ struct ArticleModifyView: View {
             
             Spacer()
             
-            Button(action: {})
+            Button(action: {
+                modifyArticle(articleId: articleId, title: title, content: content)
+            })
             {
                 Text("등록")
             }
         }
         .foregroundColor(Color("BoardContentColor"))
+    }
+    
+    func modifyArticle(articleId: Int, title: String, content: String)
+    {
+        articleModifyViewModel.putArticle(articleId: articleId, title: title, content: content)
     }
 }
 
