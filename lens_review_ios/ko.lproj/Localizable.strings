@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  lens_review_ios
+
+  Created by 김선희 on 2020/12/27.
+  
+*/
+
+
+"write_title_hint" = "제목을 입력해주세요.";
+"write_content_hint" = "내용을 입력해주세요.";
