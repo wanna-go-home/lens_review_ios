@@ -1,16 +1,15 @@
 //
-//  FreeBoardWriteView.swift
+//  ArticleModifyView.swift
 //  lens_review_ios
 //
-//  Created by 김선희 on 2020/12/23.
+//  Created by 김선희 on 2020/12/27.
 //
 
 import SwiftUI
 
-struct FreeBoardWriteView: View {
+struct ArticleModifyView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var freeBoardWriteViewModel:FreeBoardWriteViewModel = FreeBoardWriteViewModel()
     
     @State private var title = ""
     @State private var content = ""
@@ -73,12 +72,6 @@ struct FreeBoardWriteView: View {
             .frame(height: 25)
         }
         .padding([.leading, .trailing], 15)
-        .onChange(of: freeBoardWriteViewModel.writeSuccess) { (newValue) in
-            if(newValue == true)
-            {
-                self.presentationMode.wrappedValue.dismiss()
-            }
-        }
     }
     
     var customTitleBar : some View {
@@ -92,22 +85,17 @@ struct FreeBoardWriteView: View {
             
             Spacer()
             
-            Button(action: {writeArticle(title: title, content: content)})
+            Button(action: {})
             {
                 Text("등록")
             }
         }
         .foregroundColor(Color("BoardContentColor"))
     }
-    
-    func writeArticle(title: String, content: String)
-    {
-        freeBoardWriteViewModel.postArticle(title: title, content: content)
-    }
 }
 
-struct FreeBoardWriteView_Previews: PreviewProvider {
+struct ArticleModifyView_Previews: PreviewProvider {
     static var previews: some View {
-        FreeBoardWriteView()
+        ArticleModifyView()
     }
 }

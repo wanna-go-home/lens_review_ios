@@ -14,11 +14,17 @@ struct FreeBoardDetailView: View
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var showMofifyView = false
+    
     var body: some View {
         VStack(spacing: 0)
         {
             customTitleBar
             FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
+            
+            NavigationLink(destination: ArticleModifyView(), isActive: $showMofifyView){
+                EmptyView()
+            }
         }
         .onAppear(perform: callFreeBoardDetail)
         .frame(maxHeight:.infinity,  alignment: .top)
@@ -54,10 +60,16 @@ struct FreeBoardDetailView: View
                     .frame(width:20, height: 20)
                     .foregroundColor(Color("IconColor"))
                 
-                Image("more-hori") // set image here
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:20, height: 20)
-                    .foregroundColor(Color("IconColor"))
+                Menu(content: {
+                    Button("수정하기", action: { self.showMofifyView = true })
+                    Button("삭제하기", action: {})
+                },
+                label: {
+                    Image("more-hori")
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:20, height: 20)
+                        .foregroundColor(Color("IconColor"))
+                })
             }
             .padding(.trailing, 10)
         }
