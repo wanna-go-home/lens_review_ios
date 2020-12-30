@@ -14,15 +14,35 @@ struct FreeBoardDetailView: View
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var showMofifyView = false
+    @State private var showDeleteAlert = false
+    
     var body: some View {
         VStack(spacing: 0)
         {
             customTitleBar
             FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
+            
+            NavigationLink(destination: ArticleModifyView(articleId: selectedArticleId, articleTitle: freeBoardDetailViewModel.article.title, articleContent: freeBoardDetailViewModel.article.content), isActive: $showMofifyView){
+                EmptyView()
+            }
+            
+            .alert(isPresented: $showDeleteAlert)
+            {
+                Alert(title: Text(""), message: Text("delete_article_question".localized),
+                      primaryButton: .destructive(Text("delete_button_title".localized), action: { callDeleteArticle() }),
+                      secondaryButton: .cancel())
+            }
         }
         .onAppear(perform: callFreeBoardDetail)
         .frame(maxHeight:.infinity,  alignment: .top)
         .navigationBarHidden(true)
+        .onChange(of: freeBoardDetailViewModel.deleteSuccess) { (newValue) in
+            if(newValue == true)
+            {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
     
     var customTitleBar : some View {
@@ -54,10 +74,16 @@ struct FreeBoardDetailView: View
                     .frame(width:20, height: 20)
                     .foregroundColor(Color("IconColor"))
                 
-                Image("more-hori") // set image here
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:20, height: 20)
-                    .foregroundColor(Color("IconColor"))
+                Menu(content: {
+                    Button("수정하기", action: { self.showMofifyView = true })
+                    Button("삭제하기", action: { self.showDeleteAlert = true })
+                },
+                label: {
+                    Image("more-hori")
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:20, height: 20)
+                        .foregroundColor(Color("IconColor"))
+                })
             }
             .padding(.trailing, 10)
         }
@@ -67,6 +93,11 @@ struct FreeBoardDetailView: View
     {
         freeBoardDetailViewModel.getFreeBoardDetail(id: selectedArticleId)
         freeBoardDetailViewModel.getCommentList(id: selectedArticleId)
+    }
+    
+    func callDeleteArticle()
+    {
+        freeBoardDetailViewModel.delArticle(articleId: selectedArticleId)
     }
 }
 

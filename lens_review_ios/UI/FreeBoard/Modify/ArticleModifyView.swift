@@ -1,17 +1,20 @@
 //
-//  FreeBoardWriteView.swift
+//  ArticleModifyView.swift
 //  lens_review_ios
 //
-//  Created by 김선희 on 2020/12/23.
+//  Created by 김선희 on 2020/12/27.
 //
 
 import SwiftUI
 
-struct FreeBoardWriteView: View {
+struct ArticleModifyView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var freeBoardWriteViewModel:FreeBoardWriteViewModel = FreeBoardWriteViewModel()
+    @ObservedObject var articleModifyViewModel:ArticleModifyViewModel = ArticleModifyViewModel()
     
+    var articleId = 0
+    var articleTitle = ""
+    var articleContent = ""
     @State private var title = ""
     @State private var content = ""
 
@@ -73,12 +76,16 @@ struct FreeBoardWriteView: View {
             .frame(height: 25)
         }
         .padding([.leading, .trailing], 15)
-        .onChange(of: freeBoardWriteViewModel.writeSuccess) { (newValue) in
+        .onChange(of: articleModifyViewModel.modifySuccess) { (newValue) in
             if(newValue == true)
             {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
+        .onAppear(perform: {
+            self.title = articleTitle
+            self.content = articleContent
+        })
     }
     
     var customTitleBar : some View {
@@ -92,7 +99,9 @@ struct FreeBoardWriteView: View {
             
             Spacer()
             
-            Button(action: {writeArticle(title: title, content: content)})
+            Button(action: {
+                modifyArticle(articleId: articleId, title: title, content: content)
+            })
             {
                 Text("등록")
             }
@@ -100,14 +109,14 @@ struct FreeBoardWriteView: View {
         .foregroundColor(Color("BoardContentColor"))
     }
     
-    func writeArticle(title: String, content: String)
+    func modifyArticle(articleId: Int, title: String, content: String)
     {
-        freeBoardWriteViewModel.postArticle(title: title, content: content)
+        articleModifyViewModel.putArticle(articleId: articleId, title: title, content: content)
     }
 }
 
-struct FreeBoardWriteView_Previews: PreviewProvider {
+struct ArticleModifyView_Previews: PreviewProvider {
     static var previews: some View {
-        FreeBoardWriteView()
+        ArticleModifyView()
     }
 }
