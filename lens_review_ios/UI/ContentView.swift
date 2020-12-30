@@ -7,11 +7,10 @@
 //
 
 import SwiftUI
-import SlidingTabView
 
 struct ContentView: View
 {
-    @State private var selection = 0
+    @State private var selection = 1
     @EnvironmentObject var loginViewModel: LoginViewModel
     @EnvironmentObject var lensViewModel: LensListViewModel
     @EnvironmentObject var reviewListViewModel: ReviewListViewModel
@@ -22,44 +21,31 @@ struct ContentView: View
             LoginView()
         } else {
             VStack{
-                SlidingTabView(selection: self.$selection, tabs: ["렌즈 리스트", "리뷰 게시판", "자유 게시판"], inactiveAccentColor: Color("BoardContentColor"))
-
-                if(selection == 0){
+                TabBarView(selectionTabId: $selection)
+                    .frame(height: 40)
+                
+                TabView(selection: $selection){
                     LensListView()
-                        .onAppear{ print("0 A")}
-                        .onDisappear{ print("0 D")}
-                }else if(selection == 1){
+                        .tabItem {
+                            Image(systemName: "list.dash")
+                            Text("렌즈 리스트")
+                        }.tag(1)
                     ReviewListView()
-                        .onAppear{ print("1 A")}
-                        .onDisappear{ print("1 D")}
-                }else if(selection == 2){
+                        .tabItem {
+                            Image(systemName: "list.dash")
+                            Text("리뷰 게시판")
+                        }.tag(2)
                     BoardListView()
-                        .onAppear{ print("2 A")}
-                        .onDisappear{ print("2 D")}
+                        .tabItem {
+                            Image(systemName: "list.dash")
+                            Text("자유 게시판")
+                        }.tag(3)
                 }
-//                TabBarView(selectionTabId: $selection)
-//                    .frame(height: 40)
-//
-//                TabView(selection: $selection){
-//                    LensListView().tabItem{ Text("0")}.tag(1)
-//                        .onAppear{ print("0 A")}
-//                        .onDisappear{ print("0 D")}
-//                    ReviewListView().tabItem{ Text("0")}.tag(2)
-//                        .onAppear{ print("1 A")}
-//                        .onDisappear{ print("1 D")}
-//                    BoardListView().tabItem{ Text("0")}.tag(3)
-//                        .onAppear{ print("2 A")}
-//                        .onDisappear{ print("2 D")}
-//                }
-////                .onAppear(perform: {
-////                    lensViewModel.getLensList()
-////                })
-//                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .onAppear(perform: {
+                    lensViewModel.getLensList()
+                })
+                .tabViewStyle(PageTabViewStyle())
             }
-            .onAppear(perform: {
-                lensViewModel.getLensList()
-            })
-            .animation(.none)
         }
     }
 }

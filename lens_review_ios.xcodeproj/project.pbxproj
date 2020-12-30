@@ -37,7 +37,6 @@
 		557BE3E62590D0300022F5D0 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BE3E52590D0300022F5D0 /* CommentView.swift */; };
 		557BE3E92590D5940022F5D0 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BE3E82590D5940022F5D0 /* CommentViewModel.swift */; };
 		557BE3EC2590D7860022F5D0 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557BE3EB2590D7860022F5D0 /* UIConstants.swift */; };
-		557E1C2C2599B09A003931A7 /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 557E1C2B2599B09A003931A7 /* SlidingTabView */; };
 		557E77542537327A00DDA4F7 /* LensListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557E77532537327A00DDA4F7 /* LensListView.swift */; };
 		558304512538963800C46BE0 /* FreeBoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304502538963800C46BE0 /* FreeBoardPreview.swift */; };
 		558304542538971500C46BE0 /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558304532538971500C46BE0 /* BoardListView.swift */; };
@@ -112,7 +111,6 @@
 			files = (
 				55E074A125448CDB0030C7C0 /* KeychainSwift in Frameworks */,
 				556D1CB82543328800EC8084 /* URLImage in Frameworks */,
-				557E1C2C2599B09A003931A7 /* SlidingTabView in Frameworks */,
 				186BF9311CB903D965C2FEEC /* Pods_lens_review_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +344,6 @@
 			packageProductDependencies = (
 				556D1CB72543328800EC8084 /* URLImage */,
 				55E074A025448CDB0030C7C0 /* KeychainSwift */,
-				557E1C2B2599B09A003931A7 /* SlidingTabView */,
 			);
 			productName = lens_review_ios;
 			productReference = 5550A7CD2531E44200FAFD30 /* lens_review_ios.app */;
@@ -379,7 +376,6 @@
 			packageReferences = (
 				556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */,
 				55E0749F25448CDB0030C7C0 /* XCRemoteSwiftPackageReference "keychain-swift" */,
-				557E1C2A2599B09A003931A7 /* XCRemoteSwiftPackageReference "SlidingTabView" */,
 			);
 			productRefGroup = 5550A7CE2531E44200FAFD30 /* Products */;
 			projectDirPath = "";
@@ -702,14 +698,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		557E1C2A2599B09A003931A7 /* XCRemoteSwiftPackageReference "SlidingTabView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/QuynhNguyen/SlidingTabView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 		55E0749F25448CDB0030C7C0 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -725,11 +713,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 556D1CB62543328800EC8084 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
-		};
-		557E1C2B2599B09A003931A7 /* SlidingTabView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 557E1C2A2599B09A003931A7 /* XCRemoteSwiftPackageReference "SlidingTabView" */;
-			productName = SlidingTabView;
 		};
 		55E074A025448CDB0030C7C0 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
