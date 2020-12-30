@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import SlidingTabView
 
 struct ContentView: View
 {
-    @State private var selection = 1
+    @State private var selection = 0
     @EnvironmentObject var loginViewModel: LoginViewModel
     @EnvironmentObject var lensViewModel: LensListViewModel
     @EnvironmentObject var reviewListViewModel: ReviewListViewModel
@@ -21,31 +22,44 @@ struct ContentView: View
             LoginView()
         } else {
             VStack{
-                TabBarView(selectionTabId: $selection)
-                    .frame(height: 40)
-                
-                TabView(selection: $selection){
+                SlidingTabView(selection: self.$selection, tabs: ["렌즈 리스트", "리뷰 게시판", "자유 게시판"], inactiveAccentColor: Color("BoardContentColor"))
+
+                if(selection == 0){
                     LensListView()
-                        .tabItem {
-                            Image(systemName: "list.dash")
-                            Text("렌즈 리스트")
-                        }.tag(1)
+                        .onAppear{ print("0 A")}
+                        .onDisappear{ print("0 D")}
+                }else if(selection == 1){
                     ReviewListView()
-                        .tabItem {
-                            Image(systemName: "list.dash")
-                            Text("리뷰 게시판")
-                        }.tag(2)
+                        .onAppear{ print("1 A")}
+                        .onDisappear{ print("1 D")}
+                }else if(selection == 2){
                     BoardListView()
-                        .tabItem {
-                            Image(systemName: "list.dash")
-                            Text("자유 게시판")
-                        }.tag(3)
+                        .onAppear{ print("2 A")}
+                        .onDisappear{ print("2 D")}
                 }
-                .onAppear(perform: {
-                    lensViewModel.getLensList()
-                })
-                .tabViewStyle(PageTabViewStyle())
+//                TabBarView(selectionTabId: $selection)
+//                    .frame(height: 40)
+//
+//                TabView(selection: $selection){
+//                    LensListView().tabItem{ Text("0")}.tag(1)
+//                        .onAppear{ print("0 A")}
+//                        .onDisappear{ print("0 D")}
+//                    ReviewListView().tabItem{ Text("0")}.tag(2)
+//                        .onAppear{ print("1 A")}
+//                        .onDisappear{ print("1 D")}
+//                    BoardListView().tabItem{ Text("0")}.tag(3)
+//                        .onAppear{ print("2 A")}
+//                        .onDisappear{ print("2 D")}
+//                }
+////                .onAppear(perform: {
+////                    lensViewModel.getLensList()
+////                })
+//                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
+            .onAppear(perform: {
+                lensViewModel.getLensList()
+            })
+            .animation(.none)
         }
     }
 }

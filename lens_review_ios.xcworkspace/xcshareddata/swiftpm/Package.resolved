@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "SlidingTabView",
+        "repositoryURL": "https://github.com/QuynhNguyen/SlidingTabView",
+        "state": {
+          "branch": null,
+          "revision": "b0f0662977418824d50546b2850a523dcd793bb0",
+          "version": "1.0.2"
+        }
+      },
+      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
         "state": {

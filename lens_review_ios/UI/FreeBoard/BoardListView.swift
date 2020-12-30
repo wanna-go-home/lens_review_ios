@@ -33,6 +33,7 @@ struct BoardListView: View {
                 .padding([.leading, .trailing])
                 .navigationBarHidden(true)
                 .onAppear(perform: {
+                    print("shshshsh")
                     boardListViewModel.getBoardList()
                 })
                 
