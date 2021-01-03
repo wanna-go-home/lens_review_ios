@@ -16,7 +16,7 @@ struct ContentView: View
     @EnvironmentObject var reviewListViewModel: ReviewListViewModel
     @EnvironmentObject var boardListViewModel: BoardListViewModel
 
-    var body: some View {        
+    var body: some View {
         if !loginViewModel.isLoginSuccess {
             LoginView()
         } else {
@@ -24,28 +24,32 @@ struct ContentView: View
                 TabBarView(selectionTabId: $selection)
                     .frame(height: 40)
                 
-                TabView(selection: $selection){
+                if(selection == 1){
                     LensListView()
-                        .tabItem {
-                            Image(systemName: "list.dash")
-                            Text("렌즈 리스트")
-                        }.tag(1)
+                }else if(selection == 2){
                     ReviewListView()
-                        .tabItem {
-                            Image(systemName: "list.dash")
-                            Text("리뷰 게시판")
-                        }.tag(2)
+                }else if(selection == 3){
                     BoardListView()
-                        .tabItem {
-                            Image(systemName: "list.dash")
-                            Text("자유 게시판")
-                        }.tag(3)
                 }
-                .onAppear(perform: {
-                    lensViewModel.getLensList()
-                })
-                .tabViewStyle(PageTabViewStyle())
             }
+            .onAppear(perform: {
+                lensViewModel.getLensList()
+            })
+            .gesture(
+                DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+                    .onEnded { value in
+                        if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+                            if selection <= 2 {
+                                selection += 1
+                            }
+                        }
+                        else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
+                            if selection >= 2 {
+                                selection -= 1
+                            }
+                        }
+                    }
+            )
         }
     }
 }
