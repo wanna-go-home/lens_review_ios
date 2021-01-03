@@ -8,9 +8,16 @@
 
 import SwiftUI
 
+private let LENS_TAB = 1
+private let REVIEW_TAB = 2
+private let ARTICLE_TAB = 3
+
+private let MIN_PAGE_NUM = 1
+private let MAX_PAGE_NUM = 3
+
 struct ContentView: View
 {
-    @State private var selection = 1
+    @State private var selection = LENS_TAB
     @EnvironmentObject var loginViewModel: LoginViewModel
     @EnvironmentObject var lensViewModel: LensListViewModel
     @EnvironmentObject var reviewListViewModel: ReviewListViewModel
@@ -24,11 +31,11 @@ struct ContentView: View
                 TabBarView(selectionTabId: $selection)
                     .frame(height: 40)
                 
-                if(selection == 1){
+                if(selection == LENS_TAB){
                     LensListView()
-                }else if(selection == 2){
+                }else if(selection == REVIEW_TAB){
                     ReviewListView()
-                }else if(selection == 3){
+                }else if(selection == ARTICLE_TAB){
                     BoardListView()
                 }
             }
@@ -39,12 +46,12 @@ struct ContentView: View
                 DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
                     .onEnded { value in
                         if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
-                            if selection <= 2 {
+                            if selection < MAX_PAGE_NUM {
                                 selection += 1
                             }
                         }
                         else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
-                            if selection >= 2 {
+                            if selection > MIN_PAGE_NUM {
                                 selection -= 1
                             }
                         }
@@ -66,9 +73,9 @@ struct TabBarView: View
                 Text("렌즈 리스트")
                 Rectangle()
                     .frame(height:2)
-                    .foregroundColor(selectionTabId == 1 ? .blue : .clear)
+                    .foregroundColor(selectionTabId == LENS_TAB ? .blue : .clear)
             }.onTapGesture {
-                self.selectionTabId = 1
+                self.selectionTabId = LENS_TAB
             }
             
             Spacer()
@@ -77,9 +84,9 @@ struct TabBarView: View
                 Text("리뷰 게시판")
                 Rectangle()
                     .frame(height:2)
-                    .foregroundColor(selectionTabId == 2 ? .blue : .clear)
+                    .foregroundColor(selectionTabId == REVIEW_TAB ? .blue : .clear)
             }.onTapGesture {
-                self.selectionTabId = 2
+                self.selectionTabId = REVIEW_TAB
             }
             
             Spacer()
@@ -88,9 +95,9 @@ struct TabBarView: View
                 Text("자유 게시판")
                 Rectangle()
                     .frame(height:2)
-                    .foregroundColor(selectionTabId == 3 ? .blue : .clear)
+                    .foregroundColor(selectionTabId == ARTICLE_TAB ? .blue : .clear)
             }.onTapGesture {
-                self.selectionTabId = 3
+                self.selectionTabId = ARTICLE_TAB
             }
             
             Spacer()
