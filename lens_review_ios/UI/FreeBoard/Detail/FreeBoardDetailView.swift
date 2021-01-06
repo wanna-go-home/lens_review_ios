@@ -14,6 +14,7 @@ struct FreeBoardDetailView: View
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var showMoreAction = false
     @State private var showMofifyView = false
     @State private var showDeleteAlert = false
     
@@ -74,16 +75,21 @@ struct FreeBoardDetailView: View
                     .frame(width:20, height: 20)
                     .foregroundColor(Color("IconColor"))
                 
-                Menu(content: {
-                    Button("수정하기", action: { self.showMofifyView = true })
-                    Button("삭제하기", action: { self.showDeleteAlert = true })
-                },
-                label: {
+                Button(action: {
+                    self.showMoreAction = true
+                }, label: {
                     Image("more-hori")
                         .aspectRatio(contentMode: .fit)
                         .frame(width:20, height: 20)
                         .foregroundColor(Color("IconColor"))
                 })
+                .actionSheet(isPresented: $showMoreAction){
+                    ActionSheet(title: Text("article_actionSheet_title".localized), buttons: [
+                        .default(Text("modify".localized), action: { self.showMofifyView = true }),
+                        .destructive(Text("delete".localized), action: { self.showDeleteAlert = true }),
+                        .cancel()
+                    ])
+                }
             }
             .padding(.trailing, 10)
         }
