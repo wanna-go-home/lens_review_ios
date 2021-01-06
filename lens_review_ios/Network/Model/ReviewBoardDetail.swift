@@ -10,7 +10,7 @@ import Foundation
 struct ReviewBoardDetail : Decodable, Identifiable
 {
     var id : Int = 0
-    var email : String = ""
+    var accountId : Int = 0
     var nickname : String = ""
     var title : String = ""
     var content : String = ""
@@ -19,10 +19,11 @@ struct ReviewBoardDetail : Decodable, Identifiable
     var replyCnt : Int = 0
     var createdAt : String = ""
     var lensId : Int = 0
+    var lensEntity = LensDetail()
 
     enum CodingKeys: String, CodingKey {
         case id
-        case email
+        case accountId
         case nickname
         case title
         case content
@@ -31,5 +32,6 @@ struct ReviewBoardDetail : Decodable, Identifiable
         case replyCnt
         case createdAt
         case lensId
+        case lensEntity
     }
 }
