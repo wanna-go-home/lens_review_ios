@@ -102,7 +102,7 @@ struct FreeBoardRow: View {
                 
                 Spacer()
                 
-                Text("\(board_.getDateTime())")
+                Text(calcCreatedBefore(createdAt: board_.createdAt))
                     .font(.system(size: 11))
             }
             .frame(height: 18)

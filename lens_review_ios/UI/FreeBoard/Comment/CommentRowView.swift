@@ -30,7 +30,7 @@ struct CommentRowView: View
                         
                     HStack(spacing: 20)
                     {
-                        Text(convertDateFormat(inputData: comment.createdAt, outputFormat: "MM/dd-HH:mm"))
+                        Text(calcCreatedBefore(createdAt: comment.createdAt))
                         
                         HStack(spacing: 5)
                         {
@@ -112,7 +112,7 @@ struct ChildCommentRowView: View
                     
                 HStack(spacing: 20)
                 {
-                    Text(convertDateFormat(inputData: comment.createdAt, outputFormat: "MM/dd-HH:mm"))
+                    Text(calcCreatedBefore(createdAt: comment.createdAt))
                     
                     HStack(spacing: 5)
                     {

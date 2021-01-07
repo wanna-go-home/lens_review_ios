@@ -9,8 +9,13 @@ import Foundation
 
 extension String
 {
-     var localized: String
-     {
+//    var localized: String
+    func localized() -> String 
+    {
        return NSLocalizedString(self, tableName: "Localizable", value: self, comment: "")
+    }
+    
+    func localized(with argument: CVarArg = [], comment: String = "") -> String {
+        return String(format: self.localized(), argument)
     }
 }

@@ -26,14 +26,14 @@ struct FreeBoardWriteView: View {
             // Title & Content
             VStack
             {
-                TextField("write_title_hint".localized, text: $title)
+                TextField("write_title_hint".localized(), text: $title)
                     .autocapitalization(.none)
                 
                 Divider()
                 
                 ScrollView(showsIndicators: true)
                 {
-                    TextField("write_content_hint".localized, text: $content)
+                    TextField("write_content_hint".localized(), text: $content)
                         .autocapitalization(.none)
                 }
                 .padding(.top , 3)

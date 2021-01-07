@@ -17,3 +17,10 @@
 "modify" = "수정";
 "delete" = "삭제하기";
 "report" = "신고하기";
+
+"%d_year_ago" = "%d 년 전";
+"%d_month_ago" = "%d 개월 전";
+"%d_day_ago" = "%d 일 전";
+"%d_hour_ago" = "%d 시간 전";
+"%d_mintue_ago" = "%d 분 전";
+"just_now" = "방금";
