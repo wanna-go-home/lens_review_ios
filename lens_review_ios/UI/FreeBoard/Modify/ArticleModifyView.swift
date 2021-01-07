@@ -94,8 +94,8 @@ struct ArticleModifyView: View {
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("취소")
-            }
+                    Text("cancel".localized())
+                }
             
             Spacer()
             
@@ -103,7 +103,7 @@ struct ArticleModifyView: View {
                 modifyArticle(articleId: articleId, title: title, content: content)
             })
             {
-                Text("등록")
+                Text("post".localized())
             }
         }
         .foregroundColor(Color("BoardContentColor"))

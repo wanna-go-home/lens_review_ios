@@ -16,15 +16,15 @@ struct LoginView: View {
     
     var body: some View {
         VStack{
-            TextField("User ID", text: $userID)
+            TextField("user_id".localized(), text: $userID)
                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 .padding()
-            SecureField("Password", text: $userPW)
+            SecureField("user_pw".localized(), text: $userPW)
                 .autocapitalization(.none)
                 .padding()
             Button(action: login)
             {
-                Text("Login")
+                Text("login".localized())
             }
         }
     }

@@ -58,7 +58,7 @@ struct FreeBoardDetailView: View
                             .aspectRatio(contentMode: .fit)
                             .frame(width:35, height: 35)
                             .foregroundColor(Color("IconColor"))
-                        Text("돌아가기")
+                        Text("go_back".localized())
                             .foregroundColor(.gray)
                     }
             }
@@ -192,7 +192,7 @@ struct FreeBoardDetailRow: View
                             .aspectRatio(contentMode: .fit)
                             .frame(width:20, height: 20)
                             .foregroundColor(Color("IconColor"))
-                        Text("공유")
+                        Text("share".localized())
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
                     }
@@ -207,7 +207,7 @@ struct FreeBoardDetailRow: View
                 // 댓글 상단
                 HStack{
                     HStack(spacing: 1){
-                        Text("시간순")
+                        Text("sort_type_time".localized())
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
                         Image("arrow-drop-down")
@@ -221,7 +221,7 @@ struct FreeBoardDetailRow: View
                     Spacer()
                     
                     HStack(spacing: 3){
-                        Text("마지막 댓글로 이동")
+                        Text("go_to_bottom_comment".localized())
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
                         Image("align-bottom")
@@ -257,7 +257,7 @@ struct FreeBoardDetailRow: View
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color("IconColor"))
-                Text("댓글을 남겨주세요")
+                Text("comment_hint".localized())
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
                 

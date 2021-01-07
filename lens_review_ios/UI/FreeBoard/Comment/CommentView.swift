@@ -50,7 +50,7 @@ struct CommentView: View
                             .aspectRatio(contentMode: .fit)
                             .frame(width:35, height: 35)
                             .foregroundColor(Color("IconColor"))
-                        Text("돌아가기")
+                        Text("go_back".localized())
                             .foregroundColor(.gray)
                     }
             }
