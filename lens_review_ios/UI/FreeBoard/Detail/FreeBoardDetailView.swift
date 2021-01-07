@@ -17,6 +17,7 @@ struct FreeBoardDetailView: View
     @State private var showMoreAction = false
     @State private var showMofifyView = false
     @State private var showDeleteAlert = false
+    @State private var showReportView = false
     
     var body: some View {
         VStack(spacing: 0)
@@ -84,15 +85,27 @@ struct FreeBoardDetailView: View
                         .foregroundColor(Color("IconColor"))
                 })
                 .actionSheet(isPresented: $showMoreAction){
-                    ActionSheet(title: Text("article_actionSheet_title".localized), buttons: [
-                        .default(Text("modify".localized), action: { self.showMofifyView = true }),
-                        .destructive(Text("delete".localized), action: { self.showDeleteAlert = true }),
-                        .cancel()
-                    ])
+                    articleActionSheet()
                 }
             }
             .padding(.trailing, 10)
         }
+    }
+    
+    fileprivate func articleActionSheet() -> ActionSheet {
+        var articleButtons = [ActionSheet.Button]()
+        
+        // TODO "isAuthor is true"
+        if true {
+            articleButtons.append(.default(Text("modify".localized), action: { self.showMofifyView = true }))
+            articleButtons.append(.destructive(Text("delete".localized), action: { self.showDeleteAlert = true }))
+        }else {
+            articleButtons.append(.destructive(Text("report".localized), action: { self.showReportView = true }))
+        }
+        
+        articleButtons.append(.cancel())
+        
+        return ActionSheet(title: Text("article_actionSheet_title".localized), buttons: articleButtons)
     }
     
     func callFreeBoardDetail()
