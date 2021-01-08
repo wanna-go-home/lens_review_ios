@@ -70,7 +70,7 @@ struct TabBarView: View
             Spacer()
 
             VStack(spacing: 8){
-                Text("렌즈 리스트")
+                Text("lens_tab".localized())
                 Rectangle()
                     .frame(height:2)
                     .foregroundColor(selectionTabId == LENS_TAB ? .blue : .clear)
@@ -81,7 +81,7 @@ struct TabBarView: View
             Spacer()
             
             VStack(spacing: 8){
-                Text("리뷰 게시판")
+                Text("review_tab".localized())
                 Rectangle()
                     .frame(height:2)
                     .foregroundColor(selectionTabId == REVIEW_TAB ? .blue : .clear)
@@ -92,7 +92,7 @@ struct TabBarView: View
             Spacer()
             
             VStack(spacing: 8){
-                Text("자유 게시판")
+                Text("article_tab".localized())
                 Rectangle()
                     .frame(height:2)
                     .foregroundColor(selectionTabId == ARTICLE_TAB ? .blue : .clear)

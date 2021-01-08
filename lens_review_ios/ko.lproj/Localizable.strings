@@ -6,14 +6,58 @@
   
 */
 
+// Tab Name
+"lens_tab" = "렌즈 리스트";
+"review_tab" = "리뷰 게시판";
+"article_tab" = "자유 게시판";
 
-"write_title_hint" = "제목을 입력해주세요.";
-"write_content_hint" = "내용을 입력해주세요.";
+
+// Title Bar
+"go_back" = "돌아가기";
+
+
+// Login
+"user_id" = "아이디";
+"user_pw" = "비밀번호";
+"login" = "로그인";
+
+
+// Lens List & Detail
+"lens_graphicDia" = "%.1f mm";
+"lens_price" = "가격: %d 원";
+"lens_grade" = "평점: ";
+"lens_divider" = "| ";
+
+
+// Article List & Detail & Comment
+"write_title_hint" = "제목을 입력해주세요";
+"write_content_hint" = "내용을 입력해주세요";
+"sort_type_time" = "시간순";
+"go_to_bottom_comment" = "마지막 댓글로 이동";
+
+"comment_hint" = "댓글을 남겨주세요";
+"child_comment" = "대댓글";
+"more_view_child_comment" = "+ 대댓글 %d 개 더 보기...";
+
+"share" = "공유";
+"cancel" = "취소";
+"post" = "등록";
+
+
+// More Action Sheet
+"modify" = "수정";
+"delete" = "삭제하기";
+"report" = "신고하기";
 
 "article_actionSheet_title" = "자유게시판";
 "delete_article_question" = "게시글을 삭제하시겠습니까?";
 "delete_button_title" = "삭제";
 
-"modify" = "수정";
-"delete" = "삭제하기";
-"report" = "신고하기";
+
+// Created Before
+"%d_year_ago" = "%d 년 전";
+"%d_month_ago" = "%d 개월 전";
+"%d_day_ago" = "%d 일 전";
+"%d_hour_ago" = "%d 시간 전";
+"%d_mintue_ago" = "%d 분 전";
+"just_now" = "방금";

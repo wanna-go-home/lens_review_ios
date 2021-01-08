@@ -30,7 +30,7 @@ struct CommentRowView: View
                         
                     HStack(spacing: 20)
                     {
-                        Text(convertDateFormat(inputData: comment.createdAt, outputFormat: "MM/dd-HH:mm"))
+                        Text(calcCreatedBefore(createdAt: comment.createdAt))
                         
                         HStack(spacing: 5)
                         {
@@ -52,7 +52,7 @@ struct CommentRowView: View
                                 .frame(width:18, height: 18)
                                 .foregroundColor(Color("IconColor"))
                             
-                            Text("대댓글")
+                            Text("child_comment".localized())
                         }
                         
                         Spacer()
@@ -74,7 +74,7 @@ struct CommentRowView: View
                     
                     NavigationLink(destination: CommentView(selectedCommentId: comment.bundleId, selectedArticleId: comment.postId))
                     {
-                        Text("+ 대댓글 \(comment.bundleSize - CommentConst.moreCommentSize)개 더 보기...")
+                        Text("more_view_child_comment".localized(with: comment.bundleSize - CommentConst.moreCommentSize))
                             .font(.system(size: 12))
                             .foregroundColor(Color("BoardContentColor"))
                             .padding(.leading, 10)
@@ -112,7 +112,7 @@ struct ChildCommentRowView: View
                     
                 HStack(spacing: 20)
                 {
-                    Text(convertDateFormat(inputData: comment.createdAt, outputFormat: "MM/dd-HH:mm"))
+                    Text(calcCreatedBefore(createdAt: comment.createdAt))
                     
                     HStack(spacing: 5)
                     {

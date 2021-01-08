@@ -36,7 +36,7 @@ struct LensDetailView: View
                             .aspectRatio(contentMode: .fit)
                             .frame(width:35, height: 35)
                             .foregroundColor(Color("IconColor"))
-                        Text("돌아가기")
+                        Text("go_back".localized())
                             .foregroundColor(.gray)
                     }
             }
@@ -78,16 +78,16 @@ struct LensDetailRow: View {
             .fontWeight(.bold)
             .padding([.top, .bottom], 10)
         
-        // TODO : Text 상수 처리, spacing 조절
         HStack(spacing: 1) {
-            Text("그래픽 직경: \(lens_.graphicDia, specifier: "%.1f")mm")
+            Text("lens_graphicDia".localized(with: lens_.graphicDia))
                 .font(.system(size: 13))
-            Text("| 가격: \(lens_.price)원")
+            Text("lens_divider".localized())
+            Text("lens_price".localized(with: lens_.price))
                 .font(.system(size: 13))
         }
         
         HStack(spacing: 1) {
-            Text("평점: ")
+            Text("lens_grade".localized())
                 .font(.system(size: 13))
             Text("4.15")
                 .font(.system(size: 13))

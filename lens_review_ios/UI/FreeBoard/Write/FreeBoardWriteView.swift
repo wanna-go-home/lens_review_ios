@@ -26,14 +26,14 @@ struct FreeBoardWriteView: View {
             // Title & Content
             VStack
             {
-                TextField("write_title_hint".localized, text: $title)
+                TextField("write_title_hint".localized(), text: $title)
                     .autocapitalization(.none)
                 
                 Divider()
                 
                 ScrollView(showsIndicators: true)
                 {
-                    TextField("write_content_hint".localized, text: $content)
+                    TextField("write_content_hint".localized(), text: $content)
                         .autocapitalization(.none)
                 }
                 .padding(.top , 3)
@@ -87,14 +87,14 @@ struct FreeBoardWriteView: View {
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("취소")
-            }
+                    Text("cancel".localized())
+                }
             
             Spacer()
             
             Button(action: {writeArticle(title: title, content: content)})
             {
-                Text("등록")
+                Text("post".localized())
             }
         }
         .foregroundColor(Color("BoardContentColor"))

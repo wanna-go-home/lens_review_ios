@@ -60,9 +60,11 @@ struct LensListRow: View {
                         .padding(.bottom, 5)
                     // TODO : Text 상수 처리, spacing 조절
                     HStack(spacing: 1) {
-                        Text("그래픽 직경: \(lens_.graphicDia, specifier: "%.1f")mm")
-                        Text("| 가격: \(lens_.price)원")
-                        Text("| 평점: ")
+                        Text("lens_graphicDia".localized(with: lens_.graphicDia))
+                        Text("lens_divider".localized())
+                        Text("lens_price".localized(with: lens_.price))
+                        Text("lens_divider".localized())
+                        Text("lens_grade".localized())
                         Text("4.15")
                             .foregroundColor(.purple)
                     }.font(.system(size: 10))
