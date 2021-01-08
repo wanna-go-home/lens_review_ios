@@ -11,9 +11,12 @@ import Alamofire
 class LensAPIClient
 {
     // user
-    static func login(account: String, pw: String, completion:@escaping (String)->Void) {
+    static func login(account: String, pw: String, completion:@escaping (String)->Void)
+    {
+        let loginReq = LoginRequest(account: account, pw: pw)
+    
         // TODO 토큰 없을때? validate 추가
-        AF.request(APIBuilder.login(account: account, pw: pw))
+        AF.request(APIBuilder.login(loginRequest: loginReq))
             .responseString {
                 (response) in completion((response.response?.headers["Authorization"])!)
         }
@@ -70,15 +73,21 @@ class LensAPIClient
         }
     }
     
-    static func postArticle(title: String, content: String, completion: @escaping(Result<String, AFError>)->Void) {
-        AF.request(APIBuilder.postArticle(title: title, content: content))
+    static func postArticle(title: String, content: String, completion: @escaping(Result<String, AFError>)->Void)
+    {
+        let articleReq = ArticleWriteRequest(title: title, content: content)
+        
+        AF.request(APIBuilder.postArticle(articleRequest: articleReq))
             .responseString {
                 (response) in completion(response.result)
         }
     }
     
-    static func putArticle(id: Int, title: String, content: String, completion: @escaping(Result<String, AFError>)->Void) {
-        AF.request(APIBuilder.putArticle(id: id, title: title, content: content))
+    static func putArticle(id: Int, title: String, content: String, completion: @escaping(Result<String, AFError>)->Void)
+    {
+        let articleReq = ArticleWriteRequest(title: title, content: content)
+        
+        AF.request(APIBuilder.putArticle(id: id, articleRequest: articleReq))
             .responseString {
                 (response) in completion(response.result)
         }
