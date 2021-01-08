@@ -24,26 +24,29 @@ enum APIBuilder: APIConfiguration
     case getLensById(id : Int)
     case getFreeBoardPreview
     case getFreeBoardById(id: Int)
-    case getFreeBoardComment(id: Int)
     case postArticle(articleRequest: ArticleWriteRequest)
     case putArticle(id: Int, articleRequest: ArticleWriteRequest)
     case deleteArticle(id: Int)
+    case getFreeBoardComment(id: Int)
     case getCommentsByCommentId(id: Int, commentId: Int)
+    case postArticleComment(id: Int, commentRequest: ArticleCommentWriteRequest)
+    case putArticleComment(id: Int, commentId: Int, commentRequest: ArticleCommentWriteRequest)
+    case deleteArticleComment(id: Int, commentId: Int)
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
     
     var method: HTTPMethod
     {
         switch self {
-        case .login, .postArticle:
+        case .login, .postArticle, .postArticleComment:
             return .post
         case .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
             return .get
-        case .putArticle:
+        case .putArticle, .putArticleComment:
             return .put
-        case .deleteArticle:
+        case .deleteArticle, .deleteArticleComment:
             return .delete
         }
     }
@@ -61,9 +64,9 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/article"
         case .getFreeBoardById(let id), .putArticle(let id, _), .deleteArticle(let id):
             return "/api/boards/article/\(id)"
-        case .getFreeBoardComment(let id):
+        case .getFreeBoardComment(let id), .postArticleComment(let id, _):
             return "/api/boards/article/\(id)/comments"
-        case .getCommentsByCommentId(let id, let commentId):
+        case .getCommentsByCommentId(let id, let commentId), .putArticleComment(let id, let commentId, _), .deleteArticleComment(let id, let commentId):
             return "/api/boards/article/\(id)/comments/\(commentId)"
         case .getReviewBoardPreview:
             return "/api/boards/review-board"
@@ -79,9 +82,11 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(loginRequest)
         case .postArticle(let articleRequest), .putArticle(_, let articleRequest):
             return try? JSONEncoder().encode(articleRequest)
+        case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
+            return try? JSONEncoder().encode(commentRequest)
         case .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
-             .getCommentsByCommentId,
+             .getCommentsByCommentId, .deleteArticleComment,
              .getReviewBoardPreview, .getReviewBoardById:
             return nil
         }

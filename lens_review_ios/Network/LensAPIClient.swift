@@ -57,22 +57,6 @@ class LensAPIClient
         }
     }
     
-    static func getFreeBoardComment(articleId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
-    {
-        AF.request(APIBuilder.getFreeBoardComment(id: articleId))
-            .responseDecodable {
-                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
-        }
-    }
-    
-    static func getFreeBoardAllComments(articleId: Int, commentId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
-    {
-        AF.request(APIBuilder.getCommentsByCommentId(id: articleId, commentId: commentId))
-            .responseDecodable {
-                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
-        }
-    }
-    
     static func postArticle(title: String, content: String, completion: @escaping(Result<String, AFError>)->Void)
     {
         let articleReq = ArticleWriteRequest(title: title, content: content)
@@ -95,6 +79,49 @@ class LensAPIClient
     
     static func deleteArticle(id: Int, completion: @escaping(Result<String, AFError>)->Void) {
         AF.request(APIBuilder.deleteArticle(id: id))
+            .responseString {
+                (response) in completion(response.result)
+        }
+    }
+    
+    static func getFreeBoardComment(articleId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getFreeBoardComment(id: articleId))
+            .responseDecodable {
+                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
+        }
+    }
+    
+    static func getFreeBoardAllComments(articleId: Int, commentId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getCommentsByCommentId(id: articleId, commentId: commentId))
+            .responseDecodable {
+                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
+        }
+    }
+    
+    static func postArticleComment(articleId: Int, bundleId: Int?, content: String, completion: @escaping(Result<String, AFError>)->Void)
+    {
+        let commentReq = ArticleCommentWriteRequest(bundleId: bundleId, content: content)
+        
+        AF.request(APIBuilder.postArticleComment(id: articleId, commentRequest: commentReq))
+            .responseString {
+                (response) in completion(response.result)
+        }
+    }
+    
+    static func putArticleComment(articleId: Int, commentId: Int, bundleId: Int, content: String, completion: @escaping(Result<String, AFError>)->Void)
+    {
+        let commentReq = ArticleCommentWriteRequest(bundleId: bundleId, content: content)
+        
+        AF.request(APIBuilder.putArticleComment(id: articleId, commentId: commentId, commentRequest: commentReq))
+            .responseString {
+                (response) in completion(response.result)
+        }
+    }
+    
+    static func deleteArticleComment(articleId: Int, commentId: Int, completion: @escaping(Result<String, AFError>)->Void) {
+        AF.request(APIBuilder.deleteArticleComment(id: articleId, commentId: commentId))
             .responseString {
                 (response) in completion(response.result)
         }
