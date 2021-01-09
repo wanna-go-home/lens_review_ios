@@ -14,19 +14,19 @@ protocol APIConfiguration: URLRequestConvertible
 {
     var method: HTTPMethod { get }
     var path: String { get }
-    var parameters: Parameters? { get }
+    var parameters: Data? { get }
 }
 
 enum APIBuilder: APIConfiguration
 {
-    case login(account: String, pw: String)
+    case login(loginRequest: LoginRequest)
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
     case getFreeBoardById(id: Int)
     case getFreeBoardComment(id: Int)
-    case postArticle(title: String, content: String)
-    case putArticle(id: Int, title: String, content: String)
+    case postArticle(articleRequest: ArticleWriteRequest)
+    case putArticle(id: Int, articleRequest: ArticleWriteRequest)
     case deleteArticle(id: Int)
     case getCommentsByCommentId(id: Int, commentId: Int)
     case getReviewBoardPreview
@@ -59,7 +59,7 @@ enum APIBuilder: APIConfiguration
             return "/api/lens/\(id)"
         case .getFreeBoardPreview, .postArticle:
             return "/api/boards/article"
-        case .getFreeBoardById(let id), .putArticle(let id, _, _), .deleteArticle(let id):
+        case .getFreeBoardById(let id), .putArticle(let id, _), .deleteArticle(let id):
             return "/api/boards/article/\(id)"
         case .getFreeBoardComment(let id):
             return "/api/boards/article/\(id)/comments"
@@ -72,13 +72,13 @@ enum APIBuilder: APIConfiguration
         }
     }
     
-    var parameters: Parameters?
+    var parameters: Data?
     {
         switch self {
-        case .login(let account_, let pw_):
-            return ["account": account_, "pw": pw_]
-        case .postArticle(let title_, let content_), .putArticle(_, let title_, let content_):
-            return ["title": title_, "content": content_]
+        case .login(let loginRequest):
+            return try? JSONEncoder().encode(loginRequest)
+        case .postArticle(let articleRequest), .putArticle(_, let articleRequest):
+            return try? JSONEncoder().encode(articleRequest)
         case .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
              .getCommentsByCommentId,
@@ -108,11 +108,7 @@ enum APIBuilder: APIConfiguration
         
         // Parameters
         if let parameters = parameters {
-            do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            } catch {
-                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
-            }
+            urlRequest.httpBody = parameters
         }
         
         return urlRequest

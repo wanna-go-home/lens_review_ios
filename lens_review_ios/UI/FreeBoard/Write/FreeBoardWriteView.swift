@@ -72,6 +72,8 @@ struct FreeBoardWriteView: View {
             }
             .frame(height: 25)
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
         .padding([.leading, .trailing], 15)
         .onChange(of: freeBoardWriteViewModel.writeSuccess) { (newValue) in
             if(newValue == true)
