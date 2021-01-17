@@ -95,8 +95,7 @@ struct FreeBoardDetailView: View
     fileprivate func articleActionSheet() -> ActionSheet {
         var articleButtons = [ActionSheet.Button]()
         
-        // TODO "isAuthor is true"
-        if true {
+        if freeBoardDetailViewModel.article.isAuthor {
             articleButtons.append(.default(Text("modify".localized()), action: { self.showMofifyView = true }))
             articleButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
         }else {

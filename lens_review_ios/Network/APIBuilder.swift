@@ -64,7 +64,7 @@ enum APIBuilder: APIConfiguration
         case .getFreeBoardComment(let id):
             return "/api/boards/article/\(id)/comments"
         case .getCommentsByCommentId(let id, let commentId):
-            return "/api/boards/article/\(id)/comment/\(commentId)"
+            return "/api/boards/article/\(id)/comments/\(commentId)"
         case .getReviewBoardPreview:
             return "/api/boards/review-board"
         case .getReviewBoardById(let id):
