@@ -100,7 +100,7 @@ class LensAPIClient
         }
     }
     
-    static func postArticleComment(articleId: Int, bundleId: Int?, content: String, completion: @escaping(Result<String, AFError>)->Void)
+    static func postArticleComment(articleId: Int, bundleId: Int? = nil, content: String, completion: @escaping(Result<String, AFError>)->Void)
     {
         let commentReq = ArticleCommentWriteRequest(bundleId: bundleId, content: content)
         
