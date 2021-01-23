@@ -53,6 +53,8 @@
 		55E074A125448CDB0030C7C0 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55E074A025448CDB0030C7C0 /* KeychainSwift */; };
 		55E446A12573D8970023FBD7 /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E446A02573D8970023FBD7 /* UIUtil.swift */; };
 		6700733C25A8BD8800968D72 /* ArticleWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6700733B25A8BD8800968D72 /* ArticleWriteRequest.swift */; };
+		6700734625A8C34300968D72 /* ArticleCommentWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6700734525A8C34300968D72 /* ArticleCommentWriteRequest.swift */; };
+		671CD72E25BC5E83003FC20C /* ChildCommentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		55E0749C25447A1F0030C7C0 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		55E446A02573D8970023FBD7 /* UIUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
 		6700733B25A8BD8800968D72 /* ArticleWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWriteRequest.swift; sourceTree = "<group>"; };
+		6700734525A8C34300968D72 /* ArticleCommentWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCommentWriteRequest.swift; sourceTree = "<group>"; };
+		671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCommentRowView.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -222,6 +226,7 @@
 				5538B488258E3EFE009F3772 /* CommentRowView.swift */,
 				557BE3E52590D0300022F5D0 /* CommentView.swift */,
 				557BE3E82590D5940022F5D0 /* CommentViewModel.swift */,
+				671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				55AEFEF7257CD945000A7A47 /* FreeBoardDetailView.swift in Sources */,
 				557BE3E62590D0300022F5D0 /* CommentView.swift in Sources */,
 				557BE3E92590D5940022F5D0 /* CommentViewModel.swift in Sources */,
+				671CD72E25BC5E83003FC20C /* ChildCommentRowView.swift in Sources */,
 				55E446A12573D8970023FBD7 /* UIUtil.swift in Sources */,
 				5538B485258E2806009F3772 /* FreeBoardComment.swift in Sources */,
 				555DAA42258519C7008E70E8 /* DateManager.swift in Sources */,
