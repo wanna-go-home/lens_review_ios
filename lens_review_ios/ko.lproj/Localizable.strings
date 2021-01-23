@@ -50,6 +50,7 @@
 "report" = "신고하기";
 
 "article_actionSheet_title" = "자유게시판";
+"article_comment_actionSheet_title" = "자유게시판 댓글";
 "delete_article_question" = "게시글을 삭제하시겠습니까?";
 "delete_button_title" = "삭제";
 
