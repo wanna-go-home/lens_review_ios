@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CommentRowView: View
 {
+    @EnvironmentObject var commentViewModel: CommentViewModel
+    
     @State private var showMoreAction = false
     @State private var showMofifyView = false
     @State private var showDeleteAlert = false
@@ -100,13 +102,19 @@ struct CommentRowView: View
             .padding([.top, .bottom], 7)
             
             Divider()
+            
+            .alert(isPresented: $showDeleteAlert)
+            {
+                Alert(title: Text(""), message: Text("delete_article_question".localized()),
+                      primaryButton: .destructive(Text("delete_button_title".localized()), action: { callDeleteComment() }),
+                      secondaryButton: .cancel())
+            }
         }
-        .alert(isPresented: $showDeleteAlert)
-        {
-            Alert(title: Text(""), message: Text("delete_article_question".localized()),
-                  primaryButton: .destructive(Text("delete_button_title".localized()), action: { }),
-                  secondaryButton: .cancel())
-        }
+    }
+    
+    fileprivate func callDeleteComment()
+    {
+        commentViewModel.deleteComment(postId: comment.postId, commentId: comment.id)
     }
     
     fileprivate func commentActionSheet() -> ActionSheet {

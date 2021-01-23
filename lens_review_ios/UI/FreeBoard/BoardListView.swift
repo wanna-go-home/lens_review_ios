@@ -21,7 +21,7 @@ struct BoardListView: View {
                     LazyVStack(alignment: .leading)
                     {
                         ForEach(boardListViewModel.boardList) { board_ in
-                            NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id))
+                            NavigationLink(destination: FreeBoardDetailView(selectedArticleId: board_.id).environmentObject(CommentViewModel()))
                             {
                                 FreeBoardRow(board_: board_)
                             }

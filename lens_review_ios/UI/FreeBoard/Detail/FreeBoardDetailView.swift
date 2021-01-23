@@ -10,7 +10,9 @@ import SwiftUI
 struct FreeBoardDetailView: View
 {
     var selectedArticleId: Int
+ 
     @ObservedObject var freeBoardDetailViewModel:FreeBoardDetailViewModel = FreeBoardDetailViewModel()
+    @EnvironmentObject var commentViewModel: CommentViewModel
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -24,7 +26,7 @@ struct FreeBoardDetailView: View
         VStack(spacing: 0)
         {
             customTitleBar
-            FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList, commentContent: $commentContent)
+            FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: commentViewModel.commentList, commentContent: $commentContent)
                 .onWriteArticleComment {
                     self.callWriteArticleComment()
                 }
@@ -49,12 +51,18 @@ struct FreeBoardDetailView: View
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
-        .onReceive(freeBoardDetailViewModel.writeCommentSuccess, perform: { value in
+        .onReceive(commentViewModel.writeCommentSuccess, perform: { value in
             if value == true
             {
                 // TODO refresh 후에 제일 스크롤 제일 아래로 내리기
                 callFreeBoardDetail()
                 commentContent = ""
+            }
+        })
+        .onReceive(commentViewModel.deleteCommentSuccess, perform: { value in
+            if value == true
+            {
+                callFreeBoardDetail()
             }
         })
     }
@@ -122,7 +130,7 @@ struct FreeBoardDetailView: View
     func callFreeBoardDetail()
     {
         freeBoardDetailViewModel.getFreeBoardDetail(id: selectedArticleId)
-        freeBoardDetailViewModel.getCommentList(id: selectedArticleId)
+        commentViewModel.getCommentList(id: selectedArticleId)
     }
     
     func callDeleteArticle()
@@ -132,7 +140,7 @@ struct FreeBoardDetailView: View
     
     func callWriteArticleComment()
     {
-        freeBoardDetailViewModel.writeComment(articleId: freeBoardDetailViewModel.article.id, content: commentContent)
+        commentViewModel.writeComment(articleId: freeBoardDetailViewModel.article.id, content: commentContent)
     }
 }
 
