@@ -52,7 +52,7 @@ struct FreeBoardDetailView: View
             }
         }
         .onReceive(commentViewModel.writeCommentSuccess, perform: { value in
-            if value == true
+            if value == CommentWriteResult.parentSuccess
             {
                 // TODO refresh 후에 제일 스크롤 제일 아래로 내리기
                 callFreeBoardDetail()

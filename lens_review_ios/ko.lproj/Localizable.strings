@@ -36,6 +36,7 @@
 "go_to_bottom_comment" = "마지막 댓글로 이동";
 
 "comment_hint" = "댓글을 남겨주세요";
+"child_comment_hint" = "대댓글을 남겨주세요";
 "child_comment" = "대댓글";
 "more_view_child_comment" = "+ 대댓글 %d 개 더 보기...";
 "comment_modify" = "댓글 수정";

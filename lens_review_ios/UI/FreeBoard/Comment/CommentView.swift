@@ -12,12 +12,15 @@ struct CommentView: View
 {
     var selectedCommentId: Int
     var selectedArticleId: Int
+    var selectedBundleId: Int
     
-    @ObservedObject var commentViewModel:CommentViewModel = CommentViewModel()
+    @EnvironmentObject var commentViewModel: CommentViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State private var commentContent = ""
 
     var body: some View {
-        VStack(spacing: 0)
+        VStack
         {
             customTitleBar
             ScrollView(showsIndicators: false)
@@ -34,9 +37,46 @@ struct CommentView: View
                 }
                 .frame(minHeight: 100)
             }
+            
+            Divider()
+            
+            // 댓글 입력
+            HStack(spacing: 4){
+                Image("camera")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(Color("IconColor"))
+                TextField("child_comment_hint".localized(), text: $commentContent)
+                    .font(.system(size: 14))
+                    .foregroundColor(.gray)
+                    .autocapitalization(.none)
+                
+                if $commentContent.wrappedValue.count > 0
+                {
+                    Button(action: { callWriteComment() })
+                    {
+                        Text("post".localized())
+                            .font(.system(size: 14))
+                            .foregroundColor(.red)
+                    }
+                }
+                
+                Spacer()
+            }
+            .padding(.leading, 15)
+            .padding(.bottom, 20)
         }
         .onAppear(perform: callGetAllComments)
         .frame(maxHeight:.infinity,  alignment: .top)
+        .onReceive(commentViewModel.writeCommentSuccess, perform: { value in
+            if value == CommentWriteResult.childSuccess
+            {
+                // TODO refresh 후에 제일 스크롤 제일 아래로 내리기
+                callGetAllComments()
+                commentContent = ""
+            }
+        })
     }
     
     var customTitleBar : some View {
@@ -62,5 +102,10 @@ struct CommentView: View
     func callGetAllComments()
     {
         commentViewModel.getAllComments(articleId: selectedArticleId, commentId: selectedCommentId)
+    }
+    
+    func callWriteComment()
+    {
+        commentViewModel.writeComment(articleId: selectedArticleId, content: commentContent, bundleId: selectedBundleId)
     }
 }

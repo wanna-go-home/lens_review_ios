@@ -95,7 +95,7 @@ struct CommentRowView: View
                 if moreFlag && comment.bundleSize > CommentConst.moreCommentSize {
                     Divider()
                     
-                    NavigationLink(destination: CommentView(selectedCommentId: comment.bundleId, selectedArticleId: comment.postId))
+                    NavigationLink(destination: CommentView(selectedCommentId: comment.bundleId, selectedArticleId: comment.postId, selectedBundleId: comment.bundleId).environmentObject(commentViewModel))
                     {
                         Text("more_view_child_comment".localized(with: comment.bundleSize - CommentConst.moreCommentSize))
                             .font(.system(size: 12))
@@ -120,7 +120,7 @@ struct CommentRowView: View
             }
         }
         
-        NavigationLink(destination: CommentView(selectedCommentId: comment.id, selectedArticleId: comment.postId), isActive: $showCommentView){
+        NavigationLink(destination: CommentView(selectedCommentId: comment.id, selectedArticleId: comment.postId, selectedBundleId: comment.bundleId).environmentObject(commentViewModel), isActive: $showCommentView){
             EmptyView()
         }
     }

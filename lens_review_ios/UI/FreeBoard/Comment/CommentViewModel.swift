@@ -10,7 +10,7 @@ import Combine
 class CommentViewModel : ObservableObject
 {
     @Published var commentList = [FreeBoardComment]()
-    let writeCommentSuccess = PassthroughSubject<Bool, Never>()
+    let writeCommentSuccess = PassthroughSubject<Int, Never>()
     let deleteCommentSuccess = PassthroughSubject<Bool, Never>()
     let modifyCommentSuccess = PassthroughSubject<Bool, Never>()
 
@@ -38,14 +38,20 @@ class CommentViewModel : ObservableObject
         }
     }
     
-    func writeComment(articleId: Int, content: String)
+    func writeComment(articleId: Int, content: String, bundleId: Int? = nil)
     {
-        LensAPIClient.postArticleComment(articleId: articleId, content: content){ result in
+        LensAPIClient.postArticleComment(articleId: articleId, bundleId: bundleId, content: content){ result in
             switch result {
             case .success:
-                self.writeCommentSuccess.send(true)
+                if bundleId == nil
+                {
+                    self.writeCommentSuccess.send(CommentWriteResult.parentSuccess)
+                }else
+                {
+                    self.writeCommentSuccess.send(CommentWriteResult.childSuccess)
+                }
             case .failure(let error):
-                self.writeCommentSuccess.send(false)
+                self.writeCommentSuccess.send(CommentWriteResult.failure)
                 print(error.localizedDescription)
             }
         }
