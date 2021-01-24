@@ -41,7 +41,8 @@ struct CommentModifyAlert
 {
     var postId: Int
     var commentId: Int
-    var onModify: (Int, Int, String) -> Void = {_,_,_ in }
+    var bundleId: Int? = nil
+    var onModify: (Int, Int, String, Int?) -> Void = {_,_,_,_ in }
     
     func alert(comment: String) {
         let alert = UIAlertController(title: nil, message: "comment_modify".localized(), preferredStyle: .alert)
@@ -49,7 +50,7 @@ struct CommentModifyAlert
             textField.text = comment
         }
         alert.addAction(UIAlertAction(title: "cancel".localized(), style: .destructive) { _ in })
-        alert.addAction(UIAlertAction(title: "modify".localized(), style: .default) { _ in self.onModify(postId, commentId, alert.textFields?[0].text ?? "") })
+        alert.addAction(UIAlertAction(title: "modify".localized(), style: .default) { _ in self.onModify(postId, commentId, alert.textFields?[0].text ?? "", bundleId) })
         showAlert(alert: alert)
     }
 

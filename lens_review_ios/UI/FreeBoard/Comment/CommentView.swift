@@ -83,6 +83,12 @@ struct CommentView: View
                 callGetAllComments()
             }
         })
+        .onReceive(commentViewModel.modifyCommentSuccess, perform: { value in
+            if value == CommentRequestResult.childSuccess
+            {
+                callGetAllComments()
+            }
+        })
     }
     
     var customTitleBar : some View {

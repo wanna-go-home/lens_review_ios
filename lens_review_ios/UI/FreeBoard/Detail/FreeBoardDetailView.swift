@@ -66,7 +66,7 @@ struct FreeBoardDetailView: View
             }
         })
         .onReceive(commentViewModel.modifyCommentSuccess, perform: { value in
-            if value == true
+            if value == CommentRequestResult.parentSuccess
             {
                 callFreeBoardDetail()
             }

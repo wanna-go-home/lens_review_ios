@@ -135,7 +135,7 @@ struct CommentRowView: View
         
         if comment.isAuthor {
             commentButtons.append(.default(Text("modify".localized()), action: {
-                                            let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, onModify: commentViewModel.modifyComment(postId:commentId:comment:))
+                                            let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, onModify: commentViewModel.modifyComment(postId:commentId:comment:bundleId:))
                                             customAlert.alert(comment: comment.content) }))
             commentButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
         }else {
