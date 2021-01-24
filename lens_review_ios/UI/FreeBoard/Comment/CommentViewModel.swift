@@ -12,6 +12,7 @@ class CommentViewModel : ObservableObject
     @Published var commentList = [FreeBoardComment]()
     let writeCommentSuccess = PassthroughSubject<Bool, Never>()
     let deleteCommentSuccess = PassthroughSubject<Bool, Never>()
+    let modifyCommentSuccess = PassthroughSubject<Bool, Never>()
 
     func getCommentList(id: Int)
     {
@@ -58,6 +59,19 @@ class CommentViewModel : ObservableObject
                 self.deleteCommentSuccess.send(true)
             case .failure(let error):
                 self.deleteCommentSuccess.send(false)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func modifyComment(postId: Int, commentId: Int, comment: String)
+    {
+        LensAPIClient.putArticleComment(articleId: postId, commentId: commentId, content: comment){ result in
+            switch result {
+            case .success:
+                self.modifyCommentSuccess.send(true)
+            case .failure(let error):
+                self.modifyCommentSuccess.send(false)
                 print(error.localizedDescription)
             }
         }

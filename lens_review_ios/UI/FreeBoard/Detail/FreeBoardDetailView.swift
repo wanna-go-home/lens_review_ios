@@ -65,6 +65,12 @@ struct FreeBoardDetailView: View
                 callFreeBoardDetail()
             }
         })
+        .onReceive(commentViewModel.modifyCommentSuccess, perform: { value in
+            if value == true
+            {
+                callFreeBoardDetail()
+            }
+        })
     }
     
     var customTitleBar : some View {
