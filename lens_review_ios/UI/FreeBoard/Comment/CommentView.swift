@@ -70,11 +70,17 @@ struct CommentView: View
         .onAppear(perform: callGetAllComments)
         .frame(maxHeight:.infinity,  alignment: .top)
         .onReceive(commentViewModel.writeCommentSuccess, perform: { value in
-            if value == CommentWriteResult.childSuccess
+            if value == CommentRequestResult.childSuccess
             {
                 // TODO refresh 후에 제일 스크롤 제일 아래로 내리기
                 callGetAllComments()
                 commentContent = ""
+            }
+        })
+        .onReceive(commentViewModel.deleteCommentSuccess, perform: { value in
+            if value == CommentRequestResult.childSuccess
+            {
+                callGetAllComments()
             }
         })
     }

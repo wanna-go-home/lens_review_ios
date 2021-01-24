@@ -14,7 +14,7 @@ struct CommentConst
     static let moreCommentSize = 3
 }
 
-struct CommentWriteResult
+struct CommentRequestResult
 {
     static let parentSuccess = 0
     static let childSuccess = 1

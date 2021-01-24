@@ -11,7 +11,7 @@ class CommentViewModel : ObservableObject
 {
     @Published var commentList = [FreeBoardComment]()
     let writeCommentSuccess = PassthroughSubject<Int, Never>()
-    let deleteCommentSuccess = PassthroughSubject<Bool, Never>()
+    let deleteCommentSuccess = PassthroughSubject<Int, Never>()
     let modifyCommentSuccess = PassthroughSubject<Bool, Never>()
 
     func getCommentList(id: Int)
@@ -45,26 +45,32 @@ class CommentViewModel : ObservableObject
             case .success:
                 if bundleId == nil
                 {
-                    self.writeCommentSuccess.send(CommentWriteResult.parentSuccess)
+                    self.writeCommentSuccess.send(CommentRequestResult.parentSuccess)
                 }else
                 {
-                    self.writeCommentSuccess.send(CommentWriteResult.childSuccess)
+                    self.writeCommentSuccess.send(CommentRequestResult.childSuccess)
                 }
             case .failure(let error):
-                self.writeCommentSuccess.send(CommentWriteResult.failure)
+                self.writeCommentSuccess.send(CommentRequestResult.failure)
                 print(error.localizedDescription)
             }
         }
     }
     
-    func deleteComment(postId: Int, commentId: Int)
+    func deleteComment(postId: Int, commentId: Int, isChildComment: Bool = false)
     {
         LensAPIClient.deleteArticleComment(articleId: postId, commentId: commentId){ result in
             switch result {
             case .success:
-                self.deleteCommentSuccess.send(true)
+                if !isChildComment
+                {
+                    self.deleteCommentSuccess.send(CommentRequestResult.parentSuccess)
+                }else
+                {
+                    self.deleteCommentSuccess.send(CommentRequestResult.childSuccess)
+                }
             case .failure(let error):
-                self.deleteCommentSuccess.send(false)
+                self.deleteCommentSuccess.send(CommentRequestResult.failure)
                 print(error.localizedDescription)
             }
         }
