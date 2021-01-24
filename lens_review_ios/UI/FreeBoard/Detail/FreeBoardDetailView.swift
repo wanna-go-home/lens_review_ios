@@ -10,7 +10,9 @@ import SwiftUI
 struct FreeBoardDetailView: View
 {
     var selectedArticleId: Int
+ 
     @ObservedObject var freeBoardDetailViewModel:FreeBoardDetailViewModel = FreeBoardDetailViewModel()
+    @EnvironmentObject var commentViewModel: CommentViewModel
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -18,12 +20,16 @@ struct FreeBoardDetailView: View
     @State private var showMofifyView = false
     @State private var showDeleteAlert = false
     @State private var showReportView = false
-    
+    @State private var commentContent = ""
+
     var body: some View {
         VStack(spacing: 0)
         {
             customTitleBar
-            FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: freeBoardDetailViewModel.commentList)
+            FreeBoardDetailRow(article_:freeBoardDetailViewModel.article, commentsList_: commentViewModel.commentList, commentContent: $commentContent)
+                .onWriteArticleComment {
+                    self.callWriteArticleComment()
+                }
             
             NavigationLink(destination: ArticleModifyView(articleId: selectedArticleId, articleTitle: freeBoardDetailViewModel.article.title, articleContent: freeBoardDetailViewModel.article.content), isActive: $showMofifyView){
                 EmptyView()
@@ -45,6 +51,26 @@ struct FreeBoardDetailView: View
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
+        .onReceive(commentViewModel.writeCommentSuccess, perform: { value in
+            if value == true
+            {
+                // TODO refresh 후에 제일 스크롤 제일 아래로 내리기
+                callFreeBoardDetail()
+                commentContent = ""
+            }
+        })
+        .onReceive(commentViewModel.deleteCommentSuccess, perform: { value in
+            if value == true
+            {
+                callFreeBoardDetail()
+            }
+        })
+        .onReceive(commentViewModel.modifyCommentSuccess, perform: { value in
+            if value == true
+            {
+                callFreeBoardDetail()
+            }
+        })
     }
     
     var customTitleBar : some View {
@@ -110,19 +136,28 @@ struct FreeBoardDetailView: View
     func callFreeBoardDetail()
     {
         freeBoardDetailViewModel.getFreeBoardDetail(id: selectedArticleId)
-        freeBoardDetailViewModel.getCommentList(id: selectedArticleId)
+        commentViewModel.getCommentList(id: selectedArticleId)
     }
     
     func callDeleteArticle()
     {
         freeBoardDetailViewModel.delArticle(articleId: selectedArticleId)
     }
+    
+    func callWriteArticleComment()
+    {
+        commentViewModel.writeComment(articleId: freeBoardDetailViewModel.article.id, content: commentContent)
+    }
 }
 
 struct FreeBoardDetailRow: View
 {
+    var onWriteArticleComment = {}
+    
     var article_: FreeBoardDetail
     var commentsList_ = [FreeBoardComment]()
+    
+    @Binding var commentContent: String
     
     var body: some View
     {
@@ -256,15 +291,30 @@ struct FreeBoardDetailRow: View
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color("IconColor"))
-                Text("comment_hint".localized())
+                TextField("comment_hint".localized(), text: $commentContent)
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
+                    .autocapitalization(.none)
+                
+                if $commentContent.wrappedValue.count > 0
+                {
+                    Button(action: { self.onWriteArticleComment() })
+                    {
+                        Text("post".localized())
+                            .font(.system(size: 14))
+                            .foregroundColor(.red)
+                    }
+                }
                 
                 Spacer()
             }
             .padding(.leading, 15)
             .padding(.bottom, 20)
         }
+    }
+    
+    func onWriteArticleComment(_ callback: @escaping () -> ()) -> some View {
+        FreeBoardDetailRow(onWriteArticleComment: callback, article_: self.article_, commentsList_: self.commentsList_, commentContent: self.$commentContent)
     }
 }
 

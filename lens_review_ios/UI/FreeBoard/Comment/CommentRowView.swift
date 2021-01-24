@@ -9,10 +9,13 @@ import SwiftUI
 
 struct CommentRowView: View
 {
+    @EnvironmentObject var commentViewModel: CommentViewModel
+    
     @State private var showMoreAction = false
-    @State private var showMofifyView = false
     @State private var showDeleteAlert = false
     @State private var showReportView = false
+    
+    @State private var newComment = ""
     
     var comment: FreeBoardComment
     var moreFlag : Bool
@@ -100,20 +103,28 @@ struct CommentRowView: View
             .padding([.top, .bottom], 7)
             
             Divider()
+            
+            .alert(isPresented: $showDeleteAlert)
+            {
+                Alert(title: Text(""), message: Text("delete_article_question".localized()),
+                      primaryButton: .destructive(Text("delete_button_title".localized()), action: { callDeleteComment() }),
+                      secondaryButton: .cancel())
+            }
         }
-        .alert(isPresented: $showDeleteAlert)
-        {
-            Alert(title: Text(""), message: Text("delete_article_question".localized()),
-                  primaryButton: .destructive(Text("delete_button_title".localized()), action: { }),
-                  secondaryButton: .cancel())
-        }
+    }
+    
+    fileprivate func callDeleteComment()
+    {
+        commentViewModel.deleteComment(postId: comment.postId, commentId: comment.id)
     }
     
     fileprivate func commentActionSheet() -> ActionSheet {
         var commentButtons = [ActionSheet.Button]()
         
         if comment.isAuthor {
-            commentButtons.append(.default(Text("modify".localized()), action: { self.showMofifyView = true }))
+            commentButtons.append(.default(Text("modify".localized()), action: {
+                                            let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, onModify: commentViewModel.modifyComment(postId:commentId:comment:))
+                                            customAlert.alert(comment: comment.content) }))
             commentButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
         }else {
             commentButtons.append(.destructive(Text("report".localized()), action: { self.showReportView = true }))
