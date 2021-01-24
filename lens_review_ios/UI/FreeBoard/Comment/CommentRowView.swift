@@ -17,8 +17,11 @@ struct CommentRowView: View
     
     @State private var newComment = ""
     
+    @State private var showCommentView = false
+    
     var comment: FreeBoardComment
     var moreFlag : Bool
+    var isCommentView : Bool
     
     var body: some View
     {
@@ -51,16 +54,21 @@ struct CommentRowView: View
                             Text("\(comment.likeCnt)")
                         }
                         
-                        // TODO 클릭 시 대댓글 POST
-                        HStack(spacing: 5)
+                        if !isCommentView
                         {
-                            Image("reply")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width:18, height: 18)
-                                .foregroundColor(Color("IconColor"))
-                            
-                            Text("child_comment".localized())
+                            Button(action: { self.showCommentView = true })
+                            {
+                                HStack(spacing: 5)
+                                {
+                                    Image("reply")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width:18, height: 18)
+                                        .foregroundColor(Color("IconColor"))
+                                    
+                                    Text("child_comment".localized())
+                                }
+                            }
                         }
                         
                         Spacer()
@@ -110,6 +118,10 @@ struct CommentRowView: View
                       primaryButton: .destructive(Text("delete_button_title".localized()), action: { callDeleteComment() }),
                       secondaryButton: .cancel())
             }
+        }
+        
+        NavigationLink(destination: CommentView(selectedCommentId: comment.id, selectedArticleId: comment.postId), isActive: $showCommentView){
+            EmptyView()
         }
     }
     

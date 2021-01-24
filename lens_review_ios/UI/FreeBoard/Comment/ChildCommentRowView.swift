@@ -15,6 +15,7 @@ struct ChildCommentRowView: View
     @State private var showReportView = false
     
     var comment: FreeBoardComment
+    var isCommentView : Bool
     
     var body: some View
     {
@@ -47,17 +48,20 @@ struct ChildCommentRowView: View
                     
                     Spacer()
                     
-                    Button(action: {
-                        self.showMoreAction = true
-                    }, label: {
-                        Image("more-hori")
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:18, height: 18)
-                            .foregroundColor(Color("IconColor"))
-                            .padding(.trailing, 25)
-                    })
-                    .actionSheet(isPresented: $showMoreAction){
-                        commentActionSheet()
+                    if isCommentView
+                    {
+                        Button(action: {
+                            self.showMoreAction = true
+                        }, label: {
+                            Image("more-hori")
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width:18, height: 18)
+                                .foregroundColor(Color("IconColor"))
+                                .padding(.trailing, 25)
+                        })
+                        .actionSheet(isPresented: $showMoreAction){
+                            commentActionSheet()
+                        }
                     }
                 }
                 .font(.system(size: 14))

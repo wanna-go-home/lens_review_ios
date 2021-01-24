@@ -274,9 +274,9 @@ struct FreeBoardDetailRow: View
                 LazyVStack(spacing: 0){
                     ForEach(commentsList_){ comment in
                         if comment.depth == CommentConst.parentComment {
-                            CommentRowView(comment: comment, moreFlag: true)
+                            CommentRowView(comment: comment, moreFlag: true, isCommentView: false)
                         } else if comment.depth == CommentConst.childComment {
-                            ChildCommentRowView(comment: comment)
+                            ChildCommentRowView(comment: comment, isCommentView: false)
                         }
                     }
                 }

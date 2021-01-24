@@ -26,9 +26,9 @@ struct CommentView: View
                 {
                     ForEach(commentViewModel.commentList) { comment_ in
                         if comment_.depth == CommentConst.parentComment {
-                            CommentRowView(comment: comment_, moreFlag: false)
+                            CommentRowView(comment: comment_, moreFlag: false, isCommentView: true)
                         }else if comment_.depth == CommentConst.childComment {
-                            ChildCommentRowView(comment: comment_)
+                            ChildCommentRowView(comment: comment_, isCommentView: true)
                         }
                     }
                 }
