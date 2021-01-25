@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ChildCommentRowView: View
 {
+    @EnvironmentObject var commentViewModel: CommentViewModel
+    
     @State private var showMoreAction = false
-    @State private var showMofifyView = false
     @State private var showDeleteAlert = false
     @State private var showReportView = false
     
     var comment: FreeBoardComment
+    var isCommentView : Bool
     
     var body: some View
     {
@@ -47,17 +49,20 @@ struct ChildCommentRowView: View
                     
                     Spacer()
                     
-                    Button(action: {
-                        self.showMoreAction = true
-                    }, label: {
-                        Image("more-hori")
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:18, height: 18)
-                            .foregroundColor(Color("IconColor"))
-                            .padding(.trailing, 25)
-                    })
-                    .actionSheet(isPresented: $showMoreAction){
-                        commentActionSheet()
+                    if isCommentView
+                    {
+                        Button(action: {
+                            self.showMoreAction = true
+                        }, label: {
+                            Image("more-hori")
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width:18, height: 18)
+                                .foregroundColor(Color("IconColor"))
+                                .padding(.trailing, 25)
+                        })
+                        .actionSheet(isPresented: $showMoreAction){
+                            commentActionSheet()
+                        }
                     }
                 }
                 .font(.system(size: 14))
@@ -73,16 +78,23 @@ struct ChildCommentRowView: View
         .alert(isPresented: $showDeleteAlert)
         {
             Alert(title: Text(""), message: Text("delete_article_question".localized()),
-                  primaryButton: .destructive(Text("delete_button_title".localized()), action: { }),
+                  primaryButton: .destructive(Text("delete_button_title".localized()), action: { callDeleteComment() }),
                   secondaryButton: .cancel())
         }
+    }
+    
+    fileprivate func callDeleteComment()
+    {
+        commentViewModel.deleteComment(postId: comment.postId, commentId: comment.id, isChildComment: true)
     }
     
     fileprivate func commentActionSheet() -> ActionSheet {
         var commentButtons = [ActionSheet.Button]()
         
         if comment.isAuthor {
-            commentButtons.append(.default(Text("modify".localized()), action: { self.showMofifyView = true }))
+            commentButtons.append(.default(Text("modify".localized()), action: {
+                                            let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, bundleId: comment.bundleId, onModify: commentViewModel.modifyComment(postId:commentId:comment:bundleId:))
+                                            customAlert.alert(comment: comment.content) }))
             commentButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
         }else {
             commentButtons.append(.destructive(Text("report".localized()), action: { self.showReportView = true }))

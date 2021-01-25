@@ -10,9 +10,9 @@ import Combine
 class CommentViewModel : ObservableObject
 {
     @Published var commentList = [FreeBoardComment]()
-    let writeCommentSuccess = PassthroughSubject<Bool, Never>()
-    let deleteCommentSuccess = PassthroughSubject<Bool, Never>()
-    let modifyCommentSuccess = PassthroughSubject<Bool, Never>()
+    let writeCommentSuccess = PassthroughSubject<Int, Never>()
+    let deleteCommentSuccess = PassthroughSubject<Int, Never>()
+    let modifyCommentSuccess = PassthroughSubject<Int, Never>()
 
     func getCommentList(id: Int)
     {
@@ -38,40 +38,58 @@ class CommentViewModel : ObservableObject
         }
     }
     
-    func writeComment(articleId: Int, content: String)
+    func writeComment(articleId: Int, content: String, bundleId: Int? = nil)
     {
-        LensAPIClient.postArticleComment(articleId: articleId, content: content){ result in
+        LensAPIClient.postArticleComment(articleId: articleId, bundleId: bundleId, content: content){ result in
             switch result {
             case .success:
-                self.writeCommentSuccess.send(true)
+                if bundleId == nil
+                {
+                    self.writeCommentSuccess.send(CommentRequestResult.parentSuccess)
+                }else
+                {
+                    self.writeCommentSuccess.send(CommentRequestResult.childSuccess)
+                }
             case .failure(let error):
-                self.writeCommentSuccess.send(false)
+                self.writeCommentSuccess.send(CommentRequestResult.failure)
                 print(error.localizedDescription)
             }
         }
     }
     
-    func deleteComment(postId: Int, commentId: Int)
+    func deleteComment(postId: Int, commentId: Int, isChildComment: Bool = false)
     {
         LensAPIClient.deleteArticleComment(articleId: postId, commentId: commentId){ result in
             switch result {
             case .success:
-                self.deleteCommentSuccess.send(true)
+                if !isChildComment
+                {
+                    self.deleteCommentSuccess.send(CommentRequestResult.parentSuccess)
+                }else
+                {
+                    self.deleteCommentSuccess.send(CommentRequestResult.childSuccess)
+                }
             case .failure(let error):
-                self.deleteCommentSuccess.send(false)
+                self.deleteCommentSuccess.send(CommentRequestResult.failure)
                 print(error.localizedDescription)
             }
         }
     }
     
-    func modifyComment(postId: Int, commentId: Int, comment: String)
+    func modifyComment(postId: Int, commentId: Int, comment: String, bundleId: Int? = nil)
     {
-        LensAPIClient.putArticleComment(articleId: postId, commentId: commentId, content: comment){ result in
+        LensAPIClient.putArticleComment(articleId: postId, commentId: commentId, bundleId: bundleId, content: comment){ result in
             switch result {
             case .success:
-                self.modifyCommentSuccess.send(true)
+                if bundleId == nil
+                {
+                    self.modifyCommentSuccess.send(CommentRequestResult.parentSuccess)
+                }else
+                {
+                    self.modifyCommentSuccess.send(CommentRequestResult.childSuccess)
+                }
             case .failure(let error):
-                self.modifyCommentSuccess.send(false)
+                self.modifyCommentSuccess.send(CommentRequestResult.failure)
                 print(error.localizedDescription)
             }
         }

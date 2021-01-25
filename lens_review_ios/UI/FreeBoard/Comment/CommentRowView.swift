@@ -17,8 +17,11 @@ struct CommentRowView: View
     
     @State private var newComment = ""
     
+    @State private var showCommentView = false
+    
     var comment: FreeBoardComment
     var moreFlag : Bool
+    var isCommentView : Bool
     
     var body: some View
     {
@@ -51,16 +54,21 @@ struct CommentRowView: View
                             Text("\(comment.likeCnt)")
                         }
                         
-                        // TODO 클릭 시 대댓글 POST
-                        HStack(spacing: 5)
+                        if !isCommentView
                         {
-                            Image("reply")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width:18, height: 18)
-                                .foregroundColor(Color("IconColor"))
-                            
-                            Text("child_comment".localized())
+                            Button(action: { self.showCommentView = true })
+                            {
+                                HStack(spacing: 5)
+                                {
+                                    Image("reply")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width:18, height: 18)
+                                        .foregroundColor(Color("IconColor"))
+                                    
+                                    Text("child_comment".localized())
+                                }
+                            }
                         }
                         
                         Spacer()
@@ -87,7 +95,7 @@ struct CommentRowView: View
                 if moreFlag && comment.bundleSize > CommentConst.moreCommentSize {
                     Divider()
                     
-                    NavigationLink(destination: CommentView(selectedCommentId: comment.bundleId, selectedArticleId: comment.postId))
+                    NavigationLink(destination: CommentView(selectedCommentId: comment.bundleId, selectedArticleId: comment.postId, selectedBundleId: comment.bundleId).environmentObject(commentViewModel))
                     {
                         Text("more_view_child_comment".localized(with: comment.bundleSize - CommentConst.moreCommentSize))
                             .font(.system(size: 12))
@@ -111,6 +119,10 @@ struct CommentRowView: View
                       secondaryButton: .cancel())
             }
         }
+        
+        NavigationLink(destination: CommentView(selectedCommentId: comment.id, selectedArticleId: comment.postId, selectedBundleId: comment.bundleId).environmentObject(commentViewModel), isActive: $showCommentView){
+            EmptyView()
+        }
     }
     
     fileprivate func callDeleteComment()
@@ -123,7 +135,7 @@ struct CommentRowView: View
         
         if comment.isAuthor {
             commentButtons.append(.default(Text("modify".localized()), action: {
-                                            let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, onModify: commentViewModel.modifyComment(postId:commentId:comment:))
+                                            let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, onModify: commentViewModel.modifyComment(postId:commentId:comment:bundleId:))
                                             customAlert.alert(comment: comment.content) }))
             commentButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
         }else {

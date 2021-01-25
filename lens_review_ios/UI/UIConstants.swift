@@ -13,3 +13,10 @@ struct CommentConst
     static let childComment = 1
     static let moreCommentSize = 3
 }
+
+struct CommentRequestResult
+{
+    static let parentSuccess = 0
+    static let childSuccess = 1
+    static let failure = 2
+}

@@ -52,7 +52,7 @@ struct FreeBoardDetailView: View
             }
         }
         .onReceive(commentViewModel.writeCommentSuccess, perform: { value in
-            if value == true
+            if value == CommentRequestResult.parentSuccess
             {
                 // TODO refresh 후에 제일 스크롤 제일 아래로 내리기
                 callFreeBoardDetail()
@@ -60,13 +60,13 @@ struct FreeBoardDetailView: View
             }
         })
         .onReceive(commentViewModel.deleteCommentSuccess, perform: { value in
-            if value == true
+            if value == CommentRequestResult.parentSuccess
             {
                 callFreeBoardDetail()
             }
         })
         .onReceive(commentViewModel.modifyCommentSuccess, perform: { value in
-            if value == true
+            if value == CommentRequestResult.parentSuccess
             {
                 callFreeBoardDetail()
             }
@@ -274,9 +274,9 @@ struct FreeBoardDetailRow: View
                 LazyVStack(spacing: 0){
                     ForEach(commentsList_){ comment in
                         if comment.depth == CommentConst.parentComment {
-                            CommentRowView(comment: comment, moreFlag: true)
+                            CommentRowView(comment: comment, moreFlag: true, isCommentView: false)
                         } else if comment.depth == CommentConst.childComment {
-                            ChildCommentRowView(comment: comment)
+                            ChildCommentRowView(comment: comment, isCommentView: false)
                         }
                     }
                 }
