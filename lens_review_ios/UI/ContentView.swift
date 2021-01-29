@@ -11,9 +11,10 @@ import SwiftUI
 private let LENS_TAB = 1
 private let REVIEW_TAB = 2
 private let ARTICLE_TAB = 3
+private let MYPAGE_TAB = 4
 
 private let MIN_PAGE_NUM = 1
-private let MAX_PAGE_NUM = 3
+private let MAX_PAGE_NUM = 4
 
 struct ContentView: View
 {
@@ -22,6 +23,7 @@ struct ContentView: View
     @EnvironmentObject var lensViewModel: LensListViewModel
     @EnvironmentObject var reviewListViewModel: ReviewListViewModel
     @EnvironmentObject var boardListViewModel: BoardListViewModel
+    @EnvironmentObject var myPageViewModel: MyPageViewModel
 
     var body: some View {
         if !loginViewModel.isLoginSuccess {
@@ -40,6 +42,8 @@ struct ContentView: View
                     ReviewListView()
                 }else if(selection == ARTICLE_TAB){
                     BoardListView()
+                }else if(selection == MYPAGE_TAB){
+                    MyPageView()
                 }
             }
             .onAppear(perform: {
@@ -101,6 +105,17 @@ struct TabBarView: View
                     .foregroundColor(selectionTabId == ARTICLE_TAB ? .blue : .clear)
             }.onTapGesture {
                 self.selectionTabId = ARTICLE_TAB
+            }
+            
+            Spacer()
+            
+            VStack(spacing: 8){
+                Text("mypage_tab".localized())
+                Rectangle()
+                    .frame(height:2)
+                    .foregroundColor(selectionTabId == MYPAGE_TAB ? .blue : .clear)
+            }.onTapGesture {
+                self.selectionTabId = MYPAGE_TAB
             }
             
             Spacer()

@@ -58,6 +58,8 @@
 		F66260C725C3F45600378A82 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260C625C3F45600378A82 /* SignUpView.swift */; };
 		F66260CB25C407A800378A82 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CA25C407A800378A82 /* SignUpViewModel.swift */; };
 		F66260CE25C408E900378A82 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CD25C408E900378A82 /* SignUp.swift */; };
+		671CD74725C40FCE003FC20C /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD74625C40FCE003FC20C /* MyPageView.swift */; };
+		671CD74A25C40FDA003FC20C /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD74925C40FDA003FC20C /* MyPageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +111,8 @@
 		6700733B25A8BD8800968D72 /* ArticleWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWriteRequest.swift; sourceTree = "<group>"; };
 		6700734525A8C34300968D72 /* ArticleCommentWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCommentWriteRequest.swift; sourceTree = "<group>"; };
 		671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCommentRowView.swift; sourceTree = "<group>"; };
+		671CD74625C40FCE003FC20C /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		671CD74925C40FDA003FC20C /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66260C625C3F45600378A82 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -232,9 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				5538B488258E3EFE009F3772 /* CommentRowView.swift */,
+				671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */,
 				557BE3E52590D0300022F5D0 /* CommentView.swift */,
 				557BE3E82590D5940022F5D0 /* CommentViewModel.swift */,
-				671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -262,6 +266,7 @@
 			children = (
 				5550A7D22531E44200FAFD30 /* ContentView.swift */,
 				55D54FC1256AA50C00D87D4B /* Login */,
+				671CD74525C40BF9003FC20C /* MyPage */,
 				55D54FC0256AA50200D87D4B /* LensList */,
 				55D54FC2256AA53800D87D4B /* LensDetail */,
 				55D54FC3256AA54500D87D4B /* FreeBoard */,
@@ -321,6 +326,15 @@
 				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
 			);
 			path = ReviewBoard;
+			sourceTree = "<group>";
+		};
+		671CD74525C40BF9003FC20C /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				671CD74625C40FCE003FC20C /* MyPageView.swift */,
+				671CD74925C40FDA003FC20C /* MyPageViewModel.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		685406D9EDE03E534247871F /* Frameworks */ = {
@@ -487,11 +501,13 @@
 				55415E332544661F006630CA /* LoginViewModel.swift in Sources */,
 				55380DEF2585F8C10093642C /* ReviewBoardDetailView.swift in Sources */,
 				55AC87122539F0F700141F21 /* ReviewListView.swift in Sources */,
+				671CD74A25C40FDA003FC20C /* MyPageViewModel.swift in Sources */,
 				55380DF22585F8E40093642C /* ReviewBoardDetailViewModel.swift in Sources */,
 				557E77542537327A00DDA4F7 /* LensListView.swift in Sources */,
 				55E0749D25447A1F0030C7C0 /* Login.swift in Sources */,
 				55438C70253207B700423006 /* LensListViewModel.swift in Sources */,
 				55AEFEF2257CC3D2000A7A47 /* FreeBoardDetail.swift in Sources */,
+				671CD74725C40FCE003FC20C /* MyPageView.swift in Sources */,
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				5574A8CC2598C40100FE1954 /* StringUtil.swift in Sources */,
