@@ -20,3 +20,9 @@ struct CommentRequestResult
     static let childSuccess = 1
     static let failure = 2
 }
+
+struct LoginErrType
+{
+    static let WrongInput = 1
+    static let ServerError = 2
+}
