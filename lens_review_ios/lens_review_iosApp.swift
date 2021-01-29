@@ -12,7 +12,6 @@ struct lens_review_iosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(LoginViewModel()).environmentObject(LensListViewModel()).environmentObject(ReviewListViewModel()).environmentObject(BoardListViewModel())
-                .environmentObject(SignUpViewModel())
         }
     }
 }
