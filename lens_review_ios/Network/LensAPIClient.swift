@@ -31,6 +31,14 @@ class LensAPIClient
             }
     }
     
+    static func getUserInfo(completion: @escaping(Result<UserInfo, AFError>) -> Void)
+    {
+        AF.request(APIBuilder.getUserInfo)
+            .responseDecodable {
+                (response: DataResponse<UserInfo, AFError>) in completion(response.result)
+            }
+    }
+    
     // lens
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {

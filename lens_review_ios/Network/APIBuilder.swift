@@ -21,6 +21,7 @@ enum APIBuilder: APIConfiguration
 {
     case login(loginRequest: LoginRequest)
     case signUp(signUpRequest : SignUpRequest)
+    case getUserInfo
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -41,7 +42,8 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login, .signUp, .postArticle, .postArticleComment:
             return .post
-        case .getLensesPreview, .getLensById,
+        case .getUserInfo,
+             .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
             return .get
@@ -59,6 +61,8 @@ enum APIBuilder: APIConfiguration
             return "/api/user/login"
         case .signUp:
             return "/api/user/signup"
+        case .getUserInfo:
+            return "/api/user/me"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById(let id):
@@ -89,7 +93,8 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
-        case .getLensesPreview, .getLensById,
+        case .getUserInfo,
+             .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
              .getCommentsByCommentId, .deleteArticleComment,
              .getReviewBoardPreview, .getReviewBoardById:
