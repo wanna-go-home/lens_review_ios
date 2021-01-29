@@ -55,6 +55,7 @@
 		6700733C25A8BD8800968D72 /* ArticleWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6700733B25A8BD8800968D72 /* ArticleWriteRequest.swift */; };
 		6700734625A8C34300968D72 /* ArticleCommentWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6700734525A8C34300968D72 /* ArticleCommentWriteRequest.swift */; };
 		671CD72E25BC5E83003FC20C /* ChildCommentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */; };
+		F66260C725C3F45600378A82 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260C625C3F45600378A82 /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCommentRowView.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F66260C625C3F45600378A82 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 		55D54FC1256AA50C00D87D4B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F66260C525C3F43000378A82 /* SignUp */,
 				55415E2B254463A6006630CA /* LoginView.swift */,
 				55415E322544661F006630CA /* LoginViewModel.swift */,
 			);
@@ -330,6 +333,14 @@
 				ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F66260C525C3F43000378A82 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				F66260C625C3F45600378A82 /* SignUpView.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +497,7 @@
 				6700733C25A8BD8800968D72 /* ArticleWriteRequest.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
+				F66260C725C3F45600378A82 /* SignUpView.swift in Sources */,
 				557BE3EC2590D7860022F5D0 /* UIConstants.swift in Sources */,
 				55AEFEF7257CD945000A7A47 /* FreeBoardDetailView.swift in Sources */,
 				557BE3E62590D0300022F5D0 /* CommentView.swift in Sources */,
