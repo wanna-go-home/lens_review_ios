@@ -17,9 +17,16 @@
 
 
 // Login
-"user_id" = "아이디";
-"user_pw" = "비밀번호";
+"login_email_hint" = "이메일을 입력해 주세요";
+"login_pw_hint" = "비밀번호를 입력해 주세요";
 "login" = "로그인";
+"login_fail" = "로그인 실패";
+"login_fail_for_server" = "서버에 문제가 발생하였습니다. 관리자에게 문의 바랍니다.";
+"login_fail_wrong_input" = "이메일과 비밀번호를 확인해 주세요.";
+
+
+// Signup
+"signup" = "회원가입";
 
 // Sign Up
 "sign_up" = "회원가입";
@@ -52,6 +59,7 @@
 "share" = "공유";
 "cancel" = "취소";
 "post" = "등록";
+"ok" = "확인";
 
 
 // More Action Sheet
