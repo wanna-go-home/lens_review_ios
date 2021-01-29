@@ -11,14 +11,13 @@ import Alamofire
 class LensAPIClient
 {
     // user
-    static func login(account: String, pw: String, completion:@escaping (String)->Void)
+    static func login(account: String, pw: String, completion:@escaping (AFDataResponse<Data?>) -> Void)
     {
         let loginReq = LoginRequest(account: account, pw: pw)
     
-        // TODO 토큰 없을때? validate 추가
         AF.request(APIBuilder.login(loginRequest: loginReq))
-            .responseString {
-                (response) in completion((response.response?.headers["Authorization"])!)
+            .response {
+                (response) in completion(response)
         }
     }
     

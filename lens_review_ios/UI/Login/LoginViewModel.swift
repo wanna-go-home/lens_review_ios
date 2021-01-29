@@ -7,10 +7,12 @@
 
 import Foundation
 import KeychainSwift
+import Combine
 
 class LoginViewModel: ObservableObject
 {
     @Published var isLoginSuccess = false
+    let loginError = PassthroughSubject<Int, Never>()
     
     init()
     {
@@ -21,9 +23,17 @@ class LoginViewModel: ObservableObject
     func login(id: String, pw: String)
     {
         LensAPIClient.login(account: id, pw: pw){ (result) in
-            // TODO success/fail 관리
-            setToken(tokenValue: result, tokenKey: "token")
-            self.isLoginSuccess = true
+            switch result.result {
+            case .success:
+                if result.response?.statusCode == 200 {
+                    setToken(tokenValue: (result.response?.headers["Authorization"])!, tokenKey: "token")
+                    self.isLoginSuccess = true
+                }else {
+                    self.loginError.send(LoginErrType.WrongInput)
+                }
+            case .failure:
+                self.loginError.send(LoginErrType.ServerError)
+            }
         }
     }
 }

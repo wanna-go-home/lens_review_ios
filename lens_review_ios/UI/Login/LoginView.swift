@@ -14,19 +14,63 @@ struct LoginView: View {
     @State private var userID = ""
     @State private var userPW = ""
     
+    @State private var showingAlert = false
+    @State private var alertMsg = ""
+    
     var body: some View {
-        VStack{
-            TextField("user_id".localized(), text: $userID)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .padding()
-            SecureField("user_pw".localized(), text: $userPW)
-                .autocapitalization(.none)
-                .padding()
+        VStack
+        {
+            Spacer()
+            
+            VStack
+            {
+                TextField("login_email_hint".localized(), text: $userID)
+                    .autocapitalization(.none)
+                    .padding(.horizontal, 30)
+                Divider()
+                    .padding(.horizontal, 30)
+                
+                SecureField("login_pw_hint".localized(), text: $userPW)
+                    .autocapitalization(.none)
+                    .padding(.horizontal, 30).padding(.top, 20)
+                Divider()
+                    .padding(.horizontal, 30)
+                
+                // TODO 회원가입
+                Button(action: { })
+                {
+                    Text("signup".localized())
+                        .foregroundColor(Color("BoardContentColor"))
+                }
+                .padding(.top, 30)
+            }
+            
+            Spacer()
+            
             Button(action: login)
             {
                 Text("login".localized())
+                    .frame(maxWidth:.infinity, minHeight: 50)
+                    .background(Color("PrimaryColor"))
+                    .foregroundColor(Color.white)
+            }
+            .padding(.bottom, 10)
+            
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("login_fail".localized()), message: Text(alertMsg), dismissButton: .default(Text("ok".localized())))
             }
         }
+        .onReceive(loginViewModel.loginError, perform: { value in
+            if value == LoginErrType.WrongInput
+            {
+                alertMsg = "login_fail_wrong_input".localized()
+                showingAlert = true
+            }else if value == LoginErrType.ServerError
+            {
+                alertMsg = "login_fail_for_server".localized()
+                showingAlert = true
+            }
+        })
     }
         
     func login() {
