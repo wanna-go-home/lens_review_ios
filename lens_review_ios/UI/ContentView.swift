@@ -25,7 +25,10 @@ struct ContentView: View
 
     var body: some View {
         if !loginViewModel.isLoginSuccess {
-            LoginView()
+            NavigationView{
+                LoginView()
+            }
+            
         } else {
             VStack{
                 TabBarView(selectionTabId: $selection)

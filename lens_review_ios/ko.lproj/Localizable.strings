@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   lens_review_ios
 
@@ -27,6 +27,14 @@
 
 // Signup
 "signup" = "회원가입";
+
+// Sign Up
+"sign_up" = "회원가입";
+"sign_up_user_email_hint" = "이메일을 입력해주세요.";
+"sign_up_user_pw_hint" = "비밀번호를 입력해주세요 (6자리 이상)";
+"sign_up_user_pw_check_hint" = "비밀번호를 재확인해주세요";
+"sign_up_user_contact" = "연락처를 입력해주세요";
+"sign_up_user_nichname" = "닉네임을 입력해주세요 (두글자 이상)";
 
 
 // Lens List & Detail

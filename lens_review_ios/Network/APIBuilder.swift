@@ -20,6 +20,7 @@ protocol APIConfiguration: URLRequestConvertible
 enum APIBuilder: APIConfiguration
 {
     case login(loginRequest: LoginRequest)
+    case signUp(signUpRequest : SignUpRequest)
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -38,7 +39,7 @@ enum APIBuilder: APIConfiguration
     var method: HTTPMethod
     {
         switch self {
-        case .login, .postArticle, .postArticleComment:
+        case .login, .signUp, .postArticle, .postArticleComment:
             return .post
         case .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
@@ -56,6 +57,8 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login:
             return "/api/user/login"
+        case .signUp:
+            return "/api/user/signup"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById(let id):
@@ -80,6 +83,8 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login(let loginRequest):
             return try? JSONEncoder().encode(loginRequest)
+        case .signUp(let signUpRequest):
+            return try? JSONEncoder().encode(signUpRequest)
         case .postArticle(let articleRequest), .putArticle(_, let articleRequest):
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):

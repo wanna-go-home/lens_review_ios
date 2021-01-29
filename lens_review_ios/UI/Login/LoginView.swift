@@ -13,7 +13,7 @@ struct LoginView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @State private var userID = ""
     @State private var userPW = ""
-    
+    @State private var showSignUpView = false
     @State private var showingAlert = false
     @State private var alertMsg = ""
     
@@ -37,7 +37,7 @@ struct LoginView: View {
                     .padding(.horizontal, 30)
                 
                 // TODO 회원가입
-                Button(action: { })
+                Button(action: openSignUpScene)
                 {
                     Text("signup".localized())
                         .foregroundColor(Color("BoardContentColor"))
@@ -59,7 +59,13 @@ struct LoginView: View {
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text("login_fail".localized()), message: Text(alertMsg), dismissButton: .default(Text("ok".localized())))
             }
+
+            NavigationLink(destination: SignUpView(), isActive: $showSignUpView){
+                EmptyView()
+            }
+            
         }
+
         .onReceive(loginViewModel.loginError, perform: { value in
             if value == LoginErrType.WrongInput
             {
@@ -73,8 +79,14 @@ struct LoginView: View {
         })
     }
         
+    
+    
     func login() {
         loginViewModel.login(id:userID, pw:userPW)
+    }
+    
+    func openSignUpScene(){
+        self.showSignUpView = true
     }
 }
 
