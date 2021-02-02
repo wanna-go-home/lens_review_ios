@@ -31,6 +31,24 @@ class LensAPIClient
             }
     }
     
+    static func checkSameEmail(email:String, completion:@escaping (AFDataResponse<Data?>) ->Void)
+    {
+        AF.request(APIBuilder.checkSameEmail(id: email))
+            .response{
+                    (response) in completion(response)
+            }
+    }
+    
+    static func checkSameNickname(nickname:String, completion:@escaping (AFDataResponse<Data?>)->Void)
+    {
+        AF.request(APIBuilder.checkSameNickname(nickname: nickname))
+            .response{
+                (response) in completion(response)
+            }
+    }
+    
+    
+    
     // lens
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {

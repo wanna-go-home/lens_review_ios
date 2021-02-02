@@ -14,6 +14,8 @@ class SignUpViewModel: ObservableObject
     let signUpSuccess = PassthroughSubject<Bool, Never>()
     let signUpError = PassthroughSubject<Int, Never>()
     
+    let isSameEmail = PassthroughSubject<Bool, Never>()
+    let isSameNickname = PassthroughSubject<Bool, Never>()
     
     func signUp(id: String, pw: String, pwCheck:String, phoneNum:String,nickname:String)
     {
@@ -31,5 +33,9 @@ class SignUpViewModel: ObservableObject
             }
 
         }
+    }
+    
+    func checkSameEmail(email : String){
+        print("")
     }
 }

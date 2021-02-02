@@ -17,16 +17,29 @@ struct SignUpView: View {
     @State private var userPwCheck = ""
     @State private var userPhoneNum=""
     @State private var userNickname = ""
-    
-    
-    var body: some View {
 
+
+    var body: some View {
+        let userIdBinding = Binding<String>(get: {
+                    self.userId
+                }, set: {
+                    self.userId = $0
+                    // do whatever you want here
+                    emailEditChanged(self.userId)
+                    
+                })
+        let userPwBinding = Binding<String>(get : {
+            self.userPw
+        }, set:{
+            self.userPw = $0
+            pwEditChanged(self.userPw)
+        })
+        
         VStack{
             
-            TextField("sign_up_user_email_hint".localized(), text: $userId)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+            TextField("sign_up_user_email_hint".localized(), text: userIdBinding)
                 .padding()
-            SecureField("sign_up_user_pw_hint".localized(), text: $userPw)
+            SecureField("sign_up_user_pw_hint".localized(), text: userPwBinding)
                 .autocapitalization(.none)
                 .padding()
             SecureField("sign_up_user_pw_check_hint".localized(), text: $userPwCheck)
@@ -57,6 +70,14 @@ struct SignUpView: View {
     func signUp(){
         signUpViewModel.signUp(id : userId, pw : userPw, pwCheck : userPwCheck, phoneNum : userPhoneNum, nickname : userNickname)
     }
+    
+    private func emailEditChanged(_ email: String) {
+        print("email " + email)
+    }
+    private func pwEditChanged(_ pw : String){
+        print("pw " + pw)
+    }
+
 }
 
 struct SignUpView_Previews: PreviewProvider {
