@@ -22,7 +22,7 @@ struct SignUpView: View {
     var body: some View {
 
         VStack{
-            
+        
             TextField("sign_up_user_email_hint".localized(), text: $userId)
                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 .padding()
