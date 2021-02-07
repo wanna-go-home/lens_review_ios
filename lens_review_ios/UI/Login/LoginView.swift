@@ -59,8 +59,8 @@ struct LoginView: View {
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text("login_fail".localized()), message: Text(alertMsg), dismissButton: .default(Text("ok".localized())))
             }
-
             NavigationLink(destination: SignUpView(), isActive: $showSignUpView){
+                
                 EmptyView()
             }
             
@@ -86,7 +86,7 @@ struct LoginView: View {
     }
     
     func openSignUpScene(){
-//        print("Asdf")
+        print("open")
 
         self.showSignUpView = true
     }
