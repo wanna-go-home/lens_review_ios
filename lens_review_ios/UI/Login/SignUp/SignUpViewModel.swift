@@ -20,6 +20,54 @@ class SignUpViewModel: ObservableObject
     let phoneNumberError = CurrentValueSubject<String, Never>("")
     let nicknameError = CurrentValueSubject<String, Never>("")
     
+    
+    var subscription = Set<AnyCancellable>()
+    
+    let userIdSubject = PassthroughSubject<String, Never>()
+    let userPwSubject = PassthroughSubject<String, Never>()
+    let userPwCheckSubject = PassthroughSubject<(String,String), Never>()
+    let userNicknameSubject = PassthroughSubject<String, Never>()
+    let userPhoneNumberSubject = PassthroughSubject<String, Never>()
+    
+    init(){
+
+        
+
+        let debounceInterval = RunLoop.SchedulerTimeType.Stride.milliseconds(300)
+        
+        
+        userIdSubject
+            .debounce(for: debounceInterval, scheduler: RunLoop.main)
+            .sink{[self] email in
+                checkValidEmail(email: email)
+            }.store(in: &subscription)
+        
+        userNicknameSubject
+            .debounce(for: debounceInterval, scheduler: RunLoop.main)
+            .sink{ [self] nickname in
+                checkValidNickname(nickname: nickname)
+            }.store(in: &subscription)
+        
+        userPhoneNumberSubject
+            .debounce(for: debounceInterval, scheduler: RunLoop.main)
+            .sink{[self] ph in
+                checkValidPhoneNumber(phoneNumber: ph)
+            }.store(in: &subscription)
+        
+        userPwSubject
+            .debounce(for: debounceInterval, scheduler: RunLoop.main)
+            .sink{[self] pw in
+                checkValidPw(pw:pw)
+            }.store(in: &subscription)
+        
+        userPwCheckSubject
+            .debounce(for: debounceInterval, scheduler: RunLoop.main)
+            .sink{[self] pw, pwCheck in
+                checkValidPwCheck(pw: pw, pwCheck: pwCheck)
+            }.store(in: &subscription)
+    }
+    
+    
     func signUp(id: String, pw: String, pwCheck:String, phoneNum:String,nickname:String)
     {
         LensAPIClient.signUp(email: id, pw: pw, phoneNum: phoneNum, nickname: nickname){ (result) in

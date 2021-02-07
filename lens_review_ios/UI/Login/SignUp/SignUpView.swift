@@ -25,50 +25,10 @@ struct SignUpView: View {
     @State private var phoneNumberError = ""
     @State private var nicknameError = ""
     
-    let userIdSubject = PassthroughSubject<String, Never>()
-    let userPwSubject = PassthroughSubject<String, Never>()
-    let userPwCheckSubject = PassthroughSubject<String, Never>()
-    
-    let userNicknameSubject = PassthroughSubject<String, Never>()
-    let userPhoneNumberSubject = PassthroughSubject<String, Never>()
-    
-    var subscription = Set<AnyCancellable>()
 
-    let debounceInterval = RunLoop.SchedulerTimeType.Stride.milliseconds(300)
 
     init(){
         
-        userIdSubject
-            .debounce(for: debounceInterval, scheduler: RunLoop.main)
-            .sink{[self] email in
-                self.signUpViewModel.checkValidEmail(email: email)
-            }.store(in: &subscription)
-        
-        userNicknameSubject
-            .debounce(for: debounceInterval, scheduler: RunLoop.main)
-            .sink{ [self] nickname in
-                self.signUpViewModel.checkValidNickname(nickname: nickname)
-            }.store(in: &subscription)
-        
-        userPhoneNumberSubject
-            .debounce(for: debounceInterval, scheduler: RunLoop.main)
-            .sink{[self] ph in
-                signUpViewModel.checkValidPhoneNumber(phoneNumber: ph)
-            }.store(in: &subscription)
-        
-        userPwSubject
-            .debounce(for: debounceInterval, scheduler: RunLoop.main)
-            .sink{[self] pw in
-                self.signUpViewModel.checkValidPw(pw:pw)
-            }.store(in: &subscription)
-        
-        userPwCheckSubject
-            .debounce(for: debounceInterval, scheduler: RunLoop.main)
-            .sink{[self] pwCheck in
-                print("비번 " + self.userPw)
-                print("비번 확인 " + pwCheck)
-                self.signUpViewModel.checkValidPwCheck(pw: self.userPw, pwCheck: pwCheck)
-            }.store(in: &subscription)
     }
     
     @State var textBinding = ""
@@ -83,7 +43,7 @@ struct SignUpView: View {
                 TextField("sign_up_user_email_hint".localized(), text: $userId)
                     .autocapitalization(.none)
                     .onChange(of: userId){ v in
-                        userIdSubject.send(v)
+                        signUpViewModel.userIdSubject.send(v)
                     }
                 Text(emailError)
                     .foregroundColor(.red)
@@ -96,7 +56,7 @@ struct SignUpView: View {
                 SecureField("sign_up_user_pw_hint".localized(), text: $userPw)
                     .autocapitalization(.none)
                     .onChange(of: userPw) { v in
-                        userPwSubject.send(v)
+                        signUpViewModel.userPwSubject.send(v)
                     }
                 Text(pwError)
                     .foregroundColor(.red)
@@ -109,7 +69,7 @@ struct SignUpView: View {
                 SecureField("sign_up_user_pw_check_hint".localized(), text: $userPwCheck)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .onChange(of: userPwCheck) { v in
-                        userPwCheckSubject.send(v)
+                        signUpViewModel.userPwCheckSubject.send((userPw, v))
                     }
                 Text(pwCheckError)
                     .foregroundColor(.red)
@@ -122,7 +82,7 @@ struct SignUpView: View {
                 TextField("sign_up_user_contact".localized(), text: $userPhoneNum)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .onChange(of: userPhoneNum){ph in
-                        userPhoneNumberSubject.send(ph)
+                        signUpViewModel.userPhoneNumberSubject.send(ph)
                         
                     }
                 Text(phoneNumberError)
@@ -137,7 +97,7 @@ struct SignUpView: View {
                     .autocapitalization(.none)
                     .onChange(of: userNickname){v in
 
-                        userNicknameSubject.send(v)
+                        signUpViewModel.userNicknameSubject.send(v)
                         
                     }
                 Text(nicknameError)
