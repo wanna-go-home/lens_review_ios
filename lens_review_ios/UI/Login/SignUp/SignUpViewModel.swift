@@ -34,27 +34,107 @@ class SignUpViewModel: ObservableObject
             case .failure:
                 self.signUpError.send(SignUpErrType.ServerError)
             }
-
+            
         }
     }
     
-    func checkVaildEmail(email : String){
-        emailError.send(email)
+    private func checkValidEmailForm(email : String) -> Bool{
+        
+        if(email.isEmpty){
+            emailError.send("empty_email".localized())
+
+            return false
+        }
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        let matchResult = emailTest.evaluate(with: email)
+        
+        if(!matchResult){
+            emailError.send("not_email_form".localized())
+            return false
+        }
+        
+        emailError.send("")
+
+        return true
     }
     
+    func checkValidEmail(email : String){
+        if(!checkValidEmailForm(email: email)){
+            return
+        }
+            
+        //send req
+
+
+    }
+    private func checkValidNicknameForm(nickname:String)->Bool{
+        if(nickname.isEmpty){
+            nicknameError.send("empty_nickname".localized())
+            return false
+        }
+        return true
+    }
     func checkValidNickname(nickname:String){
-        print("check n" + nickname)
+        if(!checkValidNicknameForm(nickname: nickname)){
+            return
+        }
+        
+        //send req
     }
     
-    func checkValidPw(pw : String){
+    private func checkValidPhoneNumberForm(phoneNumber:String)->Bool{
+        if(phoneNumber.isEmpty){
+            phoneNumberError.send("empty_phone_number".localized())
+            return false
+        }
         
-    }
-    
-    func checkValidPwCheck(pw : String){
-        
+        if(phoneNumber.count != 11){
+            phoneNumberError.send("invalid_phone_number".localized())
+            return false
+        }
+        phoneNumberError.send("")
+        return true
     }
     
     func checkValidPhoneNumber(phoneNumber:String){
-            print("check ph" + phoneNumber)
+        if(!checkValidPhoneNumberForm(phoneNumber: phoneNumber)){
+            return
+        }
+        
+        // send req
     }
+    
+    func checkValidPw(pw : String) -> Bool{
+        if(pw.isEmpty){
+            pwError.send("empty_pw".localized())
+            return false
+        }
+        
+        let reg = "[0-9|a-zA-Z|!|@|#]{6,15}"
+        let pwText = NSPredicate(format:"SELF MATCHES %@", reg)
+        let matchResult = pwText.evaluate(with : pw)
+        
+        if(!matchResult){
+            pwError.send("pw_not_acceptable".localized())
+            return false
+        }
+        pwError.send("")
+
+        
+        return true
+    }
+    
+    func checkValidPwCheck(pw : String, pwCheck:String) -> Bool{
+        
+        if(pw != pwCheck){
+            pwCheckError.send("different_pw_check".localized())
+            return false
+        }
+        pwCheckError.send("")
+        return true
+    }
+
 }
