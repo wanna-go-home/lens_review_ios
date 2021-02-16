@@ -20,7 +20,7 @@ struct MyPageView: View
             {
                 HStack
                 {
-                    Text("NickName")
+                    Text(myPageViewModel.nickname)
                         .foregroundColor(.white)
                     
                     Spacer()
@@ -44,19 +44,19 @@ struct MyPageView: View
                     VStack(alignment:.leading, spacing: 5){
                         Text("my_review_count".localized()).foregroundColor(.gray)
                             .font(.system(size: 13))
-                        Text("1").foregroundColor(.white)
+                        Text("\(myPageViewModel.reviewCnt)").foregroundColor(.white)
                     }
                     
                     VStack(alignment:.leading, spacing: 5){
                         Text("my_article_count".localized()).foregroundColor(.gray)
                             .font(.system(size: 13))
-                        Text("1").foregroundColor(.white)
+                        Text("\(myPageViewModel.articleCnt)").foregroundColor(.white)
                     }
                     
                     VStack(alignment:.leading, spacing: 5){
                         Text("my_comment_count".localized()).foregroundColor(.gray)
                             .font(.system(size: 13))
-                        Text("1").foregroundColor(.white)
+                        Text("\(myPageViewModel.commentCnt)").foregroundColor(.white)
                     }
                     
                     Spacer()
@@ -119,6 +119,14 @@ struct MyPageView: View
             
             Spacer()
         }
+        .onAppear(perform: {
+            callGetUserInfo()
+        })
+    }
+    
+    func callGetUserInfo()
+    {
+        myPageViewModel.getUserInfo()
     }
 }
 
