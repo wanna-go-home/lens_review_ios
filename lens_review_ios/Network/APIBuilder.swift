@@ -26,6 +26,7 @@ enum APIBuilder: APIConfiguration
     case checkSameEmail(id : String)
     case checkSameNickname(nickname : String)
     case checkSamePhoneNumber(phoneNumber:String)
+    case getUserInfo
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -46,8 +47,9 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login, .signUp, .postArticle, .postArticleComment:
             return .post
-        case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
-            .getLensesPreview, .getLensById,
+        case .getUserInfo,
+             .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
+             .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
             return .get
@@ -72,6 +74,8 @@ enum APIBuilder: APIConfiguration
             return "/api/user/check/nickname"
         case .checkSamePhoneNumber:
             return "/api/user/check/phoneNum"
+        case .getUserInfo:
+            return "/api/user/me"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById(let id):
@@ -102,13 +106,12 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
-        case .checkSameEmail(let id):
-            return nil
         case .checkSameNickname, .checkSamePhoneNumber, .checkSameEmail,
-             .getLensesPreview, .getLensById,
-             .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
-             .getCommentsByCommentId, .deleteArticleComment,
-             .getReviewBoardPreview, .getReviewBoardById:
+            .getUserInfo,
+            .getLensesPreview, .getLensById,
+            .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
+            .getCommentsByCommentId, .deleteArticleComment,
+            .getReviewBoardPreview, .getReviewBoardById:
             return nil
         }
     }
@@ -127,9 +130,7 @@ enum APIBuilder: APIConfiguration
     }
     
     func asURLRequest() throws -> URLRequest {
-//        let url = try NetConfig.API_BASE_URL.asURL().appendingPathComponent(path)
-        
-//        url.queryItems = URLQueryItem(name : "id",value : "rlarlvy153@naver.com")
+
         let url = NetConfig.API_BASE_URL + path
         var components = URLComponents(string : url)!
         

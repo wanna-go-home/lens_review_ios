@@ -57,6 +57,8 @@
 		671CD72E25BC5E83003FC20C /* ChildCommentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */; };
 		671CD74725C40FCE003FC20C /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD74625C40FCE003FC20C /* MyPageView.swift */; };
 		671CD74A25C40FDA003FC20C /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD74925C40FDA003FC20C /* MyPageViewModel.swift */; };
+
+		671CD75525C4335D003FC20C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD75425C4335C003FC20C /* UserInfo.swift */; };
 		F66260C725C3F45600378A82 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260C625C3F45600378A82 /* SignUpView.swift */; };
 		F66260CB25C407A800378A82 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CA25C407A800378A82 /* SignUpViewModel.swift */; };
 		F66260CE25C408E900378A82 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CD25C408E900378A82 /* SignUp.swift */; };
@@ -113,6 +115,7 @@
 		671CD72D25BC5E83003FC20C /* ChildCommentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCommentRowView.swift; sourceTree = "<group>"; };
 		671CD74625C40FCE003FC20C /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		671CD74925C40FDA003FC20C /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		671CD75425C4335C003FC20C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66260C625C3F45600378A82 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 				55380DE92585F4580093642C /* ReviewBoardDetail.swift */,
 				55E0749C25447A1F0030C7C0 /* Login.swift */,
 				F66260CD25C408E900378A82 /* SignUp.swift */,
+				671CD75425C4335C003FC20C /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -512,6 +516,7 @@
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				5574A8CC2598C40100FE1954 /* StringUtil.swift in Sources */,
 				55A99A982597829B00BC65C0 /* FreeBoardWriteViewModel.swift in Sources */,
+				671CD75525C4335D003FC20C /* UserInfo.swift in Sources */,
 				551719D32531E8A2003670D0 /* LensPreview.swift in Sources */,
 				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
 				5574A8CF2598C7C100FE1954 /* ArticleModifyViewModel.swift in Sources */,
