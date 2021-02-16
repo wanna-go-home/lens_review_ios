@@ -15,6 +15,8 @@ protocol APIConfiguration: URLRequestConvertible
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Data? { get }
+    var query: Dictionary<String, String>? { get }
+    
 }
 
 enum APIBuilder: APIConfiguration
@@ -23,6 +25,7 @@ enum APIBuilder: APIConfiguration
     case signUp(signUpRequest : SignUpRequest)
     case checkSameEmail(id : String)
     case checkSameNickname(nickname : String)
+    case checkSamePhoneNumber(phoneNumber:String)
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -43,7 +46,7 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login, .signUp, .postArticle, .postArticleComment:
             return .post
-        case .checkSameEmail, .checkSameNickname,
+        case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
             .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
@@ -62,10 +65,13 @@ enum APIBuilder: APIConfiguration
             return "/api/user/login"
         case .signUp:
             return "/api/user/signup"
-        case .checkSameEmail:
+        case .checkSameEmail(let id):
+            let r = URLEncoding(destination:.queryString)
             return "/api/user/check/id"
         case .checkSameNickname:
             return "/api/user/check/nickname"
+        case .checkSamePhoneNumber:
+            return "/api/user/check/phoneNum"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById(let id):
@@ -96,7 +102,9 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
-        case .checkSameEmail, .checkSameNickname,
+        case .checkSameEmail(let id):
+            return nil
+        case .checkSameNickname, .checkSamePhoneNumber, .checkSameEmail,
              .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
              .getCommentsByCommentId, .deleteArticleComment,
@@ -105,10 +113,34 @@ enum APIBuilder: APIConfiguration
         }
     }
     
+    var query : Dictionary<String, String>?{
+        switch self{
+        case .checkSameEmail(let id):
+            return ["id" : id]
+        case .checkSameNickname(let nickname):
+            return ["nickname" : nickname]
+        case .checkSamePhoneNumber(let ph):
+            return ["phoneNum" : ph]
+        default:
+            return nil
+        }
+    }
+    
     func asURLRequest() throws -> URLRequest {
-        let url = try NetConfig.API_BASE_URL.asURL()
+//        let url = try NetConfig.API_BASE_URL.asURL().appendingPathComponent(path)
         
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+//        url.queryItems = URLQueryItem(name : "id",value : "rlarlvy153@naver.com")
+        let url = NetConfig.API_BASE_URL + path
+        var components = URLComponents(string : url)!
+        
+        if let query = query{
+            components.queryItems = query.map{(key, value) in
+                URLQueryItem(name : key, value : value)
+            }
+        }
+        
+        var urlRequest = URLRequest(url: components.url!)
+        
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
@@ -123,11 +155,11 @@ enum APIBuilder: APIConfiguration
         {
             urlRequest.addValue(token_, forHTTPHeaderField: "Authorization")
         }
-        
         // Parameters
         if let parameters = parameters {
             urlRequest.httpBody = parameters
         }
+        
         
         return urlRequest
     }

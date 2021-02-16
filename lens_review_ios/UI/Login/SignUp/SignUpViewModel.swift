@@ -8,6 +8,8 @@
 import Foundation
 import KeychainSwift
 import Combine
+import Alamofire
+
 class SignUpViewModel: ObservableObject
 {
     
@@ -30,9 +32,7 @@ class SignUpViewModel: ObservableObject
     let userPhoneNumberSubject = PassthroughSubject<String, Never>()
     
     init(){
-
         
-
         let debounceInterval = RunLoop.SchedulerTimeType.Stride.milliseconds(300)
         
         
@@ -67,30 +67,99 @@ class SignUpViewModel: ObservableObject
             }.store(in: &subscription)
     }
     
+    func checkAll(email:String, pw:String, pwCheck:String, phoneNumber:String, nickname:String) -> Just<Bool>{
+        let validEmail = checkValidEmailForm(email: email)
+        let validPw = checkValidPw(pw: pw)
+        let validPwCheck = checkValidPwCheck(pw: pw, pwCheck: pwCheck)
+        let validPhoneNumber = checkValidPhoneNumberForm(phoneNumber: phoneNumber)
+        let validNickname = checkValidNicknameForm(nickname: nickname)
+        
+        let ret = validEmail && validPw && validPwCheck && validPhoneNumber && validNickname
+        
+        return Just<Bool>(ret)
+    }
     
-    func signUp(id: String, pw: String, pwCheck:String, phoneNum:String,nickname:String)
+    //    func checkSameEmailPublisher(email:String) -> AnyPublisher<Bool, Never>{
+    //        let ret = AF.request(APIBuilder.checkSameEmail(id: email))
+    //
+    //
+    ////        LensAPIClient.getLensDetail(lensId: id) {result in
+    ////            switch result{
+    ////            case .success(let lens_):
+    ////                self.lens = lens_
+    ////            case .failure(let error):
+    ////                print(error.localizedDescription)
+    ////            }
+    ////        }
+    //
+    //        Future<Bool, Never> {promise in
+    //            LensAPIClient.checkSameEmail(email: email){result in
+    //
+    //                switch result{
+    //                case .success
+    //                }
+    //            }
+    //
+    //        }
+    //    }
+    
+    
+    func signUp(email: String, pw: String, pwCheck:String, phoneNum:String,nickname:String)
     {
-        LensAPIClient.signUp(email: id, pw: pw, phoneNum: phoneNum, nickname: nickname){ (result) in
-            switch result.result{
-            case.success :
-                if result.response?.statusCode == 200{
-                    self.signUpSuccess.send(true)
+        checkAll(email: email, pw: pw, pwCheck: pwCheck, phoneNumber: phoneNum, nickname: nickname)
+            .filter{$0}
+            .flatMap{avail in
+                Publishers.Zip3(LensAPIClient.checkSameEmail(email: email),
+                                LensAPIClient.checkSameNickname(nickname: nickname),
+                                LensAPIClient.checkSamePhoneNumber(ph: phoneNum))
+            }
+            .map{ (emailResult,nicknameResult,phoneNumberResult) -> Bool in
+                let emailAvailable = try? emailResult.get().available
+                let nicknameAvailable = try? nicknameResult.get().available
+                let phoneNumberAvailable = try? phoneNumberResult.get().available
+                
+                if let emailAvailable = emailAvailable, !emailAvailable{
+                    self.emailError.send("already_registered_email".localized())
                 }
-                else{
+                
+                if let nicknameAvailable = nicknameAvailable, !nicknameAvailable{
+                    self.nicknameError.send("already_registered_nickname".localized())
+                }
+                
+                if let phoneNumberAvailable = phoneNumberAvailable, !phoneNumberAvailable{
+                    self.phoneNumberError.send("already_registered_phone_number".localized())
+                }
+
+                return emailAvailable! && nicknameAvailable! && phoneNumberAvailable!
+            }
+            .sink { (canSignUp) in
+                if(canSignUp){
+                    self.callSignUp(email: email, pw: pw, ph: phoneNum, nickname: nickname)
+                }
+            }.store(in : &subscription)
+        
+        
+    }
+    private func callSignUp(email:String, pw:String, ph:String, nickname:String){
+        LensAPIClient.signUp(email: email, pw: pw, phoneNum: ph, nickname: nickname)
+            .sink{response in
+                switch response {
+                case .success(let _):
+                    self.signUpSuccess.send(true)
+
+                case .failure(let _):
+                    //실패처리 어떻게하지?
                     self.signUpError.send(SignUpErrType.WrongInput)
                 }
-            case .failure:
-                self.signUpError.send(SignUpErrType.ServerError)
             }
-            
-        }
+            .store(in : &subscription)
     }
     
     private func checkValidEmailForm(email : String) -> Bool{
         
         if(email.isEmpty){
             emailError.send("empty_email".localized())
-
+            
             return false
         }
         
@@ -105,7 +174,7 @@ class SignUpViewModel: ObservableObject
         }
         
         emailError.send("")
-
+        
         return true
     }
     
@@ -113,10 +182,25 @@ class SignUpViewModel: ObservableObject
         if(!checkValidEmailForm(email: email)){
             return
         }
-            
+        
         //send req
-
-
+        
+        LensAPIClient.checkSameEmail(email: email)
+            .sink { [self] response in
+                switch response {
+                case .success(let value):
+                    if(value.available){
+                        emailError.send("")
+                    }
+                    else{
+                        emailError.send("already_registered_email".localized())
+                    }
+                case .failure(let error):
+                    //실패처리 어떻게하지?
+                    print(error)
+                }
+            }.store(in: &subscription)
+        
     }
     private func checkValidNicknameForm(nickname:String)->Bool{
         if(nickname.isEmpty){
@@ -131,6 +215,21 @@ class SignUpViewModel: ObservableObject
         }
         
         //send req
+        LensAPIClient.checkSameNickname(nickname: nickname)
+            .sink { [self] response in
+                switch response {
+                case .success(let value):
+                    if(value.available){
+                        nicknameError.send("")
+                    }
+                    else{
+                        nicknameError.send("already_registered_nickname".localized())
+                    }
+                case .failure(let error):
+                    //실패처리 어떻게하지?
+                    print(error)
+                }
+            }.store(in: &subscription)
     }
     
     private func checkValidPhoneNumberForm(phoneNumber:String)->Bool{
@@ -153,6 +252,21 @@ class SignUpViewModel: ObservableObject
         }
         
         // send req
+        LensAPIClient.checkSamePhoneNumber(ph: phoneNumber)
+            .sink { [self] response in
+                switch response {
+                case .success(let value):
+                    if(value.available){
+                        phoneNumberError.send("")
+                    }
+                    else{
+                        phoneNumberError.send("already_registered_phone_number".localized())
+                    }
+                case .failure(let error):
+                    //실패처리 어떻게하지?
+                    print(error)
+                }
+            }.store(in: &subscription)
     }
     
     func checkValidPw(pw : String) -> Bool{
@@ -170,7 +284,7 @@ class SignUpViewModel: ObservableObject
             return false
         }
         pwError.send("")
-
+        
         
         return true
     }
@@ -184,5 +298,5 @@ class SignUpViewModel: ObservableObject
         pwCheckError.send("")
         return true
     }
-
+    
 }

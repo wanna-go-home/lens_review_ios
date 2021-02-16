@@ -44,6 +44,10 @@
 "invalid_phone_number" = "전화번호를 확인해주세요";
 "pw_not_acceptable" = "6~15자의 영문 대 소문자, 숫자 및 !@#만 사용가능합니다";
 
+"already_registered_email" = "이미 가입한 이메일입니다";
+"already_registered_phone_number" = "이미 가입한 전화번호입니다";
+"already_registered_nickname" = "존재하는 닉네임입니다";
+
 // MyPage
 "my_review_count" = "내 리뷰";
 "my_article_count" = "내 포스트";

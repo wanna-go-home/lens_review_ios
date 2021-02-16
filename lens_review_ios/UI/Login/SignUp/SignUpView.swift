@@ -125,7 +125,7 @@ struct SignUpView: View {
     }
     
     func signUp(){
-        signUpViewModel.signUp(id : userId, pw : userPw, pwCheck : userPwCheck, phoneNum : userPhoneNum, nickname : userNickname)
+        signUpViewModel.signUp(email : userId, pw : userPw, pwCheck : userPwCheck, phoneNum : userPhoneNum, nickname : userNickname)
     }
     
     

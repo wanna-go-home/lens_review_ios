@@ -7,6 +7,7 @@
 //
 import Foundation
 import Alamofire
+import Combine
 
 class LensAPIClient
 {
@@ -21,32 +22,38 @@ class LensAPIClient
             }
     }
     
-    static func signUp(email:String,pw:String,phoneNum:String,nickname:String, completion:@escaping (AFDataResponse<Data?>) ->Void)
+    static func signUp(email:String,pw:String,phoneNum:String,nickname:String) -> AnyPublisher<Result<Data?, AFError>, Never>
     {
         let signUpReq = SignUpRequest(accountEmail: email, accountPw: pw, phoneNum: phoneNum, nickname: nickname)
         
-        AF.request(APIBuilder.signUp(signUpRequest: signUpReq))
-            .response{
-                (response) in completion(response)
-            }
+        return AF.request(APIBuilder.signUp(signUpRequest: signUpReq))
+            .validate()
+            .publishUnserialized()
+            .result()
     }
     
-    static func checkSameEmail(email:String, completion:@escaping (AFDataResponse<Data?>) ->Void)
+    static func checkSameEmail(email:String)->AnyPublisher<Result<CheckSameInfoResponse, AFError>, Never>{
+            return AF.request(APIBuilder.checkSameEmail(id: email))
+                .validate()
+                .publishDecodable(type : CheckSameInfoResponse.self)
+                .result()
+        
+    }
+    
+    static func checkSameNickname(nickname:String)->AnyPublisher<Result<CheckSameInfoResponse, AFError>, Never>
     {
-        AF.request(APIBuilder.checkSameEmail(id: email))
-            .response{
-                    (response) in completion(response)
-            }
+        return AF.request(APIBuilder.checkSameNickname(nickname: nickname))
+            .validate()
+            .publishDecodable(type : CheckSameInfoResponse.self)
+            .result()
     }
-    
-    static func checkSameNickname(nickname:String, completion:@escaping (AFDataResponse<Data?>)->Void)
+    static func checkSamePhoneNumber(ph:String)->AnyPublisher<Result<CheckSameInfoResponse, AFError>, Never>
     {
-        AF.request(APIBuilder.checkSameNickname(nickname: nickname))
-            .response{
-                (response) in completion(response)
-            }
+        return AF.request(APIBuilder.checkSamePhoneNumber(phoneNumber: ph))
+            .validate()
+            .publishDecodable(type : CheckSameInfoResponse.self)
+            .result()
     }
-    
     
     
     // lens
