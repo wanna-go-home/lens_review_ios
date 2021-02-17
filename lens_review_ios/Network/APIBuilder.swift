@@ -130,9 +130,7 @@ enum APIBuilder: APIConfiguration
     }
     
     func asURLRequest() throws -> URLRequest {
-        //        let url = try NetConfig.API_BASE_URL.asURL().appendingPathComponent(path)
-        
-        //        url.queryItems = URLQueryItem(name : "id",value : "rlarlvy153@naver.com")
+
         let url = NetConfig.API_BASE_URL + path
         var components = URLComponents(string : url)!
         

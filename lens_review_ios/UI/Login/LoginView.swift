@@ -86,7 +86,6 @@ struct LoginView: View {
     }
     
     func openSignUpScene(){
-        print("open")
 
         self.showSignUpView = true
     }
