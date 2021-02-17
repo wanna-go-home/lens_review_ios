@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SignUpView: View {
     @ObservedObject var signUpViewModel: SignUpViewModel = SignUpViewModel()
-
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var showSignUpDoneAlert = false
     
     @State private var userId = ""
     @State private var userPw = ""
@@ -18,26 +20,94 @@ struct SignUpView: View {
     @State private var userPhoneNum=""
     @State private var userNickname = ""
     
+    @State private var emailError = ""
+    @State private var pwError = ""
+    @State private var pwCheckError = ""
+    @State private var phoneNumberError = ""
+    @State private var nicknameError = ""
+    
+    
+    
+    init(){
+        
+    }
+    
+    @State var textBinding = ""
+    
     
     var body: some View {
-
-        VStack{
+        
+        
+        return VStack(alignment: .leading, spacing:20){
             
-            TextField("sign_up_user_email_hint".localized(), text: $userId)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .padding()
-            SecureField("sign_up_user_pw_hint".localized(), text: $userPw)
-                .autocapitalization(.none)
-                .padding()
-            SecureField("sign_up_user_pw_check_hint".localized(), text: $userPwCheck)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .padding()
-            TextField("sign_up_user_contact".localized(), text: $userPhoneNum)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .padding()
-            TextField("sign_up_user_nichname".localized(), text: $userNickname)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .padding()
+            VStack(alignment:.leading, spacing:0){
+                TextField("sign_up_user_email_hint".localized(), text: $userId)
+                    .autocapitalization(.none)
+                    .onChange(of: userId){ v in
+                        signUpViewModel.userIdSubject.send(v)
+                    }
+                Text(emailError)
+                    .foregroundColor(.red)
+                    .onReceive(signUpViewModel.emailError, perform: { msg in
+                        emailError = msg
+                    })
+            }
+            VStack(alignment:.leading, spacing:0){
+                
+                SecureField("sign_up_user_pw_hint".localized(), text: $userPw)
+                    .autocapitalization(.none)
+                    .onChange(of: userPw) { v in
+                        signUpViewModel.userPwSubject.send(v)
+                    }
+                Text(pwError)
+                    .foregroundColor(.red)
+                    .onReceive(signUpViewModel.pwError, perform: { msg in
+                        pwError = msg
+                    })
+            }
+            
+            VStack(alignment:.leading, spacing:0){
+                SecureField("sign_up_user_pw_check_hint".localized(), text: $userPwCheck)
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .onChange(of: userPwCheck) { v in
+                        signUpViewModel.userPwCheckSubject.send((userPw, v))
+                    }
+                Text(pwCheckError)
+                    .foregroundColor(.red)
+                    .onReceive(signUpViewModel.pwCheckError, perform: { msg in
+                        pwCheckError = msg
+                    })
+                
+            }
+            VStack(alignment:.leading, spacing:0){
+                TextField("sign_up_user_contact".localized(), text: $userPhoneNum)
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .onChange(of: userPhoneNum){ph in
+                        signUpViewModel.userPhoneNumberSubject.send(ph)
+                        
+                    }
+                Text(phoneNumberError)
+                    .foregroundColor(.red)
+                    .onReceive(signUpViewModel.phoneNumberError, perform: { msg in
+                        phoneNumberError = msg
+                    })
+            }
+            VStack(alignment:.leading, spacing:0){
+                
+                TextField("sign_up_user_nichname".localized(), text: $userNickname)
+                    .autocapitalization(.none)
+                    .onChange(of: userNickname){v in
+                        
+                        signUpViewModel.userNicknameSubject.send(v)
+                        
+                    }
+                Text(nicknameError)
+                    .foregroundColor(.red)
+                    .onReceive(signUpViewModel.nicknameError, perform: { msg in
+                        nicknameError = msg
+                    })
+            }
+            
             Spacer()
             Button(action: signUp, label: {
                 Text("sign_up".localized())
@@ -46,21 +116,39 @@ struct SignUpView: View {
                     .foregroundColor(Color.white)
             })
             .padding(.bottom, 10)
-        }
+        }.padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
         .onReceive(signUpViewModel.signUpSuccess, perform: { value in
+            print("get sign up success")
             if value {
-                self.presentationMode.wrappedValue.dismiss()
+                showAlert()
             }
         })
+        .alert(isPresented: $showSignUpDoneAlert)
+        {
+            Alert(title: Text("sign_up_done_title".localized()), message: Text("sign_up_done_message".localized()),
+                  dismissButton: .default(Text("sign_up_done_alert_btn".localized()), action: { print("asdf")
+                    self.presentationMode.wrappedValue.dismiss()
+                    
+                  })
+            )
+            
+        }
     }
     
-    func signUp(){
-        signUpViewModel.signUp(id : userId, pw : userPw, pwCheck : userPwCheck, phoneNum : userPhoneNum, nickname : userNickname)
+    func showAlert() {
+        showSignUpDoneAlert = true
     }
+    
+    
+    func signUp(){
+        signUpViewModel.signUp(email : userId, pw : userPw, pwCheck : userPwCheck, phoneNum : userPhoneNum, nickname : userNickname)
+    }
+    
+    
 }
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        return SignUpView()
     }
 }
