@@ -35,9 +35,7 @@ struct SignUpView: View {
     @State var textBinding = ""
     
     
-    var body: some View {
-        
-        
+    var body: some View {        
         return VStack(alignment: .leading, spacing:20){
             
             VStack(alignment:.leading, spacing:0){
@@ -107,7 +105,6 @@ struct SignUpView: View {
                         nicknameError = msg
                     })
             }
-            
             Spacer()
             Button(action: signUp, label: {
                 Text("sign_up".localized())
