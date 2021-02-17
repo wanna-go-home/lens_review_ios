@@ -31,6 +31,12 @@ class SignUpViewModel: ObservableObject
     let userNicknameSubject = PassthroughSubject<String, Never>()
     let userPhoneNumberSubject = PassthroughSubject<String, Never>()
     
+    deinit {
+        subscription.forEach { (cancelable) in
+            cancelable.cancel()
+        }
+    }
+    
     init(){
         
         let debounceInterval = RunLoop.SchedulerTimeType.Stride.milliseconds(300)
@@ -65,6 +71,12 @@ class SignUpViewModel: ObservableObject
             .sink{[self] pw, pwCheck in
                 checkValidPwCheck(pw: pw, pwCheck: pwCheck)
             }.store(in: &subscription)
+        
+//        signUpSuccess
+//            .sink{[self] done in
+//                
+//                
+//            }.store(in : &subscription)
     }
     
     func checkAll(email:String, pw:String, pwCheck:String, phoneNumber:String, nickname:String) -> Just<Bool>{
@@ -133,22 +145,29 @@ class SignUpViewModel: ObservableObject
                 return emailAvailable! && nicknameAvailable! && phoneNumberAvailable!
             }
             .sink { (canSignUp) in
+                
                 if(canSignUp){
+                    print("sign up true")
                     self.callSignUp(email: email, pw: pw, ph: phoneNum, nickname: nickname)
+                }
+                else{
+                    print("sign up false")
                 }
             }.store(in : &subscription)
         
         
     }
     private func callSignUp(email:String, pw:String, ph:String, nickname:String){
+        print("sign up call")
         LensAPIClient.signUp(email: email, pw: pw, phoneNum: ph, nickname: nickname)
             .sink{response in
                 switch response {
                 case .success(let _):
                     self.signUpSuccess.send(true)
-
+                    print("sign up done")
                 case .failure(let _):
                     //실패처리 어떻게하지?
+                    print("sign up fail")
                     self.signUpError.send(SignUpErrType.WrongInput)
                 }
             }

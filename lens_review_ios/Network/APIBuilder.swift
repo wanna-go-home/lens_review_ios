@@ -69,7 +69,6 @@ enum APIBuilder: APIConfiguration
         case .signUp:
             return "/api/user/signup"
         case .checkSameEmail(let id):
-            let r = URLEncoding(destination:.queryString)
             return "/api/user/check/id"
         case .checkSameNickname:
             return "/api/user/check/nickname"

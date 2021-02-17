@@ -39,6 +39,7 @@
 "different_pw_check" = "비밀번호가 일치하지 않아요";
 "not_email_form" = "올바른 이메일을 입력해주세요";
 "empty_email" = "이메일을 입력해주세요";
+"empty_pw" = "비밀번호를 입력해주세요";
 "empty_nickname" = "닉네임을 입력해주세요";
 "empty_phone_number" = "전화번호를 입력해주세요";
 "invalid_phone_number" = "전화번호를 확인해주세요";
@@ -47,6 +48,10 @@
 "already_registered_email" = "이미 가입한 이메일입니다";
 "already_registered_phone_number" = "이미 가입한 전화번호입니다";
 "already_registered_nickname" = "존재하는 닉네임입니다";
+
+"sign_up_done_title" = "회원가입 완료";
+"sign_up_done_message" = "가입한 이메일로 로그인해주세요";
+"sign_up_done_alert_btn" = "확인";
 
 // MyPage
 "my_review_count" = "내 리뷰";

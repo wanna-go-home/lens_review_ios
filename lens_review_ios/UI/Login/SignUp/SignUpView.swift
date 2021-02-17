@@ -12,6 +12,7 @@ struct SignUpView: View {
     @ObservedObject var signUpViewModel: SignUpViewModel = SignUpViewModel()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var showSignUpDoneAlert = false
     
     @State private var userId = ""
     @State private var userPw = ""
@@ -25,8 +26,8 @@ struct SignUpView: View {
     @State private var phoneNumberError = ""
     @State private var nicknameError = ""
     
-
-
+    
+    
     init(){
         
     }
@@ -96,7 +97,7 @@ struct SignUpView: View {
                 TextField("sign_up_user_nichname".localized(), text: $userNickname)
                     .autocapitalization(.none)
                     .onChange(of: userNickname){v in
-
+                        
                         signUpViewModel.userNicknameSubject.send(v)
                         
                     }
@@ -117,12 +118,27 @@ struct SignUpView: View {
             .padding(.bottom, 10)
         }.padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
         .onReceive(signUpViewModel.signUpSuccess, perform: { value in
+            print("get sign up success")
             if value {
-                self.presentationMode.wrappedValue.dismiss()
+                showAlert()
             }
         })
-        
+        .alert(isPresented: $showSignUpDoneAlert)
+        {
+            Alert(title: Text("sign_up_done_title".localized()), message: Text("sign_up_done_message".localized()),
+                  dismissButton: .default(Text("sign_up_done_alert_btn".localized()), action: { print("asdf")
+                    self.presentationMode.wrappedValue.dismiss()
+                    
+                  })
+            )
+            
+        }
     }
+    
+    func showAlert() {
+        showSignUpDoneAlert = true
+    }
+    
     
     func signUp(){
         signUpViewModel.signUp(email : userId, pw : userPw, pwCheck : userPwCheck, phoneNum : userPhoneNum, nickname : userNickname)
