@@ -15,12 +15,17 @@ protocol APIConfiguration: URLRequestConvertible
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Data? { get }
+    var query: Dictionary<String, String>? { get }
+    
 }
 
 enum APIBuilder: APIConfiguration
 {
     case login(loginRequest: LoginRequest)
     case signUp(signUpRequest : SignUpRequest)
+    case checkSameEmail(id : String)
+    case checkSameNickname(nickname : String)
+    case checkSamePhoneNumber(phoneNumber:String)
     case getUserInfo
     case getLensesPreview
     case getLensById(id : Int)
@@ -42,7 +47,9 @@ enum APIBuilder: APIConfiguration
         switch self {
         case .login, .signUp, .postArticle, .postArticleComment:
             return .post
-        case .getUserInfo,
+        case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
+             .getLensesPreview, .getLensById,
+             .getUserInfo,
              .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
@@ -61,6 +68,12 @@ enum APIBuilder: APIConfiguration
             return "/api/user/login"
         case .signUp:
             return "/api/user/signup"
+        case .checkSameEmail(let id):
+            return "/api/user/check/id"
+        case .checkSameNickname:
+            return "/api/user/check/nickname"
+        case .checkSamePhoneNumber:
+            return "/api/user/check/phoneNum"
         case .getUserInfo:
             return "/api/user/me"
         case .getLensesPreview:
@@ -93,7 +106,8 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
-        case .getUserInfo,
+            
+        case .checkSameNickname, .checkSamePhoneNumber, .checkSameEmail, .getUserInfo,
              .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
              .getCommentsByCommentId, .deleteArticleComment,
@@ -102,10 +116,32 @@ enum APIBuilder: APIConfiguration
         }
     }
     
+    var query : Dictionary<String, String>?{
+        switch self{
+        case .checkSameEmail(let id):
+            return ["id" : id]
+        case .checkSameNickname(let nickname):
+            return ["nickname" : nickname]
+        case .checkSamePhoneNumber(let ph):
+            return ["phoneNum" : ph]
+        default:
+            return nil
+        }
+    }
+    
     func asURLRequest() throws -> URLRequest {
-        let url = try NetConfig.API_BASE_URL.asURL()
+
+        let url = NetConfig.API_BASE_URL + path
+        var components = URLComponents(string : url)!
         
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        if let query = query{
+            components.queryItems = query.map{(key, value) in
+                URLQueryItem(name : key, value : value)
+            }
+        }
+        
+        var urlRequest = URLRequest(url: components.url!)
+        
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
@@ -120,11 +156,11 @@ enum APIBuilder: APIConfiguration
         {
             urlRequest.addValue(token_, forHTTPHeaderField: "Authorization")
         }
-        
         // Parameters
         if let parameters = parameters {
             urlRequest.httpBody = parameters
         }
+        
         
         return urlRequest
     }

@@ -13,3 +13,8 @@ struct SignUpRequest : Encodable {
     let phoneNum : String
     let nickname : String
 }
+
+struct CheckSameInfoResponse : Codable{
+    let available : Bool
+    let checkCode : Int
+}
