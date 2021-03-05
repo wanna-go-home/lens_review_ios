@@ -12,6 +12,7 @@ struct MyPageView: View
     @EnvironmentObject var myPageViewModel: MyPageViewModel
     
     @State private var goMyArticleView = false
+    @State private var goMyReviewView = false
         
     var body: some View
     {
@@ -74,7 +75,7 @@ struct MyPageView: View
                 
                 VStack
                 {
-                    Button(action: {})
+                    Button(action: openMyReviewView)
                     {
                         Text("my_review".localized())
                             .foregroundColor(.black)
@@ -126,6 +127,10 @@ struct MyPageView: View
                 NavigationLink(destination: MyArticleView(), isActive: $goMyArticleView){
                     EmptyView()
                 }
+                
+                NavigationLink(destination: MyReviewView(), isActive: $goMyReviewView){
+                    EmptyView()
+                }
             }
             .navigationBarHidden(true)
         }
@@ -141,9 +146,12 @@ struct MyPageView: View
     
     func openMyArticleView()
     {
-        print("11")
         self.goMyArticleView = true
-        print("22")
+    }
+    
+    func openMyReviewView()
+    {
+        self.goMyReviewView = true
     }
 }
 

@@ -71,6 +71,14 @@ class LensAPIClient
             .result()
     }
     
+    static func getMyReview() -> AnyPublisher<Result<[ReviewBoardPreview], AFError>, Never>
+    {
+        return AF.request(APIBuilder.getMyReview)
+            .validate()
+            .publishDecodable(type: [ReviewBoardPreview].self)
+            .result()
+    }
+    
     // lens
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {

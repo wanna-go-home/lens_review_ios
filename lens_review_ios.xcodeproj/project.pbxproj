@@ -61,6 +61,8 @@
 		671CD75B25CC2722003FC20C /* LogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671CD75A25CC2722003FC20C /* LogUtil.swift */; };
 		6790E29825DD739C00247A69 /* MyArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E29725DD739C00247A69 /* MyArticleView.swift */; };
 		6790E29C25DD73A700247A69 /* MyArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E29B25DD73A700247A69 /* MyArticleViewModel.swift */; };
+		6790E2A025F2713900247A69 /* MyReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E29F25F2713900247A69 /* MyReviewView.swift */; };
+		6790E2A425F2714700247A69 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E2A325F2714700247A69 /* MyReviewViewModel.swift */; };
 		F66260C725C3F45600378A82 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260C625C3F45600378A82 /* SignUpView.swift */; };
 		F66260CB25C407A800378A82 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CA25C407A800378A82 /* SignUpViewModel.swift */; };
 		F66260CE25C408E900378A82 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CD25C408E900378A82 /* SignUp.swift */; };
@@ -121,6 +123,8 @@
 		671CD75A25CC2722003FC20C /* LogUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtil.swift; sourceTree = "<group>"; };
 		6790E29725DD739C00247A69 /* MyArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleView.swift; sourceTree = "<group>"; };
 		6790E29B25DD73A700247A69 /* MyArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewModel.swift; sourceTree = "<group>"; };
+		6790E29F25F2713900247A69 /* MyReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewView.swift; sourceTree = "<group>"; };
+		6790E2A325F2714700247A69 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66260C625C3F45600378A82 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				6790E29625DD738C00247A69 /* MyArticle */,
+				6790E29E25F2712300247A69 /* MyReview */,
 				671CD74625C40FCE003FC20C /* MyPageView.swift */,
 				671CD74925C40FDA003FC20C /* MyPageViewModel.swift */,
 			);
@@ -355,6 +360,15 @@
 				6790E29B25DD73A700247A69 /* MyArticleViewModel.swift */,
 			);
 			path = MyArticle;
+			sourceTree = "<group>";
+		};
+		6790E29E25F2712300247A69 /* MyReview */ = {
+			isa = PBXGroup;
+			children = (
+				6790E29F25F2713900247A69 /* MyReviewView.swift */,
+				6790E2A325F2714700247A69 /* MyReviewViewModel.swift */,
+			);
+			path = MyReview;
 			sourceTree = "<group>";
 		};
 		685406D9EDE03E534247871F /* Frameworks */ = {
@@ -534,12 +548,14 @@
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				5574A8CC2598C40100FE1954 /* StringUtil.swift in Sources */,
 				55A99A982597829B00BC65C0 /* FreeBoardWriteViewModel.swift in Sources */,
+				6790E2A025F2713900247A69 /* MyReviewView.swift in Sources */,
 				671CD75525C4335D003FC20C /* UserInfo.swift in Sources */,
 				551719D32531E8A2003670D0 /* LensPreview.swift in Sources */,
 				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
 				5574A8CF2598C7C100FE1954 /* ArticleModifyViewModel.swift in Sources */,
 				55380DEA2585F4580093642C /* ReviewBoardDetail.swift in Sources */,
 				6700733C25A8BD8800968D72 /* ArticleWriteRequest.swift in Sources */,
+				6790E2A425F2714700247A69 /* MyReviewViewModel.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
 				F66260C725C3F45600378A82 /* SignUpView.swift in Sources */,
