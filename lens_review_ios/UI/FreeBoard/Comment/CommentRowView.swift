@@ -19,7 +19,7 @@ struct CommentRowView: View
     
     @State private var showCommentView = false
     
-    var comment: FreeBoardComment
+    var comment: Comment
     var moreFlag : Bool
     var isCommentView : Bool
     

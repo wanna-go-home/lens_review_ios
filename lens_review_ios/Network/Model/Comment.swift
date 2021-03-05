@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct FreeBoardComment: Decodable, Identifiable
+struct Comment: Decodable, Identifiable
 {
     var id : Int = 0
     var accountId : Int = 0
     var nickname : String = ""
     var isAuthor : Bool = false
+    var isLiked : Bool = false
     var postId : Int = 0
     var content : String = ""
     var likeCnt : Int = 0
@@ -27,6 +28,7 @@ struct FreeBoardComment: Decodable, Identifiable
         case accountId
         case nickname
         case isAuthor
+        case isLiked
         case postId
         case content
         case likeCnt

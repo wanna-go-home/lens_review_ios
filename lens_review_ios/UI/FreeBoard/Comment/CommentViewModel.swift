@@ -9,7 +9,7 @@ import Combine
 
 class CommentViewModel : ObservableObject
 {
-    @Published var commentList = [FreeBoardComment]()
+    @Published var commentList = [Comment]()
     let writeCommentSuccess = PassthroughSubject<Int, Never>()
     let deleteCommentSuccess = PassthroughSubject<Int, Never>()
     let modifyCommentSuccess = PassthroughSubject<Int, Never>()

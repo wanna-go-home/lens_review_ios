@@ -141,19 +141,19 @@ class LensAPIClient
             }
     }
     
-    static func getFreeBoardComment(articleId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
+    static func getFreeBoardComment(articleId: Int, completion: @escaping(Result<[Comment], AFError>) -> Void)
     {
         AF.request(APIBuilder.getFreeBoardComment(id: articleId))
             .responseDecodable {
-                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
+                (response: DataResponse<[Comment], AFError>) in completion(response.result)
             }
     }
     
-    static func getFreeBoardAllComments(articleId: Int, commentId: Int, completion: @escaping(Result<[FreeBoardComment], AFError>) -> Void)
+    static func getFreeBoardAllComments(articleId: Int, commentId: Int, completion: @escaping(Result<[Comment], AFError>) -> Void)
     {
         AF.request(APIBuilder.getCommentsByCommentId(id: articleId, commentId: commentId))
             .responseDecodable {
-                (response: DataResponse<[FreeBoardComment], AFError>) in completion(response.result)
+                (response: DataResponse<[Comment], AFError>) in completion(response.result)
             }
     }
     

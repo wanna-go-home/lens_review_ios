@@ -15,7 +15,7 @@ struct ChildCommentRowView: View
     @State private var showDeleteAlert = false
     @State private var showReportView = false
     
-    var comment: FreeBoardComment
+    var comment: Comment
     var isCommentView : Bool
     
     var body: some View
