@@ -63,6 +63,14 @@ class LensAPIClient
             }
     }
     
+    static func getMyArticle() -> AnyPublisher<Result<[FreeBoardPreview], AFError>, Never>
+    {
+        return AF.request(APIBuilder.getMyArticle)
+            .validate()
+            .publishDecodable(type: [FreeBoardPreview].self)
+            .result()
+    }
+    
     // lens
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {

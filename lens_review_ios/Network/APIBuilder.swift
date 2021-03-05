@@ -16,7 +16,6 @@ protocol APIConfiguration: URLRequestConvertible
     var path: String { get }
     var parameters: Data? { get }
     var query: Dictionary<String, String>? { get }
-    
 }
 
 enum APIBuilder: APIConfiguration
@@ -27,6 +26,7 @@ enum APIBuilder: APIConfiguration
     case checkSameNickname(nickname : String)
     case checkSamePhoneNumber(phoneNumber:String)
     case getUserInfo
+    case getMyArticle
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -48,8 +48,7 @@ enum APIBuilder: APIConfiguration
         case .login, .signUp, .postArticle, .postArticleComment:
             return .post
         case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
-             .getLensesPreview, .getLensById,
-             .getUserInfo,
+             .getUserInfo, .getMyArticle,
              .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
@@ -68,7 +67,7 @@ enum APIBuilder: APIConfiguration
             return "/api/user/login"
         case .signUp:
             return "/api/user/signup"
-        case .checkSameEmail(let id):
+        case .checkSameEmail:
             return "/api/user/check/id"
         case .checkSameNickname:
             return "/api/user/check/nickname"
@@ -76,6 +75,8 @@ enum APIBuilder: APIConfiguration
             return "/api/user/check/phoneNum"
         case .getUserInfo:
             return "/api/user/me"
+        case .getMyArticle:
+            return "/api/user/article/me"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById(let id):
@@ -106,12 +107,7 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
-            
-        case .checkSameNickname, .checkSamePhoneNumber, .checkSameEmail, .getUserInfo,
-             .getLensesPreview, .getLensById,
-             .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .deleteArticle,
-             .getCommentsByCommentId, .deleteArticleComment,
-             .getReviewBoardPreview, .getReviewBoardById:
+        default:
             return nil
         }
     }
@@ -142,7 +138,6 @@ enum APIBuilder: APIConfiguration
         
         var urlRequest = URLRequest(url: components.url!)
         
-        
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         
@@ -156,11 +151,11 @@ enum APIBuilder: APIConfiguration
         {
             urlRequest.addValue(token_, forHTTPHeaderField: "Authorization")
         }
+        
         // Parameters
         if let parameters = parameters {
             urlRequest.httpBody = parameters
         }
-        
         
         return urlRequest
     }
