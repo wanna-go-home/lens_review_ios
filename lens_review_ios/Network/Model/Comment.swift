@@ -12,8 +12,8 @@ struct Comment: Decodable, Identifiable
     var id : Int = 0
     var accountId : Int = 0
     var nickname : String = ""
-    var isAuthor : Bool = false
-    var isLiked : Bool = false
+    var isAuthor : Bool? = false
+    var isLiked : Bool? = false
     var postId : Int = 0
     var content : String = ""
     var likeCnt : Int = 0

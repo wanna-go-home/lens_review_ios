@@ -79,6 +79,14 @@ class LensAPIClient
             .result()
     }
     
+    static func getMyComments() -> AnyPublisher<Result<[Comment], AFError>, Never>
+    {
+        return AF.request(APIBuilder.getMyComments)
+            .validate()
+            .publishDecodable(type: [Comment].self)
+            .result()
+    }
+    
     // lens
     static func getLensesPreview(completion: @escaping(Result<[LensPreview], AFError>) -> Void)
     {
