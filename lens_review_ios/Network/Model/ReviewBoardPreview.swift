@@ -12,6 +12,8 @@ struct ReviewBoardPreview : Decodable, Identifiable
     var id : Int = 0
     var accountId : Int = 0
     var nickname : String = ""
+    var isAuthor : Bool = false
+    var isLiked : Bool = false
     var title : String = ""
     var content : String = ""
     var viewCnt : Int = 0
@@ -19,11 +21,14 @@ struct ReviewBoardPreview : Decodable, Identifiable
     var replyCnt : Int = 0
     var createdAt : String = ""
     var lensId : Int = 0
+    var lensPreviewEntity = LensPreview()
 
     enum CodingKeys: String, CodingKey {
         case id
         case accountId
         case nickname
+        case isAuthor
+        case isLiked
         case title
         case content
         case viewCnt
@@ -31,5 +36,6 @@ struct ReviewBoardPreview : Decodable, Identifiable
         case replyCnt
         case createdAt
         case lensId
+        case lensPreviewEntity
     }
 }
