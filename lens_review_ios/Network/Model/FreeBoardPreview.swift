@@ -13,6 +13,7 @@ struct FreeBoardPreview : Decodable, Identifiable
     var accountId: Int = 0
     var nickname : String = ""
     var isAuthor: Bool = false
+    var isLiked: Bool = false
     var title : String = ""
     var content : String = ""
     var viewCnt : Int = 0
@@ -25,6 +26,7 @@ struct FreeBoardPreview : Decodable, Identifiable
         case accountId
         case nickname
         case isAuthor
+        case isLiked
         case title
         case content
         case viewCnt
