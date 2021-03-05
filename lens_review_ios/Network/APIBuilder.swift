@@ -27,6 +27,7 @@ enum APIBuilder: APIConfiguration
     case checkSamePhoneNumber(phoneNumber:String)
     case getUserInfo
     case getMyArticle
+    case getMyReview
     case getLensesPreview
     case getLensById(id : Int)
     case getFreeBoardPreview
@@ -48,7 +49,7 @@ enum APIBuilder: APIConfiguration
         case .login, .signUp, .postArticle, .postArticleComment:
             return .post
         case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
-             .getUserInfo, .getMyArticle,
+             .getUserInfo, .getMyArticle, .getMyReview,
              .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
@@ -77,6 +78,8 @@ enum APIBuilder: APIConfiguration
             return "/api/user/me"
         case .getMyArticle:
             return "/api/user/article/me"
+        case .getMyReview:
+            return "/api/user/review/me"
         case .getLensesPreview:
             return "/api/lens"
         case .getLensById(let id):
