@@ -147,27 +147,21 @@ class SignUpViewModel: ObservableObject
             .sink { (canSignUp) in
                 
                 if(canSignUp){
-                    print("sign up true")
                     self.callSignUp(email: email, pw: pw, ph: phoneNum, nickname: nickname)
                 }
-                else{
-                    print("sign up false")
-                }
+
             }.store(in : &subscription)
         
         
     }
     private func callSignUp(email:String, pw:String, ph:String, nickname:String){
-        print("sign up call")
         LensAPIClient.signUp(email: email, pw: pw, phoneNum: ph, nickname: nickname)
             .sink{response in
                 switch response {
                 case .success(let _):
                     self.signUpSuccess.send(true)
-                    print("sign up done")
                 case .failure(let _):
                     //실패처리 어떻게하지?
-                    print("sign up fail")
                     self.signUpError.send(SignUpErrType.WrongInput)
                 }
             }

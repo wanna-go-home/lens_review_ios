@@ -13,7 +13,10 @@ class MyPageViewModel: ObservableObject
     @Published var reviewCnt = 0
     @Published var articleCnt = 0
     @Published var commentCnt = 0
-
+    var subscription = Set<AnyCancellable>()
+    let leaveSuccess = PassthroughSubject<Bool, Never>()
+    let leaveError = PassthroughSubject<Bool, Never>()
+    
     func getUserInfo()
     {
         LensAPIClient.getUserInfo { result in
@@ -27,5 +30,20 @@ class MyPageViewModel: ObservableObject
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func leave(){
+        LensAPIClient.leave()
+            .sink{response in
+                switch response {
+                case .success(let _):
+                    self.leaveSuccess.send(true)
+                case .failure(let error):
+                    //에러처리 ui 디자인 다나오면 구체화
+                    print("err")
+                }
+            }
+            .store(in : &subscription)
+        
     }
 }

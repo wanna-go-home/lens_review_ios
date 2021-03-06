@@ -123,12 +123,11 @@ struct SignUpView: View {
         .alert(isPresented: $showSignUpDoneAlert)
         {
             Alert(title: Text("sign_up_done_title".localized()), message: Text("sign_up_done_message".localized()),
-                  dismissButton: .default(Text("sign_up_done_alert_btn".localized()), action: { print("asdf")
+                  dismissButton: .default(Text("sign_up_done_alert_btn".localized()), action: { 
                     self.presentationMode.wrappedValue.dismiss()
                     
                   })
             )
-            
         }
     }
     

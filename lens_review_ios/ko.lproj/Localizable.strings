@@ -61,6 +61,10 @@
 "my_article" = "내가 작성한 포스트";
 "my_comment" = "내가 작성한 댓글";
 "my_leave" = "회원탈퇴";
+"leave_yes"="탈퇴";
+"leave_no"="아니요";
+"leave_title"="회원탈퇴";
+"leave_message"="탈퇴 후 정보를 복구할 수 없습니다! 정말 탈퇴하시겠습니까?";
 
 // Lens List & Detail
 "lens_graphicDia" = "%.1f mm";

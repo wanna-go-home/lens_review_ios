@@ -29,6 +29,7 @@ enum APIBuilder: APIConfiguration
     case getMyArticle
     case getMyReview
     case getLensesPreview
+    case leave
     case getLensById(id : Int)
     case getFreeBoardPreview
     case getFreeBoardById(id: Int)
@@ -56,7 +57,7 @@ enum APIBuilder: APIConfiguration
             return .get
         case .putArticle, .putArticleComment:
             return .put
-        case .deleteArticle, .deleteArticleComment:
+        case .deleteArticle, .deleteArticleComment, .leave:
             return .delete
         }
     }
@@ -96,6 +97,8 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/review-board"
         case .getReviewBoardById(let id):
             return "/api/boards/review-board/\(id)"
+        case .leave:
+            return "/api/user"
         }
     }
     

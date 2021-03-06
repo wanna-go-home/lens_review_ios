@@ -32,6 +32,13 @@ class LensAPIClient
             .result()
     }
     
+    static func leave() -> AnyPublisher<Result<Data?, AFError>, Never>{
+        return AF.request(APIBuilder.leave)
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
+    
     static func checkSameEmail(email:String)->AnyPublisher<Result<CheckSameInfoResponse, AFError>, Never>{
             return AF.request(APIBuilder.checkSameEmail(id: email))
                 .validate()

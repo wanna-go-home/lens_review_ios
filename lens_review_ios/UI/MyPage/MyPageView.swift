@@ -10,10 +10,14 @@ import SwiftUI
 struct MyPageView: View
 {
     @EnvironmentObject var myPageViewModel: MyPageViewModel
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     @State private var goMyArticleView = false
     @State private var goMyReviewView = false
-        
+    @State private var goLoginView = false
+    
+    @State private var showLeaveAlert = false
+    
     var body: some View
     {
         NavigationView
@@ -111,7 +115,11 @@ struct MyPageView: View
                     
                     ScrollDivider()
                     
-                    Button(action: {})
+                    Button(action: {
+                        //showLeaveAlert = true
+                        self.presentationMode.wrappedValue.dismiss()
+
+                    })
                     {
                         Text("my_leave".localized()).foregroundColor(.red)
                         Spacer()
@@ -131,11 +139,29 @@ struct MyPageView: View
                 NavigationLink(destination: MyReviewView(), isActive: $goMyReviewView){
                     EmptyView()
                 }
+
             }
             .navigationBarHidden(true)
         }
         .onAppear(perform: {
             callGetUserInfo()
+        })
+        .alert(isPresented: $showLeaveAlert)
+        {
+            Alert(title: Text("leave_title".localized()), message: Text("leave_message".localized()),
+                  primaryButton: .destructive(Text("leave_yes".localized()) , action: {
+                        myPageViewModel.leave()
+                  }),
+                  secondaryButton: .cancel(Text("leave_no".localized()), action: {
+                        showLeaveAlert = false
+                  })
+            )
+        }
+        .onReceive(myPageViewModel.leaveSuccess, perform: {value in
+            if(value){
+                self.presentationMode.wrappedValue.dismiss()
+                goLoginView = true
+            }
         })
     }
     
