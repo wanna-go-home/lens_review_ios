@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct ReviewListView: View {
 
@@ -65,14 +66,22 @@ struct ReviewBoardRow: View {
                 
                 Spacer()
                 
-                Image("no-photo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(Color("IconColor"))
-                    .padding(10)
-                    .border(Color("IconColor"), width: 1)
-                
+                if !board_.lensPreviewEntity.productImage.isEmpty {
+                    URLImage(url: URL(string: board_.lensPreviewEntity.productImage[0])!) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                    }
+                }else {
+                    Image("no-photo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(Color("IconColor"))
+                        .padding(10)
+                        .border(Color("IconColor"), width: 1)
+                }
             }
             .padding([.leading, .trailing], 12)
             .padding(.top, 20)
