@@ -13,6 +13,7 @@ struct MyPageView: View
     
     @State private var goMyArticleView = false
     @State private var goMyReviewView = false
+    @State private var goMyCommentView = false
         
     var body: some View
     {
@@ -98,7 +99,7 @@ struct MyPageView: View
                     .padding(10)
 
                     
-                    Button(action: {})
+                    Button(action: openMyComentView)
                     {
                         Text("my_comment".localized())
                             .foregroundColor(.black)
@@ -131,6 +132,10 @@ struct MyPageView: View
                 NavigationLink(destination: MyReviewView(), isActive: $goMyReviewView){
                     EmptyView()
                 }
+                
+                NavigationLink(destination: MyCommentView(), isActive: $goMyCommentView){
+                    EmptyView()
+                }
             }
             .navigationBarHidden(true)
         }
@@ -152,6 +157,11 @@ struct MyPageView: View
     func openMyReviewView()
     {
         self.goMyReviewView = true
+    }
+    
+    func openMyComentView()
+    {
+        self.goMyCommentView = true
     }
 }
 

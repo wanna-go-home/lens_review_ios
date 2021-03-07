@@ -155,7 +155,7 @@ struct FreeBoardDetailRow: View
     var onWriteArticleComment = {}
     
     var article_: FreeBoardDetail
-    var commentsList_ = [FreeBoardComment]()
+    var commentsList_ = [Comment]()
     
     @Binding var commentContent: String
     

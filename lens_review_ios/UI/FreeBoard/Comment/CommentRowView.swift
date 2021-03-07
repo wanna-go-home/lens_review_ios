@@ -19,7 +19,7 @@ struct CommentRowView: View
     
     @State private var showCommentView = false
     
-    var comment: FreeBoardComment
+    var comment: Comment
     var moreFlag : Bool
     var isCommentView : Bool
     
@@ -133,12 +133,12 @@ struct CommentRowView: View
     fileprivate func commentActionSheet() -> ActionSheet {
         var commentButtons = [ActionSheet.Button]()
         
-        if comment.isAuthor {
+        if comment.isAuthor == true {
             commentButtons.append(.default(Text("modify".localized()), action: {
                                             let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, onModify: commentViewModel.modifyComment(postId:commentId:comment:bundleId:))
                                             customAlert.alert(comment: comment.content) }))
             commentButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
-        }else {
+        }else if comment.isAuthor == false {
             commentButtons.append(.destructive(Text("report".localized()), action: { self.showReportView = true }))
         }
         

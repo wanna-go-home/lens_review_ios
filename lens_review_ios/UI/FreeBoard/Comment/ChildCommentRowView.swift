@@ -15,7 +15,7 @@ struct ChildCommentRowView: View
     @State private var showDeleteAlert = false
     @State private var showReportView = false
     
-    var comment: FreeBoardComment
+    var comment: Comment
     var isCommentView : Bool
     
     var body: some View
@@ -91,12 +91,12 @@ struct ChildCommentRowView: View
     fileprivate func commentActionSheet() -> ActionSheet {
         var commentButtons = [ActionSheet.Button]()
         
-        if comment.isAuthor {
+        if comment.isAuthor == true {
             commentButtons.append(.default(Text("modify".localized()), action: {
                                             let customAlert = CommentModifyAlert(postId: comment.postId, commentId: comment.id, bundleId: comment.bundleId, onModify: commentViewModel.modifyComment(postId:commentId:comment:bundleId:))
                                             customAlert.alert(comment: comment.content) }))
             commentButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
-        }else {
+        }else if comment.isAuthor == false {
             commentButtons.append(.destructive(Text("report".localized()), action: { self.showReportView = true }))
         }
         
