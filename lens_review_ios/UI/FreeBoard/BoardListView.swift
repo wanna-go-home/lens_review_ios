@@ -36,7 +36,7 @@ struct BoardListView: View {
                     boardListViewModel.getBoardList()
                 })
                 
-                FloatingWriteBtn()
+                FloatingWriteBtn(destinationView: FreeBoardWriteView())
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -109,37 +109,6 @@ struct FreeBoardRow: View {
             .padding([.leading, .trailing], 12)
             
             ScrollDivider()
-        }
-    }
-}
-
-struct FloatingWriteBtn: View
-{
-    var body: some View {
-        HStack
-        {
-            Spacer()
-            VStack
-            {
-                Spacer()
-
-                NavigationLink(destination: FreeBoardWriteView())
-                {
-                    ZStack
-                    {
-                        Circle()
-                            .fill(Color("FloatingColor"))
-                            .shadow(color:Color.black.opacity(0.3), radius: 3)
-                            .frame(width: 50, height: 50)
-                    
-                        Image("write")
-                            .resizable()
-                            .foregroundColor(.white)
-                            .frame(width: 30, height: 30)
-                    }
-                    .padding()
-                }
-            }
         }
     }
 }

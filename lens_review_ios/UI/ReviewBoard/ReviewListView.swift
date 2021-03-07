@@ -15,25 +15,30 @@ struct ReviewListView: View {
     var body: some View {
         NavigationView
         {
-            ScrollView(showsIndicators: false)
+            ZStack
             {
-                LazyVStack(alignment: .leading)
+                ScrollView(showsIndicators: false)
                 {
-                    ForEach(reviewListViewModel.reviewList) { board_ in
-                        NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id))
-                        {
-                            ReviewBoardRow(board_: board_)
+                    LazyVStack(alignment: .leading)
+                    {
+                        ForEach(reviewListViewModel.reviewList) { board_ in
+                            NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id))
+                            {
+                                ReviewBoardRow(board_: board_)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
                     }
+                    .frame(minHeight: 100)
                 }
-                .frame(minHeight: 100)
+                .padding([.leading, .trailing])
+                .navigationBarHidden(true)
+                .onAppear(perform: {
+                    reviewListViewModel.getReviewList()
+                })
+                
+                FloatingWriteBtn(destinationView: EmptyView())
             }
-            .padding([.leading, .trailing])
-            .navigationBarHidden(true)
-            .onAppear(perform: {
-                reviewListViewModel.getReviewList()
-            })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
