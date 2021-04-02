@@ -14,12 +14,29 @@ struct ReviewBoardDetailView: View
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var showMoreAction = false
+    @State private var showMofifyView = false
+    @State private var showDeleteAlert = false
+    @State private var showReportView = false
+    
     var body: some View {
         VStack{
             customTitleBar
             ReviewBoardDetailRow(review_:reviewBoardDetailViewModel.review)
+            
+            .alert(isPresented: $showDeleteAlert)
+            {
+                Alert(title: Text(""), message: Text("delete_review_question".localized()),
+                      primaryButton: .destructive(Text("delete_button_title".localized()), action: { callDeleteReview() }),
+                      secondaryButton: .cancel())
+            }
         }
         .onAppear(perform: callReviewBoardDetail)
+        .onReceive(reviewBoardDetailViewModel.reviewDeleteSuccess, perform: { value in
+            if value {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        })
         .frame(maxHeight:.infinity,  alignment: .top)
         .navigationBarHidden(true)
     }
@@ -43,28 +60,45 @@ struct ReviewBoardDetailView: View
             Spacer()
             
             HStack(spacing: 20){
-                Image("noti-off") // set image here
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:20, height: 20)
-                    .foregroundColor(Color("IconColor"))
-                
-                Image("bookmark-empty") // set image here
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:20, height: 20)
-                    .foregroundColor(Color("IconColor"))
-                
-                Image("more-hori") // set image here
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:20, height: 20)
-                    .foregroundColor(Color("IconColor"))
+                Button(action: {
+                    self.showMoreAction = true
+                }, label: {
+                    Image("more-hori")
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:20, height: 20)
+                        .foregroundColor(Color("IconColor"))
+                })
+                .actionSheet(isPresented: $showMoreAction){
+                    reviewActionSheet()
+                }
             }
             .padding(.trailing, 10)
         }
     }
     
+    fileprivate func reviewActionSheet() -> ActionSheet {
+        var reviewButtons = [ActionSheet.Button]()
+        
+        if reviewBoardDetailViewModel.review.isAuthor {
+            reviewButtons.append(.default(Text("modify".localized()), action: { self.showMofifyView = true }))
+            reviewButtons.append(.destructive(Text("delete".localized()), action: { self.showDeleteAlert = true }))
+        }else {
+            reviewButtons.append(.destructive(Text("report".localized()), action: { self.showReportView = true }))
+        }
+        
+        reviewButtons.append(.cancel())
+        
+        return ActionSheet(title: Text("review_actionSheet_title".localized()), buttons: reviewButtons)
+    }
+    
     func callReviewBoardDetail()
     {
         reviewBoardDetailViewModel.getReviewBoardDetail(id: selectedReviewId)
+    }
+    
+    func callDeleteReview()
+    {
+        reviewBoardDetailViewModel.delReview(reviewId: selectedReviewId)
     }
 }
 

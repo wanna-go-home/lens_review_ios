@@ -109,3 +109,6 @@
 // Review
 "write_review_select_lens" = "리뷰할 렌즈를 선택해주세요";
 "write_review_next" = "다음";
+
+"review_actionSheet_title" = "리뷰게시판";
+"delete_review_question" = "게시글을 삭제하시겠습니까?";

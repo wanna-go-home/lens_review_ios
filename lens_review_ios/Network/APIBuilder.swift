@@ -44,6 +44,7 @@ enum APIBuilder: APIConfiguration
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
     case postReview(reviewRequest: ReviewWriteRequest)
+    case deleteReview(id: Int)
     
     var method: HTTPMethod
     {
@@ -58,7 +59,8 @@ enum APIBuilder: APIConfiguration
             return .get
         case .putArticle, .putArticleComment:
             return .put
-        case .deleteArticle, .deleteArticleComment:
+        case .deleteArticle, .deleteArticleComment,
+             .deleteReview:
             return .delete
         }
     }
@@ -98,7 +100,7 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/article/\(id)/comments/\(commentId)"
         case .getReviewBoardPreview, .postReview:
             return "/api/boards/review-board"
-        case .getReviewBoardById(let id):
+        case .getReviewBoardById(let id), .deleteReview(let id):
             return "/api/boards/review-board/\(id)"
         }
     }

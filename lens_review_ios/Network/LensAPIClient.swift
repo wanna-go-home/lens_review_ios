@@ -218,4 +218,12 @@ class LensAPIClient
             .publishUnserialized()
             .result()
     }
+    
+    static func deleteReview(reviewId: Int) -> AnyPublisher<Result<Data?, AFError>, Never>
+    {
+        return AF.request(APIBuilder.deleteReview(id: reviewId))
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
 }

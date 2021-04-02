@@ -200,13 +200,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		55380DED2585F8AC0093642C /* ReviewBoardDetail */ = {
+		55380DED2585F8AC0093642C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				55380DEE2585F8C10093642C /* ReviewBoardDetailView.swift */,
 				55380DF12585F8E40093642C /* ReviewBoardDetailViewModel.swift */,
 			);
-			path = ReviewBoardDetail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		5550A7C42531E44200FAFD30 = {
@@ -298,7 +298,6 @@
 				55D54FC2256AA53800D87D4B /* LensDetail */,
 				55D54FC3256AA54500D87D4B /* FreeBoard */,
 				55D54FC4256AA56100D87D4B /* ReviewBoard */,
-				55380DED2585F8AC0093642C /* ReviewBoardDetail */,
 				55E446A02573D8970023FBD7 /* UIUtil.swift */,
 				557BE3EB2590D7860022F5D0 /* UIConstants.swift */,
 			);
@@ -351,6 +350,7 @@
 			children = (
 				55AC87112539F0F700141F21 /* ReviewListView.swift */,
 				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
+				55380DED2585F8AC0093642C /* Detail */,
 				6790E2B125F5334200247A69 /* Write */,
 			);
 			path = ReviewBoard;
