@@ -219,6 +219,16 @@ class LensAPIClient
             .result()
     }
     
+    static func putReview(reviewId: Int, title: String, content: String, lensId: Int) -> AnyPublisher<Result<Data?, AFError>, Never>
+    {
+        let reviewReq = ReviewWriteRequest(title: title, content: content, lensId: lensId)
+        
+        return AF.request(APIBuilder.putReview(id: reviewId, reviewRequest: reviewReq))
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
+    
     static func deleteReview(reviewId: Int) -> AnyPublisher<Result<Data?, AFError>, Never>
     {
         return AF.request(APIBuilder.deleteReview(id: reviewId))

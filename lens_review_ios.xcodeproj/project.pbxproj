@@ -69,6 +69,8 @@
 		67A1D20E26107E68006621BE /* ReviewWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D20D26107E68006621BE /* ReviewWriteViewModel.swift */; };
 		67A1D2122610871F006621BE /* ReviewWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D2112610871F006621BE /* ReviewWriteView.swift */; };
 		67A1D215261087CD006621BE /* ReviewWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D214261087CD006621BE /* ReviewWriteRequest.swift */; };
+		67A1D21B261766F2006621BE /* ReviewModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D21A261766F2006621BE /* ReviewModifyView.swift */; };
+		67A1D21E261766FB006621BE /* ReviewModifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D21D261766FB006621BE /* ReviewModifyViewModel.swift */; };
 		F66260C725C3F45600378A82 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260C625C3F45600378A82 /* SignUpView.swift */; };
 		F66260CB25C407A800378A82 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CA25C407A800378A82 /* SignUpViewModel.swift */; };
 		F66260CE25C408E900378A82 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CD25C408E900378A82 /* SignUp.swift */; };
@@ -137,6 +139,8 @@
 		67A1D20D26107E68006621BE /* ReviewWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewModel.swift; sourceTree = "<group>"; };
 		67A1D2112610871F006621BE /* ReviewWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteView.swift; sourceTree = "<group>"; };
 		67A1D214261087CD006621BE /* ReviewWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteRequest.swift; sourceTree = "<group>"; };
+		67A1D21A261766F2006621BE /* ReviewModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModifyView.swift; sourceTree = "<group>"; };
+		67A1D21D261766FB006621BE /* ReviewModifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModifyViewModel.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66260C625C3F45600378A82 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
 				55380DED2585F8AC0093642C /* Detail */,
 				6790E2B125F5334200247A69 /* Write */,
+				67A1D219261766CC006621BE /* Modify */,
 			);
 			path = ReviewBoard;
 			sourceTree = "<group>";
@@ -403,6 +408,15 @@
 				67A1D20D26107E68006621BE /* ReviewWriteViewModel.swift */,
 			);
 			path = Write;
+			sourceTree = "<group>";
+		};
+		67A1D219261766CC006621BE /* Modify */ = {
+			isa = PBXGroup;
+			children = (
+				67A1D21A261766F2006621BE /* ReviewModifyView.swift */,
+				67A1D21D261766FB006621BE /* ReviewModifyViewModel.swift */,
+			);
+			path = Modify;
 			sourceTree = "<group>";
 		};
 		685406D9EDE03E534247871F /* Frameworks */ = {
@@ -559,6 +573,7 @@
 				551719D62531E921003670D0 /* APIBuilder.swift in Sources */,
 				5574A8BE2598BA3700FE1954 /* ArticleModifyView.swift in Sources */,
 				5550A7D32531E44200FAFD30 /* ContentView.swift in Sources */,
+				67A1D21E261766FB006621BE /* ReviewModifyViewModel.swift in Sources */,
 				558304512538963800C46BE0 /* FreeBoardPreview.swift in Sources */,
 				558304572538971D00C46BE0 /* BoardListViewModel.swift in Sources */,
 				671CD75B25CC2722003FC20C /* LogUtil.swift in Sources */,
@@ -584,6 +599,7 @@
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
 				67A1D20E26107E68006621BE /* ReviewWriteViewModel.swift in Sources */,
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
+				67A1D21B261766F2006621BE /* ReviewModifyView.swift in Sources */,
 				5574A8CC2598C40100FE1954 /* StringUtil.swift in Sources */,
 				55A99A982597829B00BC65C0 /* FreeBoardWriteViewModel.swift in Sources */,
 				6790E2A025F2713900247A69 /* MyReviewView.swift in Sources */,

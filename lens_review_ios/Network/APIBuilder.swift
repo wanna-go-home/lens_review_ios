@@ -44,6 +44,7 @@ enum APIBuilder: APIConfiguration
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
     case postReview(reviewRequest: ReviewWriteRequest)
+    case putReview(id: Int, reviewRequest: ReviewWriteRequest)
     case deleteReview(id: Int)
     
     var method: HTTPMethod
@@ -57,7 +58,8 @@ enum APIBuilder: APIConfiguration
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
              .getReviewBoardPreview, .getReviewBoardById:
             return .get
-        case .putArticle, .putArticleComment:
+        case .putArticle, .putArticleComment,
+             .putReview:
             return .put
         case .deleteArticle, .deleteArticleComment,
              .deleteReview:
@@ -100,7 +102,7 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/article/\(id)/comments/\(commentId)"
         case .getReviewBoardPreview, .postReview:
             return "/api/boards/review-board"
-        case .getReviewBoardById(let id), .deleteReview(let id):
+        case .getReviewBoardById(let id), .putReview(let id, _), .deleteReview(let id):
             return "/api/boards/review-board/\(id)"
         }
     }
@@ -116,7 +118,7 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
-        case .postReview(let reviewRequest):
+        case .postReview(let reviewRequest), .putReview(_, let reviewRequest):
             return try? JSONEncoder().encode(reviewRequest)
         default:
             return nil

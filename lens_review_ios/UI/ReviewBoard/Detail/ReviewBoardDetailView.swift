@@ -23,6 +23,10 @@ struct ReviewBoardDetailView: View
         VStack{
             customTitleBar
             ReviewBoardDetailRow(review_:reviewBoardDetailViewModel.review)
+                
+            NavigationLink(destination: ReviewModifyView(reviewId: selectedReviewId, reviewTitle: reviewBoardDetailViewModel.review.title, reviewContent: reviewBoardDetailViewModel.review.content, lensId: reviewBoardDetailViewModel.review.lensId), isActive: $showMofifyView){
+                EmptyView()
+            }
             
             .alert(isPresented: $showDeleteAlert)
             {
