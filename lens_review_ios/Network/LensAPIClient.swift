@@ -167,7 +167,7 @@ class LensAPIClient
     
     static func postArticleComment(articleId: Int, bundleId: Int? = nil, content: String, completion: @escaping(Result<String, AFError>)->Void)
     {
-        let commentReq = ArticleCommentWriteRequest(bundleId: bundleId, content: content)
+        let commentReq = CommentWriteRequest(bundleId: bundleId, content: content)
         
         AF.request(APIBuilder.postArticleComment(id: articleId, commentRequest: commentReq))
             .responseString {
@@ -177,7 +177,7 @@ class LensAPIClient
     
     static func putArticleComment(articleId: Int, commentId: Int, bundleId: Int? = nil, content: String, completion: @escaping(Result<String, AFError>)->Void)
     {
-        let commentReq = ArticleCommentWriteRequest(bundleId: bundleId, content: content)
+        let commentReq = CommentWriteRequest(bundleId: bundleId, content: content)
         
         AF.request(APIBuilder.putArticleComment(id: articleId, commentId: commentId, commentRequest: commentReq))
             .responseString {
@@ -232,6 +232,50 @@ class LensAPIClient
     static func deleteReview(reviewId: Int) -> AnyPublisher<Result<Data?, AFError>, Never>
     {
         return AF.request(APIBuilder.deleteReview(id: reviewId))
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
+    
+    static func getReviewComment(reviewId: Int) -> AnyPublisher<Result<[Comment], AFError>, Never>
+    {
+        return AF.request(APIBuilder.getReviewComment(id: reviewId))
+            .validate()
+            .publishDecodable(type: [Comment].self)
+            .result()
+    }
+    
+    static func getReviewAllComments(reviewId: Int, commentId: Int) -> AnyPublisher<Result<[Comment], AFError>, Never>
+    {
+        return AF.request(APIBuilder.getReviewCommentsByCommentId(id: reviewId, commentId: commentId))
+            .validate()
+            .publishDecodable(type: [Comment].self)
+            .result()
+    }
+    
+    static func postReviewComment(reviewId: Int, bundleId: Int? = nil, content: String) -> AnyPublisher<Result<Data?, AFError>, Never>
+    {
+        let commentReq = CommentWriteRequest(bundleId: bundleId, content: content)
+        
+        return AF.request(APIBuilder.postReviewComment(id: reviewId, commentRequest: commentReq))
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
+    
+    static func putReviewComment(reviewId: Int, commentId: Int, bundleId: Int? = nil, content: String) -> AnyPublisher<Result<Data?, AFError>, Never>
+    {
+        let commentReq = CommentWriteRequest(bundleId: bundleId, content: content)
+        
+        return AF.request(APIBuilder.putReviewComment(id: reviewId, commentId: commentId, commentRequest: commentReq))
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
+    
+    static func deleteReviewComment(reviewId: Int, commentId: Int) -> AnyPublisher<Result<Data?, AFError>, Never>
+    {
+        return AF.request(APIBuilder.deleteReviewComment(id: reviewId, commentId: commentId))
             .validate()
             .publishUnserialized()
             .result()

@@ -111,4 +111,5 @@
 "write_review_next" = "다음";
 
 "review_actionSheet_title" = "리뷰게시판";
-"delete_review_question" = "게시글을 삭제하시겠습니까?";
+"review_comment_actionSheet_title" = "리뷰게시판 댓글";
+"delete_review_question" = "리뷰를 삭제하시겠습니까?";

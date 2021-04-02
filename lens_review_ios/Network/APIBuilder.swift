@@ -38,31 +38,36 @@ enum APIBuilder: APIConfiguration
     case deleteArticle(id: Int)
     case getFreeBoardComment(id: Int)
     case getCommentsByCommentId(id: Int, commentId: Int)
-    case postArticleComment(id: Int, commentRequest: ArticleCommentWriteRequest)
-    case putArticleComment(id: Int, commentId: Int, commentRequest: ArticleCommentWriteRequest)
+    case postArticleComment(id: Int, commentRequest: CommentWriteRequest)
+    case putArticleComment(id: Int, commentId: Int, commentRequest: CommentWriteRequest)
     case deleteArticleComment(id: Int, commentId: Int)
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
     case postReview(reviewRequest: ReviewWriteRequest)
     case putReview(id: Int, reviewRequest: ReviewWriteRequest)
     case deleteReview(id: Int)
+    case getReviewComment(id: Int)
+    case getReviewCommentsByCommentId(id: Int, commentId: Int)
+    case postReviewComment(id: Int, commentRequest: CommentWriteRequest)
+    case putReviewComment(id: Int, commentId: Int, commentRequest: CommentWriteRequest)
+    case deleteReviewComment(id: Int, commentId: Int)
     
     var method: HTTPMethod
     {
         switch self {
-        case .login, .signUp, .postArticle, .postArticleComment, .postReview:
+        case .login, .signUp, .postArticle, .postArticleComment, .postReview, .postReviewComment:
             return .post
         case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
              .getUserInfo, .getMyArticle, .getMyReview, .getMyComments,
              .getLensesPreview, .getLensById,
              .getFreeBoardPreview, .getFreeBoardById, .getFreeBoardComment, .getCommentsByCommentId,
-             .getReviewBoardPreview, .getReviewBoardById:
+             .getReviewBoardPreview, .getReviewBoardById, .getReviewComment, .getReviewCommentsByCommentId:
             return .get
         case .putArticle, .putArticleComment,
-             .putReview:
+             .putReview, .putReviewComment:
             return .put
         case .deleteArticle, .deleteArticleComment,
-             .deleteReview:
+             .deleteReview, .deleteReviewComment:
             return .delete
         }
     }
@@ -104,6 +109,10 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/review-board"
         case .getReviewBoardById(let id), .putReview(let id, _), .deleteReview(let id):
             return "/api/boards/review-board/\(id)"
+        case .getReviewComment(let id), .postReviewComment(let id, _):
+            return "/api/boards/review-board/\(id)/comments"
+        case .getReviewCommentsByCommentId(let id, let commentId), .putReviewComment(let id, let commentId, _), .deleteReviewComment(let id, let commentId):
+            return "/api/boards/review-board/\(id)/comments/\(commentId)"
         }
     }
     
@@ -116,7 +125,8 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(signUpRequest)
         case .postArticle(let articleRequest), .putArticle(_, let articleRequest):
             return try? JSONEncoder().encode(articleRequest)
-        case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
+        case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest),
+             .postReviewComment(_, let commentRequest), .putReviewComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
         case .postReview(let reviewRequest), .putReview(_, let reviewRequest):
             return try? JSONEncoder().encode(reviewRequest)

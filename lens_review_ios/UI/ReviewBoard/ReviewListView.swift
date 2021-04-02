@@ -22,7 +22,7 @@ struct ReviewListView: View {
                     LazyVStack(alignment: .leading)
                     {
                         ForEach(reviewListViewModel.reviewList) { board_ in
-                            NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id))
+                            NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id).environmentObject(ReviewCommentViewModel()))
                             {
                                 ReviewBoardRow(board_: board_)
                             }
