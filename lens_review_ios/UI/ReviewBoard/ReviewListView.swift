@@ -22,7 +22,7 @@ struct ReviewListView: View {
                     LazyVStack(alignment: .leading)
                     {
                         ForEach(reviewListViewModel.reviewList) { board_ in
-                            NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id))
+                            NavigationLink(destination: ReviewBoardDetailView(selectedReviewId: board_.id).environmentObject(ReviewCommentViewModel()))
                             {
                                 ReviewBoardRow(board_: board_)
                             }
@@ -37,7 +37,7 @@ struct ReviewListView: View {
                     reviewListViewModel.getReviewList()
                 })
                 
-                FloatingWriteBtn(destinationView: EmptyView())
+                FloatingWriteBtn(destinationView: SelectLensView(selectedLensId: 1).environmentObject(ReviewWriteViewModel()))
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -48,7 +48,6 @@ struct ReviewBoardRow: View {
     
     var board_: ReviewBoardPreview
     
-    // color 해야함
     var body: some View {
         VStack(alignment: .leading)
         {

@@ -105,3 +105,11 @@
 "%d_hour_ago" = "%d 시간 전";
 "%d_minute_ago" = "%d 분 전";
 "just_now" = "방금";
+
+// Review
+"write_review_select_lens" = "리뷰할 렌즈를 선택해주세요";
+"write_review_next" = "다음";
+
+"review_actionSheet_title" = "리뷰게시판";
+"review_comment_actionSheet_title" = "리뷰게시판 댓글";
+"delete_review_question" = "리뷰를 삭제하시겠습니까?";

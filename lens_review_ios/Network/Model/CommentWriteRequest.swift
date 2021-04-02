@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleCommentWriteRequest : Encodable
+struct CommentWriteRequest : Encodable
 {
     let bundleId : Int?
     let content : String
