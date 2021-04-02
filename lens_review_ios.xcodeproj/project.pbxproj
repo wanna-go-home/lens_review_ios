@@ -65,6 +65,10 @@
 		6790E2A425F2714700247A69 /* MyReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E2A325F2714700247A69 /* MyReviewViewModel.swift */; };
 		6790E2A925F27BA300247A69 /* MyCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E2A825F27BA300247A69 /* MyCommentViewModel.swift */; };
 		6790E2AC25F27BAB00247A69 /* MyCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E2AB25F27BAB00247A69 /* MyCommentView.swift */; };
+		6790E2B325F5335C00247A69 /* SelectLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790E2B225F5335C00247A69 /* SelectLensView.swift */; };
+		67A1D20E26107E68006621BE /* ReviewWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D20D26107E68006621BE /* ReviewWriteViewModel.swift */; };
+		67A1D2122610871F006621BE /* ReviewWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D2112610871F006621BE /* ReviewWriteView.swift */; };
+		67A1D215261087CD006621BE /* ReviewWriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1D214261087CD006621BE /* ReviewWriteRequest.swift */; };
 		F66260C725C3F45600378A82 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260C625C3F45600378A82 /* SignUpView.swift */; };
 		F66260CB25C407A800378A82 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CA25C407A800378A82 /* SignUpViewModel.swift */; };
 		F66260CE25C408E900378A82 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66260CD25C408E900378A82 /* SignUp.swift */; };
@@ -129,6 +133,10 @@
 		6790E2A325F2714700247A69 /* MyReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewViewModel.swift; sourceTree = "<group>"; };
 		6790E2A825F27BA300247A69 /* MyCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentViewModel.swift; sourceTree = "<group>"; };
 		6790E2AB25F27BAB00247A69 /* MyCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentView.swift; sourceTree = "<group>"; };
+		6790E2B225F5335C00247A69 /* SelectLensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLensView.swift; sourceTree = "<group>"; };
+		67A1D20D26107E68006621BE /* ReviewWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewModel.swift; sourceTree = "<group>"; };
+		67A1D2112610871F006621BE /* ReviewWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteView.swift; sourceTree = "<group>"; };
+		67A1D214261087CD006621BE /* ReviewWriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteRequest.swift; sourceTree = "<group>"; };
 		ABB2072908050703454F5319 /* Pods-lens_review_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lens_review_ios.release.xcconfig"; path = "Target Support Files/Pods-lens_review_ios/Pods-lens_review_ios.release.xcconfig"; sourceTree = "<group>"; };
 		B2857173F94514BDDFA0FD32 /* Pods_lens_review_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lens_review_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66260C625C3F45600378A82 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -176,6 +184,7 @@
 				55E0749C25447A1F0030C7C0 /* Login.swift */,
 				F66260CD25C408E900378A82 /* SignUp.swift */,
 				671CD75425C4335C003FC20C /* UserInfo.swift */,
+				67A1D214261087CD006621BE /* ReviewWriteRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 			children = (
 				55AC87112539F0F700141F21 /* ReviewListView.swift */,
 				55AC87142539F0FE00141F21 /* ReviewListViewModel.swift */,
+				6790E2B125F5334200247A69 /* Write */,
 			);
 			path = ReviewBoard;
 			sourceTree = "<group>";
@@ -383,6 +393,16 @@
 				6790E2A825F27BA300247A69 /* MyCommentViewModel.swift */,
 			);
 			path = MyComment;
+			sourceTree = "<group>";
+		};
+		6790E2B125F5334200247A69 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				6790E2B225F5335C00247A69 /* SelectLensView.swift */,
+				67A1D2112610871F006621BE /* ReviewWriteView.swift */,
+				67A1D20D26107E68006621BE /* ReviewWriteViewModel.swift */,
+			);
+			path = Write;
 			sourceTree = "<group>";
 		};
 		685406D9EDE03E534247871F /* Frameworks */ = {
@@ -547,6 +567,7 @@
 				55AC870F2539EF7900141F21 /* ReviewBoardPreview.swift in Sources */,
 				5538B489258E3EFE009F3772 /* CommentRowView.swift in Sources */,
 				551719D92531E93F003670D0 /* LensAPIClient.swift in Sources */,
+				67A1D215261087CD006621BE /* ReviewWriteRequest.swift in Sources */,
 				5550A7D12531E44200FAFD30 /* lens_review_iosApp.swift in Sources */,
 				55415E332544661F006630CA /* LoginViewModel.swift in Sources */,
 				55380DEF2585F8C10093642C /* ReviewBoardDetailView.swift in Sources */,
@@ -561,6 +582,7 @@
 				55AEFEF2257CC3D2000A7A47 /* FreeBoardDetail.swift in Sources */,
 				671CD74725C40FCE003FC20C /* MyPageView.swift in Sources */,
 				55438C6D253207A800423006 /* LensDetailViewModel.swift in Sources */,
+				67A1D20E26107E68006621BE /* ReviewWriteViewModel.swift in Sources */,
 				55415E2C254463A6006630CA /* LoginView.swift in Sources */,
 				5574A8CC2598C40100FE1954 /* StringUtil.swift in Sources */,
 				55A99A982597829B00BC65C0 /* FreeBoardWriteViewModel.swift in Sources */,
@@ -570,12 +592,14 @@
 				5531342A2545B35700FFD1EB /* KeychainManager.swift in Sources */,
 				5574A8CF2598C7C100FE1954 /* ArticleModifyViewModel.swift in Sources */,
 				55380DEA2585F4580093642C /* ReviewBoardDetail.swift in Sources */,
+				6790E2B325F5335C00247A69 /* SelectLensView.swift in Sources */,
 				6700733C25A8BD8800968D72 /* ArticleWriteRequest.swift in Sources */,
 				6790E2A425F2714700247A69 /* MyReviewViewModel.swift in Sources */,
 				55AC87152539F0FE00141F21 /* ReviewListViewModel.swift in Sources */,
 				55438C75253207CB00423006 /* LensDetail.swift in Sources */,
 				F66260C725C3F45600378A82 /* SignUpView.swift in Sources */,
 				F66260CE25C408E900378A82 /* SignUp.swift in Sources */,
+				67A1D2122610871F006621BE /* ReviewWriteView.swift in Sources */,
 				557BE3EC2590D7860022F5D0 /* UIConstants.swift in Sources */,
 				55AEFEF7257CD945000A7A47 /* FreeBoardDetailView.swift in Sources */,
 				557BE3E62590D0300022F5D0 /* CommentView.swift in Sources */,

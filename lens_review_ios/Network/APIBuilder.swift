@@ -43,11 +43,12 @@ enum APIBuilder: APIConfiguration
     case deleteArticleComment(id: Int, commentId: Int)
     case getReviewBoardPreview
     case getReviewBoardById(id: Int)
+    case postReview(reviewRequest: ReviewWriteRequest)
     
     var method: HTTPMethod
     {
         switch self {
-        case .login, .signUp, .postArticle, .postArticleComment:
+        case .login, .signUp, .postArticle, .postArticleComment, .postReview:
             return .post
         case .checkSameEmail, .checkSameNickname, .checkSamePhoneNumber,
              .getUserInfo, .getMyArticle, .getMyReview, .getMyComments,
@@ -95,7 +96,7 @@ enum APIBuilder: APIConfiguration
             return "/api/boards/article/\(id)/comments"
         case .getCommentsByCommentId(let id, let commentId), .putArticleComment(let id, let commentId, _), .deleteArticleComment(let id, let commentId):
             return "/api/boards/article/\(id)/comments/\(commentId)"
-        case .getReviewBoardPreview:
+        case .getReviewBoardPreview, .postReview:
             return "/api/boards/review-board"
         case .getReviewBoardById(let id):
             return "/api/boards/review-board/\(id)"
@@ -113,6 +114,8 @@ enum APIBuilder: APIConfiguration
             return try? JSONEncoder().encode(articleRequest)
         case .postArticleComment(_, let commentRequest), .putArticleComment(_, _, let commentRequest):
             return try? JSONEncoder().encode(commentRequest)
+        case .postReview(let reviewRequest):
+            return try? JSONEncoder().encode(reviewRequest)
         default:
             return nil
         }

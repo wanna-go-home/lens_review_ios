@@ -120,6 +120,7 @@ struct FloatingWriteBtn<Content: View>: View
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
         }
     }

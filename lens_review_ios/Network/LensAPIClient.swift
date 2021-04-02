@@ -208,4 +208,14 @@ class LensAPIClient
                 (response: DataResponse<ReviewBoardDetail, AFError>) in completion(response.result)
             }
     }
+    
+    static func postReview(title: String, content: String, lensId: Int) -> AnyPublisher<Result<Data?, AFError>, Never>
+    {
+        let reviewReq = ReviewWriteRequest(title: title, content: content, lensId: lensId)
+        
+        return AF.request(APIBuilder.postReview(reviewRequest: reviewReq))
+            .validate()
+            .publishUnserialized()
+            .result()
+    }
 }
